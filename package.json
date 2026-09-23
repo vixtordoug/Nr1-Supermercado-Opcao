@@ -1,0 +1,17 @@
+{
+  "name": "protege-nr1",
+  "version": "4.0.0",
+  "private": true,
+  "description": "ProtegeNR1 - plataforma corporativa de denúncias, riscos e planos de ação.",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node --watch backend/src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.1.0",
+    "multer": "^2.2.0",
+    "nodemailer": "^9.0.5",
+    "sql.js": "^1.13.0"
+  }
+}

@@ -1,0 +1,2926 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+
+<body>
+  <div id="root"></div>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Canal de Denúncias NR1 — Acesso</title>
+  <style>
+    :root {
+      --red: #e3262d;
+      --red-dark: #b9141b;
+      --red-soft: #fff0f1;
+      --orange: #f59a3d;
+      --blue: #3b82f6;
+      --green: #20a464;
+      --ink: #24272c;
+      --muted: #747b85;
+      --line: #e7e9ed;
+      --bg: #f7f8fa
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink)
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    .start {
+      min-height: 100vh;
+      background: radial-gradient(circle at 10% 15%, #e3262d14, transparent 25%), radial-gradient(circle at 90% 80%, #3b82f612, transparent 24%), #f8f9fb;
+      display: flex;
+      flex-direction: column
+    }
+
+    .start-head {
+      height: 76px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .start-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px
+    }
+
+    .start-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--red-dark), var(--red));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 20px;
+      box-shadow: 0 7px 18px #e3262d2b
+    }
+
+    .start-brand b {
+      font-size: 19px
+    }
+
+    .start-brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 2px
+    }
+
+    .start-body {
+      width: min(1120px, 92%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 470px;
+      gap: 75px;
+      align-items: center;
+      padding: 50px 0
+    }
+
+    .start-copy .tag,
+    .login-copy .tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 20px;
+      background: var(--red-soft);
+      border: 1px solid #f2cdd0;
+      color: var(--red-dark);
+      font-size: 11px;
+      font-weight: 900
+    }
+
+    .start-copy h1 {
+      font-size: 46px;
+      line-height: 1.08;
+      letter-spacing: -1.4px;
+      margin: 18px 0 13px
+    }
+
+    .start-copy h1 span,
+    .login-copy h1 span {
+      color: var(--red)
+    }
+
+    .start-copy>p {
+      max-width: 580px;
+      color: #68707a;
+      font-size: 16px;
+      line-height: 1.65
+    }
+
+    .start-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 28px
+    }
+
+    .start-benefit {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 13px
+    }
+
+    .start-benefit i {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--red-soft);
+      color: var(--red-dark);
+      font-style: normal
+    }
+
+    .start-benefit b {
+      display: block;
+      font-size: 12px;
+      margin-top: 8px
+    }
+
+    .start-benefit small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.4;
+      margin-top: 3px
+    }
+
+    .start-card,
+    .login-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 18px 50px #1e232d1a;
+      position: relative
+    }
+
+    .start-card:before,
+    .login-card:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 5px;
+      border-radius: 18px 18px 0 0;
+      background: linear-gradient(90deg, var(--red), #ef4444, var(--orange))
+    }
+
+    .start-card h2 {
+      font-size: 23px;
+      margin: 0 0 5px
+    }
+
+    .start-card>p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 0 0 20px
+    }
+
+    .start-option {
+      width: 100%;
+      min-height: 74px;
+      margin: 9px 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 43px 1fr 20px;
+      align-items: center;
+      text-align: left;
+      padding: 12px 13px;
+      cursor: pointer;
+      transition: .16s
+    }
+
+    .start-option:hover {
+      transform: translateY(-2px);
+      border-color: #e5a4a8;
+      background: #fffafa;
+      box-shadow: 0 8px 20px #e3262d12
+    }
+
+    .start-option .ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--red-soft);
+      color: var(--red-dark);
+      font-style: normal;
+      font-size: 17px
+    }
+
+    .start-option:nth-of-type(2) .ico {
+      background: #fff4e8;
+      color: #c96d16
+    }
+
+    .start-option:nth-of-type(3) .ico {
+      background: #edf4ff;
+      color: #2865bd
+    }
+
+    .start-option b {
+      display: block;
+      font-size: 13px
+    }
+
+    .start-option small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 3px
+    }
+
+    .start-option em {
+      font-style: normal;
+      font-size: 23px;
+      color: #aeb4bc
+    }
+
+    .start-anon {
+      margin-top: 18px;
+      padding: 11px;
+      border-radius: 9px;
+      background: #f7faf8;
+      color: #4d6b59;
+      font-size: 10px;
+      text-align: center;
+      border: 1px solid #dceee3
+    }
+
+    .start-foot {
+      text-align: center;
+      color: #9298a0;
+      font-size: 10px;
+      padding: 14px;
+      border-top: 1px solid var(--line);
+      background: #fff
+    }
+
+    .login-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fff6f6 0%, #fff 55%, #f3f7ff 100%)
+    }
+
+    .login-head {
+      height: 74px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .login-body {
+      width: min(1050px, 92%);
+      margin: auto;
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 70px;
+      align-items: center
+    }
+
+    .login-copy h1 {
+      font-size: 42px;
+      line-height: 1.08;
+      letter-spacing: -1px;
+      margin: 16px 0 10px
+    }
+
+    .login-copy>p {
+      color: #68707a;
+      line-height: 1.65;
+      max-width: 550px
+    }
+
+    .login-help {
+      display: grid;
+      gap: 10px;
+      margin-top: 25px
+    }
+
+    .login-help div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 12px
+    }
+
+    .login-help i {
+      font-style: normal;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #eaf7ef;
+      color: #198754;
+      display: grid;
+      place-items: center;
+      font-weight: 900
+    }
+
+    .login-card {
+      padding: 30px
+    }
+
+    .login-card-head {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 22px
+    }
+
+    .login-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--red-soft);
+      color: var(--red-dark);
+      display: grid;
+      place-items: center;
+      font-size: 19px
+    }
+
+    .login-card h2 {
+      font-size: 22px;
+      margin: 0 0 3px
+    }
+
+    .login-card .sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin: 0
+    }
+
+    .login-card label {
+      font-size: 12px;
+      font-weight: 800;
+      display: block;
+      margin: 15px 0 7px
+    }
+
+    .field {
+      height: 47px;
+      border: 1px solid #dfe2e7;
+      border-radius: 9px;
+      background: #fbfcfd;
+      display: flex;
+      align-items: center
+    }
+
+    .field:focus-within {
+      border-color: #d95d63;
+      box-shadow: 0 0 0 3px #e3262d12;
+      background: #fff
+    }
+
+    .field span {
+      width: 40px;
+      text-align: center;
+      color: var(--red-dark);
+      font-size: 16px
+    }
+
+    .field input {
+      width: 100%;
+      height: 100%;
+      border: 0 !important;
+      outline: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 0 10px 0 0 !important
+    }
+
+    .hint {
+      font-size: 10px;
+      color: #8a9098;
+      margin-top: 4px
+    }
+
+    .login-btn {
+      width: 100%;
+      height: 48px;
+      border: 0;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--red-dark), var(--red));
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 8px 18px #e3262d2b
+    }
+
+    .back {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #5e6670;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    @media(max-width:850px) {
+
+      .start-body,
+      .login-body {
+        grid-template-columns: 1fr;
+        gap: 25px
+      }
+
+      .start-copy h1,
+      .login-copy h1 {
+        font-size: 35px
+      }
+
+      .start-benefits {
+        grid-template-columns: 1fr
+      }
+
+      .login-body {
+        padding: 30px 0
+      }
+
+      .start-body {
+        padding: 30px 0
+      }
+    }
+
+    @media(max-width:600px) {
+
+      .start-head,
+      .login-head {
+        padding: 0 18px
+      }
+
+      .start-body,
+      .login-body {
+        width: 92%
+      }
+
+      .start-card,
+      .login-card {
+        padding: 23px
+      }
+    }
+
+    /* ===== ÁREA ADMINISTRATIVA — VISUAL CORPORATIVO ===== */
+    .app {
+      min-height: 100vh;
+      display: flex;
+      background: linear-gradient(135deg, #f8f9fb 0%, #f3f5f8 100%)
+    }
+
+    .side {
+      width: 248px;
+      min-height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, #17191d 0%, #22252a 100%);
+      padding: 20px 13px;
+      box-shadow: 8px 0 30px rgba(24, 28, 35, .14);
+      z-index: 20;
+      display: flex;
+      flex-direction: column
+    }
+
+    .logo {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -.4px;
+      padding: 3px 11px 22px;
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .logo:before {
+      content: '✓';
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #b9141b, #e3262d);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: 0 7px 17px rgba(227, 38, 45, .3)
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 7px
+    }
+
+    .nav button {
+      border: 1px solid transparent;
+      background: transparent;
+      color: #cbd0d7;
+      text-align: left;
+      border-radius: 10px;
+      padding: 12px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .16s;
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .nav button:hover {
+      background: #2d3036;
+      color: #fff;
+      transform: translateX(2px)
+    }
+
+    .nav button.active {
+      background: linear-gradient(90deg, #b9141b, #e3262d);
+      color: #fff;
+      box-shadow: 0 7px 18px rgba(227, 38, 45, .22)
+    }
+
+    .side .nav.logout {
+      margin-top: auto;
+      background: #fff;
+      color: #25282d;
+      justify-content: center;
+      border: 0
+    }
+
+    .side .nav.logout:hover {
+      background: #fff0f1;
+      color: #b9141b;
+      transform: none
+    }
+
+    .side .nav.logout.danger {
+      font-weight: 800
+    }
+
+    .main {
+      margin-left: 248px;
+      width: calc(100% - 248px);
+      min-height: 100vh;
+      padding: 34px 42px 55px
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 25px
+    }
+
+    .top h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -.7px;
+      color: #20242a
+    }
+
+    .user {
+      color: #747b85;
+      font-size: 12px;
+      margin-top: 6px
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 15px;
+      margin-bottom: 24px
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e4e7eb;
+      border-radius: 15px;
+      padding: 19px 20px;
+      box-shadow: 0 9px 25px rgba(28, 34, 42, .06);
+      position: relative;
+      overflow: hidden
+    }
+
+    .card:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #e3262d
+    }
+
+    .card:nth-child(2):before {
+      background: #f59a3d
+    }
+
+    .card:nth-child(3):before {
+      background: #3b82f6
+    }
+
+    .card:nth-child(4):before {
+      background: #20a464
+    }
+
+    .muted {
+      color: #747b85;
+      font-size: 12px
+    }
+
+    .num {
+      font-size: 31px;
+      font-weight: 900;
+      margin-top: 7px;
+      color: #20242a
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid #e4e7eb;
+      border-radius: 15px;
+      padding: 22px;
+      box-shadow: 0 9px 25px rgba(28, 34, 42, .05)
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      font-size: 18px
+    }
+
+    .section p {
+      line-height: 1.55
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 12px
+    }
+
+    .table th {
+      background: #f8f9fb;
+      color: #69717b;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .45px;
+      text-align: left;
+      padding: 13px 12px;
+      border-top: 1px solid #e7e9ed;
+      border-bottom: 1px solid #e7e9ed
+    }
+
+    .table th:first-child {
+      border-left: 1px solid #e7e9ed;
+      border-radius: 9px 0 0 0
+    }
+
+    .table th:last-child {
+      border-right: 1px solid #e7e9ed;
+      border-radius: 0 9px 0 0
+    }
+
+    .table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #eef0f3;
+      color: #424850;
+      background: #fff
+    }
+
+    .table tr:hover td {
+      background: #fff8f8
+    }
+
+    .table td:first-child {
+      font-weight: 600
+    }
+
+    .link {
+      background: none;
+      border: 0;
+      color: #bd1820;
+      cursor: pointer;
+      font-weight: 800
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #fff0f1;
+      color: #b9141b;
+      border: 1px solid #f3d0d3;
+      font-size: 10px;
+      font-weight: 800
+    }
+
+    .mini {
+      border: 1px solid #dfe2e7;
+      background: #fff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #59616b;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .mini:hover {
+      border-color: #e3262d;
+      color: #b9141b;
+      background: #fff8f8
+    }
+
+    .mini.red,
+    .btn {
+      border: 0;
+      background: linear-gradient(135deg, #b9141b, #e3262d);
+      color: #fff;
+      box-shadow: 0 7px 17px rgba(227, 38, 45, .18)
+    }
+
+    .btn {
+      border-radius: 9px;
+      padding: 11px 17px;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .btn:hover {
+      filter: brightness(1.04);
+      transform: translateY(-1px)
+    }
+
+    .box {
+      background: #fff;
+      border: 1px solid #e4e7eb;
+      border-radius: 17px;
+      box-shadow: 0 18px 50px rgba(28, 34, 42, .14);
+      padding: 27px;
+      position: relative
+    }
+
+    .box h2 {
+      margin: 0 0 4px;
+      font-size: 22px
+    }
+
+    .box label {
+      display: block;
+      margin: 14px 0 6px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #30353b
+    }
+
+    .box input,
+    .box select,
+    .box textarea {
+      width: 100%;
+      border: 1px solid #dfe2e7;
+      border-radius: 9px;
+      background: #fbfcfd;
+      padding: 11px 12px;
+      outline: none;
+      color: #30353b
+    }
+
+    .box input:focus,
+    .box select:focus,
+    .box textarea:focus {
+      border-color: #d95d63;
+      box-shadow: 0 0 0 3px rgba(227, 38, 45, .09);
+      background: #fff
+    }
+
+    .box textarea {
+      min-height: 125px;
+      resize: vertical
+    }
+
+    .formgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px
+    }
+
+    .formgrid .full {
+      grid-column: 1/-1
+    }
+
+    .success {
+      background: #edf8f1;
+      border: 1px solid #ccebd7;
+      color: #197343;
+      border-radius: 9px
+    }
+
+    .error {
+      background: #fff0f1;
+      border: 1px solid #f2c9cc;
+      color: #b9141b;
+      border-radius: 9px;
+      padding: 10px;
+      margin-top: 10px
+    }
+
+    .small {
+      font-size: 10px;
+      color: #858c95
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 23, 28, .57);
+      backdrop-filter: blur(3px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px
+    }
+
+    .modal .box {
+      width: min(760px, 96vw);
+      max-height: 90vh;
+      overflow: auto
+    }
+
+    .panel {
+      min-height: 100vh;
+      background: radial-gradient(circle at 10% 15%, rgba(227, 38, 45, .06), transparent 25%), #f7f8fa;
+      padding: 50px 20px
+    }
+
+    .panel .box {
+      width: min(680px, 96vw);
+      margin: 0 auto
+    }
+
+    .panel h2 {
+      font-size: 26px
+    }
+
+    .panel .btn {
+      margin-top: 18px
+    }
+
+    @media(max-width:900px) {
+      .side {
+        width: 210px
+      }
+
+      .main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+        padding: 28px 24px
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:650px) {
+      .side {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        height: auto
+      }
+
+      .app {
+        display: block
+      }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 22px 15px
+      }
+
+      .side .nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr
+      }
+
+      .side .nav.logout {
+        margin-top: 12px
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px
+      }
+
+      .card {
+        padding: 15px
+      }
+
+      .num {
+        font-size: 25px
+      }
+
+      .section {
+        padding: 14px;
+        overflow: auto
+      }
+
+      .table {
+        min-width: 650px
+      }
+
+      .top {
+        align-items: flex-start
+      }
+
+      .formgrid {
+        grid-template-columns: 1fr
+      }
+
+      .formgrid .full {
+        grid-column: auto
+      }
+
+      .modal {
+        padding: 12px
+      }
+
+      .box {
+        padding: 20px
+      }
+    }
+
+    .table .mini {
+      padding: 7px 11px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid #e4e7eb;
+      color: #b9141b;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .table .mini:hover {
+      background: #fff0f1;
+      border-color: #e7a8ac
+    }
+
+    .tag.ok {
+      background: #eaf7ef;
+      color: #18794e;
+      border-color: #ccebd9
+    }
+
+    .tag.mutedtag {
+      background: #f1f3f5;
+      color: #6f767e;
+      border-color: #dfe3e7
+    }
+
+    .success {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: #eaf8f0;
+      border: 1px solid #ccebd9;
+      color: #16804b;
+      font-size: 11px
+    }
+
+    .chat-form button:disabled {
+      opacity: .65;
+      cursor: wait
+    }
+
+    .type-tooltip::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      z-index: 9999;
+      left: 0;
+      top: calc(100% + 8px);
+      width: min(340px, 90vw);
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #1f2937;
+      color: #ffffff;
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 400;
+      text-align: left;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    }
+
+    .type-tooltip:hover::after,
+    .type-tooltip:focus-within::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  </style>
+
+  </style>
+  <style>
+    .chat {
+      margin-top: 20px;
+      border: 1px solid #e4e7eb;
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden
+    }
+
+    .chat-head {
+      padding: 14px 16px;
+      background: #f8f9fb;
+      border-bottom: 1px solid #e7e9ed;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .chat-head b {
+      font-size: 14px
+    }
+
+    .chat-head small {
+      display: block;
+      color: #7b838c;
+      font-size: 10px;
+      margin-top: 3px
+    }
+
+    .chat-body {
+      padding: 14px;
+      max-height: 330px;
+      overflow: auto;
+      background: #fbfcfd
+    }
+
+    .chat-empty {
+      text-align: center;
+      color: #858c95;
+      font-size: 11px;
+      padding: 22px
+    }
+
+    .msg {
+      display: flex;
+      margin: 8px 0
+    }
+
+    .msg.public {
+      justify-content: flex-end
+    }
+
+    .msg.admin {
+      justify-content: flex-start
+    }
+
+    .msg-bubble {
+      max-width: 78%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      line-height: 1.45;
+      border: 1px solid #e3e6ea;
+      background: #fff
+    }
+
+    .msg.public .msg-bubble {
+      background: #fff0f1;
+      border-color: #f0c9cc;
+      color: #5e2529
+    }
+
+    .msg.admin .msg-bubble {
+      background: #edf4ff;
+      border-color: #d4e2f7;
+      color: #23456f
+    }
+
+    .msg-meta {
+      font-size: 9px;
+      color: #8a9199;
+      margin-top: 4px
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid #e7e9ed;
+      background: #fff
+    }
+
+    .chat-form textarea {
+      flex: 1;
+      min-height: 44px;
+      max-height: 110px;
+      resize: vertical;
+      border: 1px solid #dfe2e7;
+      border-radius: 9px;
+      padding: 10px;
+      outline: none
+    }
+
+    .chat-form textarea:focus {
+      border-color: #d95d63;
+      box-shadow: 0 0 0 3px rgba(227, 38, 45, .08)
+    }
+
+    .chat-form .btn {
+      align-self: flex-end;
+      white-space: nowrap
+    }
+
+    .chat-note {
+      padding: 8px 14px;
+      color: #7b838c;
+      font-size: 9px;
+      background: #fff;
+      border-top: 1px solid #f0f1f3
+    }
+  </style>
+
+  <style id="anonymous-fields-default">
+    .personal-data-fields,
+    .personalData,
+    #personalData,
+    #dadosPessoais,
+    #personalFields {
+      display: block;
+    }
+  </style>
+  <style id="protocol-security-key">
+    .security-key-box {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid #e6e8ec;
+      border-radius: 12px;
+      background: #fafbfc
+    }
+
+    .security-key-box label {
+      display: block;
+      font-weight: 800;
+      font-size: 12px;
+      color: #3f4650;
+      margin-bottom: 6px
+    }
+
+    .security-key-box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 11px 12px;
+      border: 1px solid #dfe3e8;
+      border-radius: 9px;
+      background: #fff
+    }
+
+    .security-key-help {
+      margin: 6px 0 0;
+      color: #737b85;
+      font-size: 10px;
+      line-height: 1.45
+    }
+
+    .security-key-rules {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px
+    }
+
+    .security-key-rule {
+      font-size: 10px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #f0f2f4;
+      color: #69717b
+    }
+
+    .security-key-rule.ok {
+      background: #eaf8f0;
+      color: #16804b
+    }
+
+    .security-key-error {
+      margin-top: 8px;
+      color: #b9141b;
+      font-size: 11px;
+      font-weight: 700
+    }
+  </style>
+  <style id="security-key-polish">
+    .security-key-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid #eadfe1;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fffafa 0%, #fafbfc 100%);
+      box-shadow: 0 5px 16px rgba(20, 20, 20, .05)
+    }
+
+    .security-key-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #b5121b;
+      margin-bottom: 7px
+    }
+
+    .security-key-consult {
+      font-size: 11px;
+      line-height: 1.55;
+      color: #4f5660;
+      margin: 0 0 12px
+    }
+
+    .security-key-consult strong {
+      color: #20252b
+    }
+
+    .security-key-box input {
+      transition: border-color .18s, box-shadow .18s
+    }
+
+    .security-key-box input:focus {
+      border-color: #d71920;
+      box-shadow: 0 0 0 3px rgba(215, 25, 32, .10);
+      outline: none
+    }
+
+    .security-key-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #fff0f1;
+      color: #b5121b;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 12px
+    }
+
+    .personal-data-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid #e4e7eb;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 5px 16px rgba(20, 20, 20, .05)
+    }
+
+    .personal-data-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #242a31;
+      margin-bottom: 5px
+    }
+
+    .personal-data-help {
+      font-size: 11px;
+      line-height: 1.5;
+      color: #6b737d;
+      margin: 0 0 14px
+    }
+
+    .personal-data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .personal-data-field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      color: #3c434b;
+      margin: 0 0 6px
+    }
+
+    .personal-data-input {
+      transition: border-color .18s, box-shadow .18s
+    }
+
+    .personal-data-field input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 11px 12px;
+      border: 1px solid #dfe3e8;
+      border-radius: 9px;
+      background: #fbfcfd
+    }
+
+    .personal-data-field input:focus {
+      border-color: #d71920;
+      box-shadow: 0 0 0 3px rgba(215, 25, 32, .10);
+      outline: none
+    }
+
+    @media(max-width:640px) {
+      .personal-data-grid {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+
+  <style id="identity-polish">
+    .identity-fields {
+      margin-top: 12px
+    }
+
+    .anonymous-toggle {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
+      padding: 12px 13px;
+      border: 1px solid #e1e5e9;
+      border-radius: 11px;
+      background: #fff;
+      cursor: pointer;
+      margin: 0 !important
+    }
+
+    .anonymous-toggle input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none
+    }
+
+    .anon-check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #b9c0c7;
+      border-radius: 5px;
+      background: #fff;
+      position: relative;
+      flex: none
+    }
+
+    .anonymous-toggle input:checked+.anon-check {
+      background: #c91620;
+      border-color: #c91620
+    }
+
+    .anonymous-toggle input:checked+.anon-check:after {
+      content: "✓";
+      color: #fff;
+      font-weight: 800;
+      position: absolute;
+      left: 3px;
+      top: -2px;
+      font-size: 14px
+    }
+
+    .anon-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      color: #272d34
+    }
+
+    .anon-copy strong {
+      font-size: 12px
+    }
+
+    .anon-copy small {
+      font-size: 10px;
+      color: #737b84
+    }
+
+    .personal-data-box {
+      margin-top: 12px;
+      padding: 15px;
+      border: 1px solid #e2e6eb;
+      border-radius: 12px;
+      background: #fff
+    }
+
+    .personal-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #252b32
+    }
+
+    .personal-help {
+      font-size: 10px;
+      color: #707983;
+      margin: 3px 0 12px
+    }
+
+    .personal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .personal-grid>div>label {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      color: #424950;
+      margin-bottom: 5px
+    }
+
+    .optional {
+      font-weight: 500;
+      color: #8a929a
+    }
+
+    .personal-data-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 11px;
+      border: 1px solid #dce1e6;
+      border-radius: 8px;
+      background: #fcfdfe
+    }
+
+    .personal-data-input:focus {
+      outline: none;
+      border-color: #c91620;
+      box-shadow: 0 0 0 3px rgba(201, 22, 32, .09)
+    }
+
+    .privacy-ok {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #edf8f1;
+      color: #247344;
+      font-size: 10px
+    }
+
+    @media(max-width:640px) {
+      .personal-grid {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+  <style id="dashboard-graphs-style">
+    .chat {
+      margin-top: 20px;
+      border: 1px solid #e4e7eb;
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden
+    }
+
+    .chat-head {
+      padding: 14px 16px;
+      background: #f8f9fb;
+      border-bottom: 1px solid #e7e9ed;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .chat-head b {
+      font-size: 14px
+    }
+
+    .chat-head small {
+      display: block;
+      color: #7b838c;
+      font-size: 10px;
+      margin-top: 3px
+    }
+
+    .chat-body {
+      padding: 14px;
+      max-height: 330px;
+      overflow: auto;
+      background: #fbfcfd
+    }
+
+    .chat-empty {
+      text-align: center;
+      color: #858c95;
+      font-size: 11px;
+      padding: 22px
+    }
+
+    .msg {
+      display: flex;
+      margin: 8px 0
+    }
+
+    .msg.public {
+      justify-content: flex-end
+    }
+
+    .msg.admin {
+      justify-content: flex-start
+    }
+
+    .msg-bubble {
+      max-width: 78%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      line-height: 1.45;
+      border: 1px solid #e3e6ea;
+      background: #fff
+    }
+
+    .msg.public .msg-bubble {
+      background: #fff0f1;
+      border-color: #f0c9cc;
+      color: #5e2529
+    }
+
+    .msg.admin .msg-bubble {
+      background: #edf4ff;
+      border-color: #d4e2f7;
+      color: #23456f
+    }
+
+    .msg-meta {
+      font-size: 9px;
+      color: #8a9199;
+      margin-top: 4px
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid #e7e9ed;
+      background: #fff
+    }
+
+    .chat-form textarea {
+      flex: 1;
+      min-height: 44px;
+      max-height: 110px;
+      resize: vertical;
+      border: 1px solid #dfe2e7;
+      border-radius: 9px;
+      padding: 10px;
+      outline: none
+    }
+
+    .chat-form textarea:focus {
+      border-color: #d95d63;
+      box-shadow: 0 0 0 3px rgba(227, 38, 45, .08)
+    }
+
+    .chat-form .btn {
+      align-self: flex-end;
+      white-space: nowrap
+    }
+
+    .chat-note {
+      padding: 8px 14px;
+      color: #7b838c;
+      font-size: 9px;
+      background: #fff;
+      border-top: 1px solid #f0f1f3
+    }
+  </style>
+
+  <style id="anonymous-fields-default">
+    .personal-data-fields,
+    .personalData,
+    #personalData,
+    #dadosPessoais,
+    #personalFields {
+      display: block;
+    }
+  </style>
+
+  <style id="dashboard-modern-filters">
+    .dashboard-filters {
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+      border: 1px solid #e7e9ed;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(24, 28, 35, .06);
+      padding: 22px;
+    }
+
+    .dash-filter-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .dash-filter-head h3 {
+      font-size: 17px;
+      color: #20242a
+    }
+
+    .dash-filter-head .muted {
+      font-size: 12px
+    }
+
+    .dash-filter-head .link {
+      border: 1px solid #e1e4e8;
+      background: #fff;
+      border-radius: 9px;
+      padding: 8px 12px;
+      font-weight: 800;
+      color: #555d67;
+      cursor: pointer;
+    }
+
+    .dash-filter-head .link:hover {
+      background: #f7f8fa;
+      color: #b9141b
+    }
+
+    .dash-filter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .dash-filter-grid label {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      color: #4d5560;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .dash-filter-grid select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid #dfe3e8;
+      border-radius: 10px;
+      background: #fff;
+      padding: 0 13px;
+      color: #292e34;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 7px rgba(20, 25, 30, .04);
+    }
+
+    .dash-filter-grid select:focus {
+      outline: 2px solid rgba(185, 20, 27, .13);
+      border-color: #b9141b;
+    }
+
+    .dashboard-graphs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .dashboard-graph-card {
+      background: #fff;
+      border: 1px solid #e7e9ed;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(24, 28, 35, .055);
+      min-width: 0;
+    }
+
+    .dashboard-graph-card.full {
+      grid-column: 1/-1
+    }
+
+    .dashboard-graph-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .dashboard-graph-title b {
+      font-size: 15px;
+      color: #252a30
+    }
+
+    .dashboard-graph-title span {
+      font-size: 12px;
+      color: #7a818b;
+      font-weight: 700
+    }
+
+    .dash-vchart {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      min-height: 235px;
+      padding: 10px 6px 0;
+      border-bottom: 1px solid #e6e8eb;
+      overflow-x: auto;
+    }
+
+    .dash-vitem {
+      flex: 1 0 58px;
+      min-width: 58px;
+      max-width: 110px;
+      height: 215px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .dash-vvalue {
+      font-size: 12px;
+      font-weight: 900;
+      color: #4a515a
+    }
+
+    .dash-vbar-wrap {
+      width: 100%;
+      height: 165px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .dash-vbar {
+      width: 100%;
+      min-height: 5px;
+      border-radius: 8px 8px 2px 2px;
+      background: linear-gradient(180deg, #e3262d 0%, #b9141b 100%);
+      box-shadow: 0 5px 12px rgba(185, 20, 27, .16);
+      transition: height .25s ease;
+    }
+
+    .dash-vlabel {
+      width: 100%;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #606873;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dash-hchart {
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .dash-hrow {
+      display: grid;
+      grid-template-columns: minmax(110px, 150px) 1fr 30px;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dash-hlabel {
+      font-size: 11px;
+      font-weight: 700;
+      color: #606873;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dash-htrack {
+      height: 12px;
+      background: #f0f2f4;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .dash-hfill {
+      height: 100%;
+      min-width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #b9141b, #e3262d);
+      transition: width .25s ease;
+    }
+
+    .dash-hvalue {
+      font-size: 12px;
+      font-weight: 900;
+      color: #4a515a;
+      text-align: right
+    }
+
+    .dash-empty {
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #858c95;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media(max-width:900px) {
+      .dashboard-graphs {
+        grid-template-columns: 1fr
+      }
+
+      .dashboard-graph-card.full {
+        grid-column: auto
+      }
+    }
+
+    @media(max-width:650px) {
+      .dash-filter-grid {
+        grid-template-columns: 1fr
+      }
+
+      .dash-filter-head {
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .dashboard-graph-card {
+        padding: 16px
+      }
+    }
+  </style>
+
+  <style id="security-key-screen-v2">
+    .protocol-highlight {
+      margin: 16px auto 18px;
+      padding: 15px 18px;
+      border: 2px solid #d71920;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fff7f7 0%, #fff 100%);
+      text-align: center;
+      box-shadow: 0 5px 16px rgba(215, 25, 32, .08)
+    }
+
+    .protocol-highlight-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #7a3034;
+      margin-bottom: 5px
+    }
+
+    .protocol-highlight-number {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      color: #b5121b;
+      word-break: break-word
+    }
+
+    .protocol-highlight-help {
+      font-size: 10px;
+      color: #606873;
+      margin-top: 6px
+    }
+
+    .security-key-rule {
+      transition: all .18s ease
+    }
+
+    .security-key-rule.ok {
+      background: #e8f7ee !important;
+      color: #137a45 !important;
+      border: 1px solid #bfe8ce
+    }
+
+    .security-key-rule:not(.ok) {
+      border: 1px solid #e5e8eb
+    }
+
+    .security-key-box input.rule-ok {
+      border-color: #37a96b !important;
+      box-shadow: 0 0 0 3px rgba(55, 169, 107, .10) !important
+    }
+
+    .security-key-box input.rule-error {
+      border-color: #d71920 !important;
+      box-shadow: 0 0 0 3px rgba(215, 25, 32, .08) !important
+    }
+
+    .security-key-instruction {
+      font-size: 11px;
+      line-height: 1.55;
+      color: #4f5660;
+      margin: 0 0 14px
+    }
+  </style>
+
+
+  <style id="security-save-modal-style">
+    .security-save-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(18, 22, 28, .58);
+      backdrop-filter: blur(5px);
+      animation: securityOverlayIn .18s ease-out
+    }
+
+    .security-save-modal {
+      width: min(520px, calc(100vw - 36px));
+      box-sizing: border-box;
+      background: #fff;
+      border-radius: 18px;
+      padding: 30px 28px 26px;
+      text-align: center;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+      border: 1px solid #e5e8ec;
+      animation: securityModalIn .22s ease-out
+    }
+
+    .security-save-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e8f8ef;
+      color: #118548;
+      font-size: 34px;
+      font-weight: 900
+    }
+
+    .security-save-modal h3 {
+      margin: 0 0 8px;
+      color: #116b3b;
+      font-size: 22px
+    }
+
+    .security-save-modal p {
+      margin: 0 auto 18px;
+      max-width: 430px;
+      color: #5b636c;
+      font-size: 13px;
+      line-height: 1.6
+    }
+
+    .security-save-protocol {
+      display: inline-block;
+      padding: 11px 16px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: #f6f8fa;
+      border: 1px solid #e0e5ea;
+      color: #20262d;
+      font-weight: 900;
+      letter-spacing: .5px;
+      font-size: 15px
+    }
+
+    .security-save-home {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 18px;
+      cursor: pointer;
+      background: #d71920;
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 8px 18px rgba(215, 25, 32, .20)
+    }
+
+    .security-save-home:hover {
+      filter: brightness(.96);
+      transform: translateY(-1px)
+    }
+
+    @keyframes securityOverlayIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes securityModalIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(.98)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
+  </style>
+
+
+  <style id="full-date-input-style">
+    .full-date-input {
+      cursor: pointer
+    }
+
+    .full-date-input::-webkit-calendar-picker-indicator {
+      cursor: pointer
+    }
+  </style>
+
+
+  <style id="masked-security-key-style">
+    .security-save-key {
+      margin: 0 auto 18px;
+      max-width: 360px;
+      padding: 13px 16px;
+      border: 1px solid #dce9df;
+      border-radius: 10px;
+      background: #f3faf5;
+      color: #146c3d;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-sizing: border-box;
+    }
+
+    .security-save-key strong {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .security-save-key span {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    #newSecurityKey,
+    #newSecurityKeyConfirm {
+      -webkit-text-security: disc;
+    }
+  </style>
+
+
+  <style id="track-page-header-style">
+    .track-page-header {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 78px;
+      padding: 16px 34px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      border-bottom: 1px solid #e7e9ed;
+      box-shadow: 0 2px 10px rgba(20, 25, 35, .06)
+    }
+
+    .track-page-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #df1720;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 22px;
+      box-shadow: 0 5px 14px rgba(223, 23, 32, .20)
+    }
+
+    .track-page-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: #111827
+    }
+
+    .track-page-subtitle {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #687385
+    }
+
+    .track-page-content {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 28px 20px 44px
+    }
+  </style>
+
+
+  <style id="legal-warning-modal-style">
+    .legal-warning-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(20, 23, 28, .62);
+      backdrop-filter: blur(5px);
+    }
+
+    .legal-warning-modal {
+      width: min(720px, calc(100vw - 32px));
+      max-height: 90vh;
+      overflow: auto;
+      background: #fff;
+      border: 1px solid #e3e6ea;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .30);
+      padding: 28px;
+    }
+
+    .legal-warning-icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff0f1;
+      color: #b9141b;
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    .legal-warning-modal h3 {
+      margin: 0 0 12px;
+      text-align: center;
+      color: #252a30;
+      font-size: 21px;
+    }
+
+    .legal-warning-text {
+      margin: 0;
+      background: #fff8f8;
+      border: 1px solid #f0c9cc;
+      border-radius: 12px;
+      padding: 16px;
+      color: #3f464e;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .legal-warning-check {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
+      margin: 18px 0 0 !important;
+      padding: 12px 13px !important;
+      border: 1px solid #e1e5e9 !important;
+      border-radius: 11px !important;
+      background: #fff !important;
+      cursor: pointer;
+    }
+
+    .legal-warning-check input {
+      width: 18px !important;
+      height: 18px !important;
+      flex: none;
+      margin: 2px 0 0 !important;
+      accent-color: #c91620;
+    }
+
+    .legal-warning-check span {
+      font-size: 12px !important;
+      line-height: 1.45 !important;
+      color: #272d34 !important
+    }
+
+    .legal-warning-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px
+    }
+
+    .legal-warning-cancel {
+      border: 1px solid #dfe2e7;
+      background: #fff;
+      color: #59616b;
+      border-radius: 9px;
+      padding: 11px 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .legal-warning-confirm {
+      border: 0;
+      background: linear-gradient(135deg, #b9141b, #e3262d);
+      color: #fff;
+      border-radius: 9px;
+      padding: 11px 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 7px 17px rgba(227, 38, 45, .18);
+    }
+
+    .legal-warning-confirm:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      box-shadow: none
+    }
+
+    @media(max-width:600px) {
+      .legal-warning-modal {
+        padding: 20px
+      }
+
+      .legal-warning-actions {
+        flex-direction: column-reverse
+      }
+
+      .legal-warning-cancel,
+      .legal-warning-confirm {
+        width: 100%
+      }
+    }
+  </style>
+
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script>
+      const root = document.getElementById('root');
+      const state = { user: null };
+      const SECTORS = ["Açougue", "Administrativo", "Almoxarifado", "C.P.D.", "Compras", "CONT. Qualidade", "Contas a pagar", "Constas a receber", "Diretoria", "DPTO pessoal", "Financeiro", "Frente de loja", "Frios", "Gerente", "Hortifrut", "Marketing", "Padaria", "Prenvenção", "Reposição", "Recebimento", "Restaurante", "Tecnologia", "Tesouraria", "Vendas"];
+      const api = async (url, opt = {}) => { const headers = { ...(opt.headers || {}) }; if (!(opt.body instanceof FormData) && !headers['Content-Type']) headers['Content-Type'] = 'application/json'; const r = await fetch(url, { ...opt, headers }); let d = {}; try { d = await r.json() } catch { } if (!r.ok) throw new Error(d.error || 'Erro na operação'); return d };
+      const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      function landing() { root.innerHTML = `<div class="start"><header class="start-head"><div class="start-brand"><span class="start-logo">✓</span><div><b>Canal de Denúncias- NR1</b><small>Seu ambiente de segurança e cuidado no trabalho</small></div></div></header><div class="start-body"><section class="start-copy"><span class="tag">AMBIENTE CORPORATIVO</span><h1>Um espaço para <span>cuidar, ouvir e agir.</span></h1><p>Esse ambiente facilita o registro de denúncias e o acompanhamento de situações relacionado ao trabalho, com segurança e simplicidade.</p><div class="start-benefits"><div class="start-benefit"><i>🔒</i><b>Seguro</b><small>Informações protegidas e acesso controlado.</small></div><div class="start-benefit"><i>💬</i><b>Fácil de usar</b><small>Orientação clara em cada etapa.</small></div><div class="start-benefit"><i>✓</i><b>Confidencial</b><small>Você pode realizar uma denúncia anônima.</small></div></div></section><section class="start-card"><h2>Como deseja continuar?</h2><p>Escolha uma das opções abaixo.</p><button class="start-option" type="button" onclick="adminLogin()"><i class="ico">👤</i><span><b>Acesso administrativo</b><small>Entrar para gerenciar o sistema e os usuários.</small></span><em>›</em></button><button class="start-option" type="button" onclick="reportForm()"><i class="ico">⚠</i><span><b>Fazer uma denúncia</b><small>Relate uma situação. Você pode permanecer anônimo.</small></span><em>›</em></button><button class="start-option" type="button" onclick="trackProtocol()"><i class="ico">🔎</i><span><b>Acompanhar protocolo</b><small>Veja o andamento de uma denúncia já registrada.</small></span><em>›</em></button><div class="start-anon">🛡️ <b>Importante:</b> A denúncia pode ser feita de forma anônima.</div></section></div><footer class="start-foot">Supermercado-Opção • Canal corporativo de segurança e cuidado</footer></div>` }
+      function adminLogin() { root.innerHTML = `<div class="login-page"><header class="login-head"><div class="start-brand"><span class="start-logo">✓</span><div><b>ProtegeNR1</b><small>Segurança e cuidado no ambiente de trabalho</small></div></div><button class="back" type="button" onclick="landing()">← Voltar</button></header><div class="login-body"><section class="login-copy"><span class="tag">🔐 ÁREA ADMINISTRATIVA</span><h1>Olá! <span>Bem-vindo.</span></h1><p>Faça seu acesso para acompanhar denúncias, consultar protocolos e administrar os usuários da empresa.</p><div class="login-help"><div><i>✓</i><span><b>Ambiente protegido</b><br>Somente usuários autorizados têm acesso.</span></div><div><i>✓</i><span><b>Informações organizadas</b><br>Tenha uma visão clara das ocorrências.</span></div><div><i>✓</i><span><b>Confidencialidade</b><br>Trate cada relato com responsabilidade.</span></div></div></section><section class="login-card"><div class="login-card-head"><div class="login-card-icon">👤</div><div><h2>Entrar no sistema</h2><p class="sub">Informe seus dados de acesso.</p></div></div><form onsubmit="login(event)"><label>CPF</label><div class="field"><span>▭</span><input class="personal-data-input" id="cpf" inputmode="numeric" autocomplete="username" placeholder="Digite seu CPF" required oninput="this.value=cpfFmt(this.value)"></div><div class="hint">Use o CPF cadastrado no sistema.</div><label>Senha</label><div class="field"><span>🔒</span><input id="password" type="password" autocomplete="current-password" placeholder="Digite a senha" required></div><div class="hint">Informe a senha do seu acesso.</div><div id="err"></div><button class="login-btn" type="submit">Entrar com segurança →</button></form></section></div></div>` }
+      async function login(e) { e.preventDefault(); try { const d = await api('/api/auth/login', { method: 'POST', body: JSON.stringify({ cpf: document.getElementById('cpf').value, password: document.getElementById('password').value }) }); state.user = d.user; dashboard() } catch (err) { document.getElementById('err').innerHTML = '<div class="error">' + esc(err.message) + '</div>' } }
+      async function reportForm() {
+        root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box" style="width:min(760px,100%)"><button class="link" type="button" onclick="landing()">← Voltar</button><h2>Nova denúncia</h2><p class="sub">Descreva a situação com o máximo de objetividade possível.</p><form id="reportForm" onsubmit="submitReport(event)"><div class="formgrid"><div class="type-tooltip" data-tooltip="Selecione o tipo de ocorrência para descrever melhor a situação."><label>Tipo de ocorrência</label><div class="tipo-ocorrencia-custom" id="tipoOcorrenciaCustom">
+  <input type="hidden" id="type" name="type" value="" required>
+
+  <button type="button" id="typeSelectButton" class="tipo-ocorrencia-button">
+    <span>Selecione</span>
+    <b>▾</b>
+  </button>
+
+  <div id="typeOptions" class="tipo-ocorrencia-options">
+    <div class="tipo-ocorrencia-option" data-value="Assédio moral">
+      <strong>Assédio moral</strong>
+      <small>Condutas repetitivas que humilham, constrangem, intimidam ou desrespeitam uma pessoa no ambiente de trabalho.</small>
+    </div>
+
+    <div class="tipo-ocorrencia-option" data-value="Assédio sexual">
+      <strong>Assédio sexual</strong>
+      <small>Comportamentos de natureza sexual indesejados, como propostas, insinuações, mensagens ou contatos físicos.</small>
+    </div>
+
+    <div class="tipo-ocorrencia-option" data-value="Discriminação">
+      <strong>Discriminação</strong>
+      <small>Tratamento desigual, ofensivo ou prejudicial baseado em características pessoais ou condições individuais.</small>
+    </div>
+
+    <div class="tipo-ocorrencia-option" data-value="Risco psicossocial">
+      <strong>Risco psicossocial</strong>
+      <small>Situação relacionada à organização ou às relações de trabalho que possa causar estresse, adoecimento ou prejuízo ao bem-estar do trabalhador.</small>
+    </div>
+
+    <div class="tipo-ocorrencia-option" data-value="Conflito no ambiente de trabalho">
+      <strong>Conflito no ambiente de trabalho</strong>
+      <small>Desentendimentos ou dificuldades de relacionamento entre pessoas que estejam prejudicando o ambiente ou as atividades de trabalho.</small>
+    </div>
+
+    <div class="tipo-ocorrencia-option" data-value="Condição insegura">
+      <strong>Condição insegura</strong>
+      <small>Situação, equipamento, ambiente ou prática que possa colocar em risco a saúde ou a segurança das pessoas.</small>
+    </div>
+
+    <div class="tipo-ocorrencia-option" data-value="Outro">
+      <strong>Outro</strong>
+      <small>Situações que não se enquadram nas categorias anteriores.</small>
+    </div>
+  </div>
+</div></div><div><label>Setor</label><select id="sector" required><option value="">Selecione</option><option value="nao_informar">prefiro não informar meu setor</option>${SECTORS.map(s => '<option>' + esc(s) + '</option>').join('')}</select></div></div><div><label>Data da ocorrência</label><input id="occurrenceDate" class="full-date-input" type="date" max="" onclick="openDatePicker(this)"></div><div><label>Frequência</label><select id="frequency"><option>Uma vez</option><option>Ocasionalmente</option><option>Frequente</option><option>Contínua</option></select></div><div class="full"><label>Descrição</label><textarea id="description" placeholder="O que aconteceu? Onde? Quando? Quem estava envolvido? Há testemunhas?" required></textarea></div><div class="full"><label>Como você espera que a situação seja resolvida?</label><textarea id="immediateMeasure" style="min-height:80px"></textarea></div><div id="identityNotice"></div><label class="anonymous-toggle"><input id="anonymous" type="checkbox" onchange="handleAnonymousChange()"><span class="anon-check"></span><span class="anon-copy"><strong>quero fazer esta denúncia de forma anônima</strong><small>se marcado, seus dados pessoais não serão enviados.</small></span></label><div class="identity-fields"><div id="extra" class="personal-data-box"><div class="personal-title">👤 seus dados pessoais</div><div class="personal-help">preencha estes dados se quiser se identificar na denúncia.</div><div class="personal-grid"><div><label>nome completo</label><input class="personal-data-input" id="name" placeholder="informe seu nome" required></div><div><label>e-mail <span class="optional">(opcional)</span></label><input class="personal-data-input" id="email" type="email" placeholder="informe seu e-mail"></div></div></div></div><div id="rmsg"></div><button class="btn" type="submit">enviar denúncia</button></form></div></div>`; const n = new Date(), iso = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0'); document.getElementById('occurrenceDate').max = iso
+      }
+      function toggleExtra() { const extra = document.getElementById('extra'); const btn = document.getElementById('toggleIdentity'); const anonymous = document.getElementById('anonymous'); if (anonymous.checked) return; extra.classList.toggle('hidden'); const visible = !extra.classList.contains('hidden'); btn.textContent = visible ? ' ' : ' '; const name = document.getElementById('name'); name.required = visible }
+      function handleAnonymousChange() { const anonymous = document.getElementById('anonymous'); const extra = document.getElementById('extra'); const name = document.getElementById('name'); const email = document.getElementById('email'); const notice = document.getElementById('identityNotice'); if (anonymous.checked) { const hasData = (name.value || '').trim() || (email.value || '').trim(); if (hasData) { anonymous.checked = false; notice.innerHTML = '<div class="error">apague seus dados pessoais antes de marcar a denúncia como anônima.</div>'; return } extra.classList.add('hidden'); name.required = false; notice.innerHTML = '<div class="privacy-ok">✓ denúncia anônima ativada. seus dados pessoais foram ocultados.</div>' } else { extra.classList.remove('hidden'); name.required = true; notice.innerHTML = '' } }
+      async function submitReport(e) {
+        e.preventDefault();
+        const $ = id => document.getElementById(id), msg = $('rmsg'),
+          anonymous = !!$('anonymous')?.checked,
+          type = $('type')?.value || '',
+          sector = $('sector')?.value || '',
+          occurrenceDate = $('occurrenceDate')?.value || '',
+          frequency = $('frequency')?.value || '',
+          description = ($('description')?.value || '').trim(),
+          immediateMeasure = ($('immediateMeasure')?.value || '').trim(),
+          name = ($('name')?.value || '').trim(),
+          email = ($('email')?.value || '').trim(),
+          max = $('occurrenceDate')?.max;
+
+        if (!type || !sector || !description) {
+          msg.innerHTML = '<div class="error">preencha os campos obrigatórios antes de enviar.</div>';
+          return false;
+        }
+        if (occurrenceDate && max && occurrenceDate > max) {
+          msg.innerHTML = '<div class="error">a data da ocorrência não pode ser posterior a hoje.</div>';
+          return false;
+        }
+        if (anonymous && (name || email)) {
+          msg.innerHTML = '<div class="error">não é permitido enviar dados pessoais junto com uma denúncia anônima. apague os dados ou desmarque o anonimato.</div>';
+          return false;
+        }
+        if (!anonymous && !name) {
+          msg.innerHTML = '<div class="error">informe seu nome ou marque a opção de denúncia anônima.</div>';
+          $('name')?.focus();
+          return false;
+        }
+
+        showLegalWarning({
+          type, sector, occurrenceDate, frequency, description, immediateMeasure,
+          anonymous, name, email, attachments: Array.from($('reportAttachments')?.files || [])
+        });
+        return false;
+      }
+
+      function showLegalWarning(reportData) {
+        const existing = document.getElementById('legalWarningModal');
+        if (existing) existing.remove();
+
+        document.body.insertAdjacentHTML('beforeend', `
+   <div class="legal-warning-overlay" id="legalWarningModal" role="dialog" aria-modal="true" aria-labelledby="legalWarningTitle">
+     <div class="legal-warning-modal">
+       <div class="legal-warning-icon">!</div>
+       <h3 id="legalWarningTitle">Aviso importante</h3>
+       <p class="legal-warning-text">
+         Aviso: A utilização do Canal de Denúncias deve ser pautada pela boa-fé e pela veracidade das informações prestadas.
+         A imputação deliberadamente falsa de crime ou infração a pessoa sabidamente inocente poderá caracterizar os crimes
+         previstos nos arts. 339 e 340 do Código Penal, sem prejuízo de outras responsabilidades legais.
+       </p>
+       <label class="legal-warning-check">
+         <input id="legalWarningAcknowledgement" type="checkbox">
+         <span>Li e estou ciente do aviso acima e confirmo que as informações prestadas nesta denúncia são verdadeiras e de boa-fé.</span>
+       </label>
+       <div class="legal-warning-actions">
+         <button class="legal-warning-cancel" type="button" onclick="closeLegalWarning()">Cancelar</button>
+         <button id="legalWarningConfirm" class="legal-warning-confirm" type="button" disabled onclick="confirmLegalWarning()">Estou ciente e continuar</button>
+       </div>
+     </div>
+   </div>
+ `);
+
+        const check = document.getElementById('legalWarningAcknowledgement');
+        const confirm = document.getElementById('legalWarningConfirm');
+        if (check && confirm) {
+          check.addEventListener('change', () => {
+            confirm.disabled = !check.checked;
+          });
+          check.focus();
+        }
+        window.__pendingReport = reportData;
+      }
+
+      function closeLegalWarning() {
+        document.getElementById('legalWarningModal')?.remove();
+        window.__pendingReport = null;
+      }
+
+      async function confirmLegalWarning() {
+        const check = document.getElementById('legalWarningAcknowledgement');
+        if (!check?.checked) return false;
+
+        const data = window.__pendingReport;
+        if (!data) return false;
+
+        const modal = document.getElementById('legalWarningModal');
+        const confirm = document.getElementById('legalWarningConfirm');
+        const cancel = document.querySelector('#legalWarningModal .legal-warning-cancel');
+        if (confirm) { confirm.disabled = true; confirm.textContent = 'enviando...' }
+        if (cancel) cancel.disabled = true;
+
+        const msg = document.getElementById('rmsg');
+        const form = document.getElementById('reportForm');
+
+        try {
+          const d = await api('/api/reports', {
+            method: 'POST',
+            body: (() => {
+              const body = new FormData();
+              body.append('type', data.type);
+              body.append('sector', data.sector);
+              body.append('occurrenceDate', data.occurrenceDate);
+              body.append('frequency', data.frequency);
+              body.append('description', data.description);
+              body.append('immediateMeasure', data.immediateMeasure);
+              body.append('anonymous', String(data.anonymous));
+              body.append('name', data.anonymous ? '' : data.name);
+              body.append('email', data.anonymous ? '' : data.email);
+              (data.attachments || []).forEach(file => body.append('attachments', file));
+              return body;
+            })()
+          });
+
+          window.__securitySetup = { protocol: d.protocol, setupToken: d.setupToken };
+          modal?.remove();
+          window.__pendingReport = null;
+
+          root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box" style="max-width:620px"><div class="success" style="padding:20px;text-align:center"><div style="font-size:44px">✓</div><h2>denúncia enviada com sucesso!</h2><p>seu relato foi registrado no sistema.</p><p class="sub">sua denúncia foi registrada com sucesso. agora, defina a chave de segurança que será usada junto com o protocolo para consultar o andamento da denúncia.</p><div class="protocol-highlight"><div class="protocol-highlight-label">seu protocolo de acompanhamento</div><div class="protocol-highlight-number">${esc(d.protocol)}</div><div class="protocol-highlight-help">guarde este número. para consultar sua denúncia, você precisará informar este protocolo e a chave de segurança.</div></div><div class="security-key-box" style="text-align:left;margin-top:18px"><div class="security-key-title">🔐 defina sua chave de segurança</div><div class="security-key-badge">🔑 etapa obrigatória para consultar sua denúncia</div><p class="security-key-instruction">crie uma chave com <strong>no mínimo 6 caracteres</strong> e <strong>pelo menos 1 número</strong>. depois, para consultar sua denúncia e acessar o chat, você deverá informar <strong>o protocolo e esta chave</strong>.</p><label for="newSecurityKey">crie sua chave de segurança</label><input id="newSecurityKey" type="password" minlength="6" autocomplete="new-password" placeholder="mínimo de 6 caracteres e 1 número" oninput="updateSecurityKeyRules()" required><label for="newSecurityKeyConfirm" style="display:block;margin-top:10px">confirme sua chave de segurança</label><input id="newSecurityKeyConfirm" type="password" minlength="6" autocomplete="new-password" placeholder="digite a mesma chave novamente" oninput="updateSecurityKeyRules()" required><div class="security-key-rules"><span id="newKeyRuleLength" class="security-key-rule">✓ mínimo de 6 caracteres</span><span id="newKeyRuleNumber" class="security-key-rule">✓ pelo menos 1 número</span><span id="newKeyRuleMatch" class="security-key-rule">✓ as chaves coincidem</span></div><div id="newSecurityKeyMsg"></div><button id="saveSecurityKeyButton" class="btn" type="button" style="margin-top:14px" data-protocol="${esc(d.protocol)}" data-setup-token="${esc(d.setupToken)}">salvar chave de segurança</button></div><p class="sub" style="margin-top:14px">guarde o protocolo e a chave de segurança em um local seguro. por segurança, a chave não poderá ser recuperada.</p></div></div></div>`;
+        } catch (err) {
+          if (modal) modal.remove();
+          window.__pendingReport = null;
+          if (msg) msg.innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+          if (form) form.querySelector('button[type="submit"]')?.focus();
+        }
+        return false;
+      }
+
+      function updateSecurityKeyRules() {
+        const k = document.getElementById('newSecurityKey'), c = document.getElementById('newSecurityKeyConfirm');
+        if (!k || !c) return;
+        const v = k.value || '', cv = c.value || '';
+        const lengthOk = v.length >= 6, numberOk = /\d/.test(v), matchOk = cv.length > 0 && v === cv;
+        const setRule = (id, ok) => { const el = document.getElementById(id); if (el) el.classList.toggle('ok', ok) };
+        setRule('newKeyRuleLength', lengthOk); setRule('newKeyRuleNumber', numberOk); setRule('newKeyRuleMatch', matchOk);
+        k.classList.toggle('rule-ok', lengthOk && numberOk); k.classList.toggle('rule-error', v.length > 0 && !lengthOk && !numberOk);
+        c.classList.toggle('rule-ok', matchOk); c.classList.toggle('rule-error', cv.length > 0 && !matchOk);
+      }
+
+      function openDatePicker(el) {
+        if (!el) return;
+        try {
+          if (typeof el.showPicker === 'function') { el.showPicker(); return; }
+        } catch (e) { }
+        el.focus();
+      }
+      function securitySaveHome() {
+        window.location.reload();
+      }
+      async function defineSecurityKey(protocol, setupToken) {
+        const k = document.getElementById('newSecurityKey'), c = document.getElementById('newSecurityKeyConfirm'), msg = document.getElementById('newSecurityKeyMsg');
+        const v = (k?.value || ''), cv = (c?.value || '');
+        if (v.length < 6 || !/\d/.test(v)) { if (msg) msg.innerHTML = '<div class="error">a chave deve ter, no mínimo, 6 caracteres e conter pelo menos 1 número.</div>'; k?.focus(); return false }
+        if (v !== cv) { if (msg) msg.innerHTML = '<div class="error">as chaves não coincidem. confira a chave informada.</div>'; c?.focus(); return false }
+        try {
+          await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/security-key', { method: 'POST', body: JSON.stringify({ setupToken, securityKey: v }) });
+          if (msg) msg.innerHTML = `<div class="security-save-overlay" role="dialog" aria-modal="true" aria-labelledby="securitySaveTitle">
+    <div class="security-save-modal">
+      <div class="security-save-icon">✓</div>
+      <h3 id="securitySaveTitle">chave de segurança salva com sucesso!</h3>
+      <p>sua chave foi definida e está vinculada ao protocolo abaixo. por segurança, ela não será exibida. para consultar sua denúncia e acessar o chat, você deverá informar <strong>o protocolo e a chave de segurança</strong>.</p>
+      <div class="security-save-protocol">${esc(protocol)}</div><div class="security-save-key"><strong>chave de segurança</strong><span>********</span></div>
+      <p>guarde essas duas informações em um local seguro. por segurança, a chave não poderá ser recuperada.</p>
+      <button class="security-save-home" type="button" data-security-home-button="true" onclick="window.location.reload(); return false;">voltar para a tela inicial</button>
+    </div>
+  </div>`;
+          k.disabled = true; c.disabled = true; const btn = k.closest('.security-key-box')?.querySelector('button'); if (btn) btn.disabled = true;
+        } catch (err) { if (msg) msg.innerHTML = '<div class="error">' + esc(err.message) + '</div>' }
+        return false;
+      }
+
+      function trackProtocol() { root.innerHTML = `<div class="track-page"><header class="track-page-header"><div class="track-page-logo">✓</div><div><h1 class="track-page-title">Acompanhe sua denúncia</h1><p class="track-page-subtitle">Consulte o andamento da sua denúncia com seu protocolo e sua chave de segurança.</p></div></header><main class="track-page-content"><div class="auth"><div class="panel"><div class="box"><button class="link" onclick="landing()">← Voltar</button><h2>Consultar protocolo</h2><p class="sub">Informe o número do protocolo e a chave de segurança definidos após o envio da denúncia.</p><form onsubmit="doTrack(event)"><label>Protocolo</label><input id="protocol" placeholder="Informe o número do protocolo" autocomplete="off" required><label>Chave de segurança</label><input id="protocolKey" type="password" placeholder="Informe a chave de segurança" autocomplete="off" required><div id="tmsg"></div><button class="btn">Consultar andamento</button></form></div></div></div></main></div>` }
+      async function doTrack(e) { e.preventDefault(); try { const p = protocol.value.trim().toUpperCase(); const key = protocolKey.value.trim(); const r = await api('/api/public/protocol/' + encodeURIComponent(p), { headers: { 'X-Protocol-Key': key } }); root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box"><button class="link" onclick="landing()">← Voltar</button><h2>Andamento da denúncia</h2><div class="section" style="margin-top:16px"><p><b>Protocolo:</b> ${esc(r.protocol)}</p><p><b>Tipo:</b> ${esc(r.type)}</p><p><b>Setor:</b> ${esc(r.sector)}</p><p><b>Status:</b> <span class="tag">${esc(r.status)}</span></p><p><b>Prioridade:</b> ${esc(r.priority)}</p><p><b>Recebida em:</b> ${new Date(r.createdAt).toLocaleString('pt-BR')}</p></div><div class="chat"><div class="chat-head"><div><b>💬 Conversa sobre o protocolo</b><small>Envie uma mensagem para complementar o acompanhamento. A administração poderá responder por aqui.</small></div><span class="tag">${esc(r.protocol)}</span></div><div id="publicChatBody" class="chat-body"><div class="chat-empty">Carregando conversa...</div></div><div id="publicChatMsg"></div><form class="chat-form" data-public-chat="1" data-protocol="${esc(p)}" data-protocol-key="${esc(key)}"><textarea id="publicChatInput" placeholder="Digite sua mensagem..." maxlength="2000" required></textarea><button class="btn" type="submit">Enviar</button></form><div class="chat-note">Sua chave de segurança protege o acesso a esta conversa.</div></div><button class="btn" onclick="trackProtocol()">Consultar outro protocolo</button></div></div>`; loadPublicChat(p, key) } catch (err) { document.getElementById('tmsg').innerHTML = '<div class="error">Protocolo ou chave de segurança inválidos.</div>' } }
+      async function dashboard() {
+        const d = await api('/api/admin/dashboard');
+        const all = await api('/api/admin/reports');
+        const types = [...new Set(all.map(r => r.type).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+        const sectors = [...new Set(all.map(r => r.sector).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+        const statuses = [...new Set(all.map(r => r.status).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
+        root.innerHTML = `<div class="app"><aside class="side"><div class="logo">ProtegeNR1</div><div class="nav"><button class="active">▦ Dashboard</button><button onclick="reports()">🚨 Denúncias</button><button onclick="users()">👥 Usuários</button><button onclick="audit()">◷ Auditoria</button></div><div style="position:absolute;bottom:64px;left:14px;right:14px;border-top:1px solid #33363c;padding:12px 10px;font-size:12px;color:#cfd2d7"><b style="display:block;color:#fff">${esc(state.user?.name || "Usuário")}</b><span>${esc(state.user?.sector || "Setor não informado")}</span></div><button class="nav logout danger" onclick="logout()">Sair</button></aside>
+  <main class="main">
+    <div class="top"><div><h1>Dashboard</h1><div class="user">Administrador • ambiente corporativo</div></div></div>
+    <div class="cards">
+      <div class="card"><div class="muted">Denúncias</div><div class="num">${d.total}</div></div>
+      <div class="card"><div class="muted">Em andamento</div><div class="num">${d.open}</div></div>
+      <div class="card"><div class="muted">Anônimas</div><div class="num">${d.anonymous}</div></div>
+      <div class="card"><div class="muted">Riscos abertos</div><div class="num">${d.risks}</div></div>
+    </div>
+
+    <div class="section dashboard-filters">
+      <div class="dash-filter-head">
+        <div><h3 style="margin:0">Filtros de análise</h3><p class="muted" style="margin:5px 0 0">Selecione o setor e o status para atualizar os gráficos abaixo.</p></div>
+        <button class="link" type="button" onclick="clearDashboardFilters()">Limpar filtros</button>
+      </div>
+      <div class="dash-filter-grid">
+        <label>Setor<select id="dashSector"><option value="">Todos os setores</option>${sectors.map(x => `<option value="${esc(x)}">${esc(x)}</option>`).join('')}</select></label>
+        <label>Status<select id="dashStatus"><option value="">Todos os status</option>${statuses.map(x => `<option value="${esc(x)}">${esc(x)}</option>`).join('')}</select></label>
+      </div>
+    </div>
+
+    <div id="dashboardGraphs" class="dashboard-graphs"></div>
+
+    <div class="section"><h3>Visão geral</h3><p class="muted">Use o menu para investigar denúncias, registrar riscos e acompanhar planos de ação.</p></div>
+  </main></div>`;
+
+        const renderGraphs = () => {
+          const sector = document.getElementById('dashSector').value;
+          const status = document.getElementById('dashStatus').value;
+          const filtered = all.filter(r => (!sector || r.sector === sector) && (!status || r.status === status));
+
+          const typeCounts = {};
+          const sectorCounts = {};
+          const statusCounts = {};
+          filtered.forEach(r => {
+            if (r.type) typeCounts[r.type] = (typeCounts[r.type] || 0) + 1;
+            if (r.sector) sectorCounts[r.sector] = (sectorCounts[r.sector] || 0) + 1;
+            if (r.status) statusCounts[r.status] = (statusCounts[r.status] || 0) + 1;
+          });
+
+          const typeData = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
+          const sectorData = Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]);
+          const statusData = Object.entries(statusCounts).sort((a, b) => b[1] - a[1]);
+          const maxType = Math.max(1, ...typeData.map(x => x[1]));
+          const maxSector = Math.max(1, ...sectorData.map(x => x[1]));
+          const maxStatus = Math.max(1, ...statusData.map(x => x[1]));
+
+          const vertical = (data, max) => data.length ? `<div class="dash-vchart">${data.map(([name, value]) => `
+      <div class="dash-vitem">
+        <div class="dash-vvalue">${value}</div>
+        <div class="dash-vbar-wrap"><div class="dash-vbar" style="height:${Math.max(5, (value / max) * 100)}%"></div></div>
+        <div class="dash-vlabel" title="${esc(name)}">${esc(name)}</div>
+      </div>`).join('')}</div>` : '<div class="dash-empty">Nenhuma denúncia encontrada com os filtros selecionados.</div>';
+
+          const horizontal = (data, max) => data.length ? `<div class="dash-hchart">${data.map(([name, value]) => `
+      <div class="dash-hrow">
+        <div class="dash-hlabel" title="${esc(name)}">${esc(name)}</div>
+        <div class="dash-htrack"><div class="dash-hfill" style="width:${Math.max(2, (value / max) * 100)}%"></div></div>
+        <div class="dash-hvalue">${value}</div>
+      </div>`).join('')}</div>` : '<div class="dash-empty">Nenhuma denúncia encontrada com os filtros selecionados.</div>';
+
+          document.getElementById('dashboardGraphs').innerHTML = `
+      <div class="dashboard-graph-card full">
+        <div class="dashboard-graph-title"><b>Tipos de denúncia</b><span>${filtered.length} registro${filtered.length === 1 ? '' : 's'}</span></div>
+        ${vertical(typeData, maxType)}
+      </div>
+      <div class="dashboard-graph-card">
+        <div class="dashboard-graph-title"><b>Denúncias por setor</b><span>${sectorData.length} setor${sectorData.length === 1 ? '' : 'es'}</span></div>
+        ${horizontal(sectorData, maxSector)}
+      </div>
+      <div class="dashboard-graph-card">
+        <div class="dashboard-graph-title"><b>Denúncias por status</b><span>${statusData.length} status</span></div>
+        ${horizontal(statusData, maxStatus)}
+      </div>`;
+        };
+
+        document.getElementById('dashSector').addEventListener('change', renderGraphs);
+        document.getElementById('dashStatus').addEventListener('change', renderGraphs);
+        renderGraphs();
+      }
+      function clearDashboardFilters() { const a = document.getElementById("dashSector"), b = document.getElementById("dashStatus"); if (a) a.value = ""; if (b) b.value = ""; a?.dispatchEvent(new Event("change")); }
+
+      async function reports() { const list = await api('/api/admin/reports'); root.innerHTML = appShell('Denúncias', 'reports') + `<main class="main"><div class="top"><div><h1>Denúncias</h1><div class="user">Registros recebidos pelo canal corporativo</div></div></div><div class="section"><table class="table"><thead><tr><th>Protocolo</th><th>Tipo</th><th>Setor</th><th>Status</th><th>Prioridade</th></tr></thead><tbody>${list.map(r => `<tr><td><button class="link" style="padding:0" onclick="reportDetail(${r.id})"><b>${esc(r.protocol)}</b></button></td><td>${esc(r.type)}</td><td>${esc(r.sector)}</td><td><span class="tag">${esc(r.status)}</span></td><td>${esc(r.priority)}</td></tr>`).join('') || '<tr><td colspan="5">Nenhuma denúncia registrada.</td></tr>'}</tbody></table></div></main></div>` }
+      function appShell(title, active) { return `<div class="app"><aside class="side"><div class="logo">Canal de Denúncia</div><div class="nav"><button onclick="dashboard()">▦ Dashboard</button><button class="${active === 'reports' ? 'active' : ''}" onclick="reports()">🚨 Denúncias</button><button class="${active === 'users' ? 'active' : ''}" onclick="users()">👥 Usuários</button><button class="${active === 'audit' ? 'active' : ''}" onclick="audit()">◷ Auditoria</button></div><div style="position:absolute;bottom:64px;left:14px;right:14px;border-top:1px solid #33363c;padding:12px 10px;font-size:12px;color:#cfd2d7"><b style="display:block;color:#fff">${esc(state.user?.name || "Usuário")}</b><span>${esc(state.user?.sector || "Setor não informado")}</span></div><button class="nav logout danger" onclick="logout()">Sair</button></aside>` }
+      function fmtChatDate(v) { try { return new Date(v).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) } catch { return '' } }
+      function chatMessagesHtml(messages, emptyText = 'Nenhuma mensagem ainda.') { if (!messages || !messages.length) return `<div class="chat-empty">${esc(emptyText)}</div>`; return messages.map(m => `<div class="msg ${m.senderType === 'admin' ? 'admin' : 'public'}"><div><div class="msg-bubble">${esc(m.message).replace(/\n/g, '<br>')}</div><div class="msg-meta">${m.senderType === 'admin' ? 'Administrador' : 'Você'} • ${fmtChatDate(m.createdAt)}</div></div></div>`).join('') }
+      function attachmentsHtml(files, urlBuilder, key = '') { if (!files || !files.length) return '<p class="muted">Nenhum anexo enviado.</p>'; return '<div class="report-attachments"><b>Anexos</b>' + files.map(file => `<button type="button" class="attachment-link" onclick="downloadAttachment('${urlBuilder(file.id)}','${esc(key)}')">📎 ${esc(file.originalName)}</button>`).join('') + '</div>' }
+      async function downloadAttachment(url, key) { try { const headers = key ? { 'X-Protocol-Key': key } : {}; const response = await fetch(url, { headers }); if (!response.ok) throw new Error('Não foi possível baixar o arquivo.'); const blob = await response.blob(); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = url.split('/').pop() || 'anexo'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000); } catch (err) { alert(err.message); } }
+      async function loadPublicChat(protocol, key) { try { const msgs = await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/messages', { headers: { 'X-Protocol-Key': key } }); const el = document.getElementById('publicChatBody'); if (el) { el.innerHTML = chatMessagesHtml(msgs, 'Nenhuma mensagem. Você pode enviar a primeira mensagem abaixo.'); el.scrollTop = el.scrollHeight } } catch (err) { const el = document.getElementById('publicChatBody'); if (el) el.innerHTML = '<div class="error">Não foi possível carregar as mensagens.</div>' } }
+      document.addEventListener('submit', function (e) {
+        const form = e.target;
+        if (!form || !form.classList || !form.classList.contains('chat-form')) return;
+
+        if (form.dataset.publicChat === '1') {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          sendPublicMessage(e, form.dataset.protocol, form.dataset.protocolKey);
+          return false;
+        }
+
+        if (form.dataset.adminChat === '1') {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          sendAdminMessage(e, Number(form.dataset.reportId));
+          return false;
+        }
+      }, true);
+
+      async function sendPublicMessage(e, protocol, protocolKey) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        const input = document.getElementById('publicChatInput');
+        const form = input?.closest('form');
+        protocolKey = protocolKey || form?.dataset.protocolKey || '';
+        const button = form?.querySelector('button[type="submit"]');
+        const status = document.getElementById('publicChatMsg');
+        const msg = (input?.value || '').trim();
+        if (!msg) { if (status) status.innerHTML = '<div class="error">Digite uma mensagem antes de enviar.</div>'; input?.focus(); return false; }
+        const original = button ? button.innerHTML : 'Enviar';
+        if (button) { button.disabled = true; button.innerHTML = 'Enviando...'; }
+        if (status) status.innerHTML = '';
+        try {
+          const result = await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/messages', { method: 'POST', headers: { 'X-Protocol-Key': protocolKey }, body: JSON.stringify({ message: msg }) });
+          input.value = '';
+          if (status) status.innerHTML = '<div class="success">✓ Mensagem enviada com sucesso!</div>';
+          await loadPublicChat(protocol, protocolKey);
+          if (status) status.innerHTML = '<div class="success">✓ Mensagem enviada com sucesso!</div>';
+          input.focus();
+        } catch (err) {
+          console.error('Erro ao enviar mensagem:', err);
+          if (status) status.innerHTML = '<div class="error">' + esc(err.message || 'Não foi possível enviar a mensagem. Tente novamente.') + '</div>';
+        } finally {
+          if (button) { button.disabled = false; button.innerHTML = original; }
+        }
+        return false;
+      }
+
+      async function loadAdminChat(id) { try { const msgs = await api('/api/admin/reports/' + id + '/messages'); const el = document.getElementById('adminChatBody'); if (el) { el.innerHTML = chatMessagesHtml(msgs, 'Nenhuma mensagem no protocolo.'); el.scrollTop = el.scrollHeight } } catch (err) { const el = document.getElementById('adminChatBody'); if (el) el.innerHTML = '<div class="error">Não foi possível carregar o chat.</div>' } }
+      async function sendAdminMessage(e, id) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        const input = document.getElementById('adminChatInput'); const button = input?.form?.querySelector('button[type="submit"]'); const status = document.getElementById('adminChatMsg'); const msg = (input?.value || '').trim();
+        if (!msg) { if (status) status.innerHTML = '<div class="error">Digite uma mensagem antes de enviar.</div>'; input?.focus(); return false; }
+        const original = button ? button.innerHTML : 'Responder'; if (button) { button.disabled = true; button.innerHTML = 'Enviando...'; } if (status) status.innerHTML = '';
+        try { await api('/api/admin/reports/' + id + '/messages', { method: 'POST', body: JSON.stringify({ message: msg }) }); input.value = ''; if (status) status.innerHTML = '<div class="success">✓ Resposta enviada com sucesso.</div>'; await loadAdminChat(id); }
+        catch (err) { console.error(err); if (status) status.innerHTML = '<div class="error">Não foi possível enviar a resposta.</div>'; }
+        finally { if (button) { button.disabled = false; button.innerHTML = original; } } return false;
+      }
+      async function reportDetail(id) {
+        const detail = await api('/api/admin/reports/' + id);
+        const r = detail;
+        window.__lastReportDetail = r;
+        root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box">
+  <div class="top"><div><h2>Denúncia ${esc(r.protocol)}</h2><div class="user">${esc(r.type)} • ${esc(r.sector)}</div></div><button class="mini" onclick="closeModal()">Fechar</button></div>
+  <div class="section" style="margin-top:0"><p><b>Descrição</b></p><p>${esc(detail.description || '').replace(/\n/g, '<br>')}</p>
+  <p><b>Como você espera que a situação seja resolvida?</b></p><p>${esc(detail.immediate_measure || 'Não informada').replace(/\n/g, '<br>')}</p>
+  <p><b>Identificação:</b> ${r.anonymous ? 'Anônima' : 'Identificada'}</p>${r.anonymous ? '' : '<p><b>Nome:</b> ' + esc(r.name || 'Não informado') + '</p><p><b>E-mail:</b> ' + esc(r.email || 'Não informado') + '</p>'}
+  <div class="formgrid"><div><label>Status</label><select id="dstatus">
+   ${['Recebida', 'Em análise', 'Em investigação', 'Aguardando ação', 'Concluída', 'Arquivada'].map(x => `<option ${r.status === x ? 'selected' : ''}>${x}</option>`).join('')}
+  </select></div><div><label>Prioridade</label><select id="dpriority">${['Baixa', 'Média', 'Alta', 'Crítica'].map(x => `<option ${r.priority === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+  <div class="full"><label>Responsável</label><input id="dresponsible" value="${esc(r.responsible || '')}"></div></div>
+  <button class="btn" onclick="updateReport(${r.id})">Salvar alterações</button><div id="dmsg"></div><div class="chat"><div class="chat-head"><div><b>💬 Chat do protocolo</b><small>Converse com quem registrou a denúncia e mantenha todo o histórico no protocolo.</small></div><span class="tag">${esc(r.protocol)}</span></div><div id="adminChatBody" class="chat-body"><div class="chat-empty">Carregando conversa...</div></div><div id="adminChatMsg"></div><form class="chat-form" data-admin-chat="1" data-report-id="${r.id}"><textarea id="adminChatInput" placeholder="Digite uma resposta..." maxlength="2000" required></textarea><button class="btn" type="submit">Responder</button></form></div></div></div>`);
+        loadAdminChat(r.id);
+      }
+      async function updateReport(id) {
+        try {
+          await api('/api/admin/reports/' + id, { method: 'PATCH', body: JSON.stringify({ status: document.getElementById('dstatus').value, priority: document.getElementById('dpriority').value, responsible: document.getElementById('dresponsible').value }) });
+          document.getElementById('dmsg').innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Alterações salvas com sucesso.</div>';
+          setTimeout(() => { closeModal(); reportDetail(id) }, 600);
+        } catch (err) { document.getElementById('dmsg').innerHTML = '<div class="error">' + esc(err.message) + '</div>' }
+      }
+      function closeModal() { document.getElementById('modal')?.remove() }
+      function cpfFmt(v) { let x = String(v || '').replace(/\D/g, '').slice(0, 11); return x.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2') }
+      async function users() {
+        const list = await api('/api/admin/users');
+        root.innerHTML = appShell('Usuários', 'users') + `<main class="main"><div class="top"><div><h1>Usuários</h1><div class="user">Cadastre e consulte os acessos da empresa.</div></div><button class="mini red" onclick="newUser()">+ Novo usuário</button></div>
+ <div class="section"><table class="table"><thead><tr><th>Nome</th><th>CPF</th><th>Setor</th><th>E-mail</th><th>Status</th><th>Ações</th></tr></thead><tbody>
+ ${list.map(u => `<tr><td><b>${esc(u.name)}</b></td><td>${esc(cpfFmt(u.cpf))}</td><td>${esc(u.sector || 'Não informado')}</td><td>${esc(u.email || '-')}</td><td><span class="tag ${u.active ? 'ok' : 'mutedtag'}">${u.active ? 'Ativo' : 'Inativo'}</span></td><td><button class="mini" type="button" onclick="editUser(${Number(u.id)})">✏ Editar</button></td></tr>`).join('')}</tbody></table></div></main></div>`;
+      }
+      function newUser() { root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box"><div class="top"><div><h2>Novo usuário</h2></div><button class="mini" onclick="closeModal()">Fechar</button></div><form onsubmit="createUser(event)"><label>nome completo *</label><input id="uname" required><label>CPF *</label><input id="ucpf" inputmode="numeric" placeholder="000.000.000-00" required oninput="this.value=cpfFmt(this.value)"><label>Setor *</label><input id="usector" required placeholder="Digite o setor"><label>E-mail</label><input id="uemail" type="email"><label>Senha inicial *</label><input id="upassword" type="password" minlength="6" required><div id="umsg"></div><button class="btn">Criar usuário</button></form></div></div>`) }
+      async function createUser(e) { e.preventDefault(); try { await api('/api/admin/users', { method: 'POST', body: JSON.stringify({ name: uname.value, cpf: ucpf.value, sector: usector.value, email: uemail.value, password: upassword.value }) }); umsg.innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Usuário criado com sucesso.</div>'; setTimeout(() => { closeModal(); users() }, 600) } catch (x) { umsg.innerHTML = '<div class="error">' + esc(x.message) + '</div>' } }
+
+      async function editUser(id) { const list = await api('/api/admin/users'); const u = list.find(x => Number(x.id) === Number(id)); if (!u) return; root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box"><div class="top"><div><h2>Editar usuário</h2></div><button class="mini" onclick="closeModal()">Fechar</button></div><form onsubmit="updateUser(event,${id})"><label>Nome completo *</label><input id="ename" value="${esc(u.name)}" required><label>CPF *</label><input id="ecpf" value="${esc(cpfFmt(u.cpf))}" inputmode="numeric" required oninput="this.value=cpfFmt(this.value)"><label>Setor *</label><input id="esector" value="${esc(u.sector || '')}" required><label>E-mail</label><input id="eemail" type="email" value="${esc(u.email || '')}"><label>Nova senha <span class="small">(deixe vazio para manter)</span></label><input id="epassword" type="password" minlength="6"><label style="display:flex;gap:8px;align-items:center"><input id="eactive" type="checkbox" style="width:auto" ${u.active ? 'checked' : ''}> Usuário ativo</label><div id="emsg"></div><button class="btn">Salvar alterações</button></form></div></div>`) }
+      async function updateUser(e, id) { e.preventDefault(); try { await api('/api/admin/users/' + id, { method: 'PATCH', body: JSON.stringify({ name: ename.value, cpf: ecpf.value, sector: esector.value, email: eemail.value, password: epassword.value || undefined, active: eactive.checked }) }); emsg.innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Usuário atualizado com sucesso.</div>'; setTimeout(() => { closeModal(); users() }, 600) } catch (x) { emsg.innerHTML = '<div class="error">' + esc(x.message) + '</div>' } }
+      async function risks() { const list = await api('/api/admin/risks'); root.innerHTML = appShell('Riscos', 'risks') + `<main class="main"><div class="top"><div><h1>Riscos NR-1</h1><div class="user">Registro de fatores de risco</div></div></div><div class="section"><table class="table"><thead><tr><th>Setor</th><th>Fator</th><th>Categoria</th><th>Prioridade</th><th>Status</th></tr></thead><tbody>${list.map(r => `<tr><td>${esc(r.sector)}</td><td>${esc(r.factor)}</td><td>${esc(r.category)}</td><td><span class="tag">${esc(r.priority)}</span></td><td>${esc(r.status)}</td></tr>`).join('') || '<tr><td colspan="5">Nenhum risco registrado.</td></tr>'}</tbody></table></div></main></div>` }
+      async function actions() { const list = await api('/api/admin/actions'); root.innerHTML = appShell('Ações', 'actions') + `<main class="main"><div class="top"><div><h1>Planos de ação</h1><div class="user">Acompanhamento de medidas</div></div></div><div class="section"><table class="table"><thead><tr><th>Ação</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr></thead><tbody>${list.map(r => `<tr><td>${esc(r.title)}</td><td>${esc(r.responsible)}</td><td>${esc(r.dueDate)}</td><td><span class="tag">${esc(r.status)}</span></td></tr>`).join('') || '<tr><td colspan="4">Nenhum plano de ação registrado.</td></tr>'}</tbody></table></div></main></div>` }
+      async function audit() { const list = await api('/api/admin/audit'); root.innerHTML = appShell('Auditoria', 'audit') + `<main class="main"><div class="top"><div><h1>Auditoria</h1><div class="user">Histórico de eventos administrativos</div></div></div><div class="section"><table class="table"><thead><tr><th>Data</th><th>Ação</th><th>Denúncia</th></tr></thead><tbody>${list.map(r => `<tr><td>${new Date(r.createdAt).toLocaleString('pt-BR')}</td><td>${esc(r.action)}</td><td>${esc(r.reportId || '-')}</td></tr>`).join('') || '<tr><td colspan="3">Nenhum evento.</td></tr>'}</tbody></table></div></main></div>` }
+      async function logout() { await api('/api/auth/logout', { method: 'POST' }).catch(() => { }); state.user = null; landing() }
+      landing();
+    </script>
+    <script id="security-key-validation">
+      (function () {
+        function validKey(v) { return v.length >= 6 && /\d/.test(v) }
+        function wire() {
+          const k = document.getElementById('securityKey'), c = document.getElementById('securityKeyConfirm'); if (!k || !c || k.dataset.wired) return;
+          k.dataset.wired = c.dataset.wired = '1';
+          const sync = () => { const a = k.value, b = c.value; document.getElementById('keyRuleLength')?.classList.toggle('ok', a.length >= 6); document.getElementById('keyRuleNumber')?.classList.toggle('ok', /\d/.test(a)); document.getElementById('keyRuleMatch')?.classList.toggle('ok', a.length > 0 && a === b); const e = document.getElementById('securityKeyError'); if (e) e.textContent = a && !validKey(a) ? 'A chave precisa ter pelo menos 6 caracteres e conter pelo menos 1 número.' : b && a !== b ? 'As chaves não coincidem.' : '' };
+          k.addEventListener('input', sync); c.addEventListener('input', sync);
+          const f = k.closest('form'); if (f && !f.dataset.keyValidation) { f.dataset.keyValidation = '1'; f.addEventListener('submit', e => { if (!validKey(k.value) || k.value !== c.value) { e.preventDefault(); e.stopImmediatePropagation(); sync(); k.focus(); return false } }, true) }
+        }
+        new MutationObserver(wire).observe(document.documentElement, { subtree: true, childList: true }); wire();
+      })();
+    </script>
+    <script id="security-save-key-delegation">
+      document.addEventListener("click", async function (e) {
+        const b = e.target.closest && e.target.closest("#saveSecurityKeyButton");
+        if (!b) return;
+        e.preventDefault(); e.stopPropagation();
+        const k = document.getElementById("newSecurityKey"), c = document.getElementById("newSecurityKeyConfirm"), m = document.getElementById("newSecurityKeyMsg");
+        if (!k || !c || !m) return;
+        const v = (k.value || "").trim(), cv = (c.value || "").trim();
+        if (v.length < 6 || !/\d/.test(v)) { m.innerHTML = '<div class="error">A chave deve ter, no mínimo, 6 caracteres e conter pelo menos 1 número.</div>'; k.focus(); return; }
+        if (v !== cv) { m.innerHTML = '<div class="error">As chaves não coincidem. Confira a chave informada.</div>'; c.focus(); return; }
+        const p = b.dataset.protocol || (window.__securitySetup && window.__securitySetup.protocol) || "";
+        const t = b.dataset.setupToken || (window.__securitySetup && window.__securitySetup.setupToken) || "";
+        if (!p || !t) { m.innerHTML = '<div class="error">Não foi possível identificar a sessão de configuração da chave. Gere uma nova denúncia para continuar.</div>'; return; }
+        const old = b.textContent; b.disabled = true; b.textContent = "salvando chave...";
+        try {
+          await api("/api/public/protocol/" + encodeURIComponent(p) + "/security-key", { method: "POST", body: JSON.stringify({ setupToken: t, securityKey: v }) });
+          m.innerHTML = '<div class="security-save-overlay" role="dialog" aria-modal="true"><div class="security-save-modal"><div class="security-save-icon">✓</div><h3>chave de segurança salva com sucesso!</h3><p>sua chave foi definida e está vinculada ao protocolo abaixo. por segurança, ela não será exibida. para consultar sua denúncia e acessar o chat, você deverá informar <strong>o protocolo e a chave de segurança</strong>.</p><div class="security-save-protocol">' + esc(p) + '</div><p>guarde essas duas informações em um local seguro. por segurança, a chave não poderá ser recuperada.</p><button class="security-save-home" type="button" onclick="window.location.reload();return false;">voltar para a tela inicial</button></div></div>';
+          k.disabled = true; c.disabled = true;
+        } catch (err) { m.innerHTML = '<div class="error">' + esc(err.message || "Não foi possível salvar a chave de segurança.") + '</div>'; b.disabled = false; b.textContent = old; }
+      }, true);
+    </script>
+
+    <style id="tipos-ocorrencia-hover-20260916">
+      .tipo-ocorrencia-custom {
+        position: relative;
+        width: 100%;
+      }
+
+      .tipo-ocorrencia-button {
+        width: 100%;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 11px 13px;
+        border: 1px solid #d9dee5;
+        border-radius: 8px;
+        background: #fff;
+        color: #252a31;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .tipo-ocorrencia-button:hover,
+      .tipo-ocorrencia-custom.aberto .tipo-ocorrencia-button {
+        border-color: #b9141b;
+        box-shadow: 0 0 0 3px rgba(185, 20, 27, .10);
+      }
+
+      .tipo-ocorrencia-button b {
+        color: #b9141b;
+        font-size: 16px;
+      }
+
+      .tipo-ocorrencia-options {
+        position: absolute;
+        z-index: 99999;
+        top: calc(100% + 5px);
+        left: 0;
+        right: 0;
+        display: none;
+        max-height: 390px;
+        overflow-y: auto;
+        padding: 6px;
+        border: 1px solid #d9dee5;
+        border-radius: 9px;
+        background: #fff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .16);
+      }
+
+      .tipo-ocorrencia-custom.aberto .tipo-ocorrencia-options {
+        display: block;
+      }
+
+      .tipo-ocorrencia-option {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 7px;
+        cursor: pointer;
+      }
+
+      .tipo-ocorrencia-option:hover,
+      .tipo-ocorrencia-option:focus {
+        background: #fff3f3;
+      }
+
+      .tipo-ocorrencia-option strong {
+        display: block;
+        color: #252a31;
+        font-size: 14px;
+      }
+
+      .tipo-ocorrencia-option small {
+        display: none;
+        margin-top: 5px;
+        color: #626b75;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .tipo-ocorrencia-option:hover small,
+      .tipo-ocorrencia-option:focus small {
+        display: block;
+      }
+    </style>
+
+    <script id="tipos-ocorrencia-hover-script-20260916">
+      (function () {
+        function iniciarTiposOcorrencia() {
+          var caixa = document.getElementById("tipoOcorrenciaCustom");
+          if (!caixa || caixa.getAttribute("data-iniciado") === "sim") return;
+
+          caixa.setAttribute("data-iniciado", "sim");
+
+          var botao = document.getElementById("typeSelectButton");
+          var campo = document.getElementById("type");
+          var opcoes = caixa.querySelectorAll(".tipo-ocorrencia-option");
+
+          botao.addEventListener("click", function () {
+            caixa.classList.toggle("aberto");
+          });
+
+          opcoes.forEach(function (opcao) {
+            opcao.addEventListener("click", function () {
+              campo.value = opcao.getAttribute("data-value");
+              botao.querySelector("span").textContent = opcao.querySelector("strong").textContent;
+              caixa.classList.remove("aberto");
+            });
+          });
+
+          document.addEventListener("click", function (evento) {
+            if (!caixa.contains(evento.target)) {
+              caixa.classList.remove("aberto");
+            }
+          });
+        }
+
+        var observador = new MutationObserver(iniciarTiposOcorrencia);
+        observador.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+
+        iniciarTiposOcorrencia();
+      })();
+    </script>
+
+    <script id="report-attachments-script">
+      (function () {
+        var descriptor = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
+        var field = '<div class="full"><label for="reportAttachments">Anexos (opcional)</label><input id="reportAttachments" name="attachments" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,application/pdf,.jpg,.jpeg,.png,.webp,.mp4,.mov"><small style="display:block;color:#747b85;font-size:10px;margin-top:5px">Selecione fotos, vídeos ou PDFs (até 100 MB por arquivo).</small></div>';
+        Object.defineProperty(Element.prototype, 'innerHTML', {
+          configurable: descriptor.configurable,
+          enumerable: descriptor.enumerable,
+          get: descriptor.get,
+          set: function (value) {
+            if (this.id === 'root' && value.indexOf('<form id="reportForm"') !== -1 && value.indexOf('id="reportAttachments"') === -1) {
+              value = value.replace('</textarea></div><div class="full">', '</textarea></div>' + field + '<div class="full">');
+            }
+            descriptor.set.call(this, value);
+          }
+        });
+        function showLoadedAttachments() {
+          var modal = document.getElementById('modal'), detail = window.__lastReportDetail;
+          if (modal && detail && detail.attachments && !modal.querySelector('.report-attachments')) {
+            var section = modal.querySelector('.section');
+            if (section) section.insertAdjacentHTML('beforeend', attachmentsHtml(detail.attachments, function (id) { return '/api/admin/reports/' + detail.id + '/attachments/' + id; }));
+          }
+          var publicForm = document.querySelector('.chat-form[data-public-chat="1"]'), publicBox = document.querySelector('.track-page .section');
+          if (publicForm && publicBox && !publicBox.querySelector('.report-attachments')) {
+            var protocol = publicForm.dataset.protocol, key = publicForm.dataset.protocolKey;
+            fetch('/api/public/protocol/' + encodeURIComponent(protocol), { headers: { 'X-Protocol-Key': key } }).then(function (response) { return response.json(); }).then(function (data) {
+              if (!publicBox.querySelector('.report-attachments')) publicBox.insertAdjacentHTML('beforeend', attachmentsHtml(data.attachments, function (id) { return '/api/public/protocol/' + encodeURIComponent(protocol) + '/attachments/' + id; }, key));
+            }).catch(function () {});
+          }
+        }
+        var attachmentObserver = new MutationObserver(showLoadedAttachments);
+        attachmentObserver.observe(document.body, { childList: true, subtree: true });
+        showLoadedAttachments();
+      })();
+    </script>
+
+  </body>
+
+</html>

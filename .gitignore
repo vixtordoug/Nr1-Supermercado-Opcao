@@ -1,0 +1,31 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente e chaves
+.env
+.env.*
+!.env.example
+*.data_key
+
+# Banco de dados local
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+
+# Backups e arquivos temporários
+*.backup*
+*.save
+*.save.*
+*.copia-seguranca
+
+# Armazenamento local
+storage/
+*.zip
+
+# Logs
+*.log
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db

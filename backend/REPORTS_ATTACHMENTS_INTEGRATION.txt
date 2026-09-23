@@ -1,0 +1,16 @@
+Módulo instalado e banco migrado.
+
+Nomes reais encontrados no server.js:
+- autenticação administrativa: auth, adminOnly
+- autenticação pública: checkPublicAccess(req, protocol, key)
+
+Integração necessária no server.js:
+1. require('./attachments')
+2. criar createAttachments depois de db/rows/saveDb/now
+3. adicionar attachments.uploader('report') na rota pública de denúncia
+4. adicionar attachments.uploader('message') nas duas rotas de mensagens
+5. chamar insertReportFiles/insertMessageFiles após criar os IDs
+6. usar auth, adminOnly nos endpoints administrativos
+7. usar checkPublicAccess nas rotas públicas
+
+O instalador para antes de modificar server.js e nr1.html para evitar substituição incorreta de código existente.
