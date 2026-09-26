@@ -2,11 +2,9 @@
 <html lang="pt-BR">
 
 <head>
-
-<body>
-  <div id="root"></div>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/supermercadoopcao.com.br/assets/icons/icon-supermercadoopcao.png">
   <title>Canal de Denúncias NR1 — Acesso</title>
   <style>
     :root {
@@ -494,7 +492,7 @@
       }
     }
 
-    /* ===== ÁREA ADMINISTRATIVA — VISUAL CORPORATIVO ===== */
+    /* ===== ÁREA ADMINISTRATIVA ===== */
     .app {
       min-height: 100vh;
       display: flex;
@@ -720,7 +718,8 @@
       padding: 14px 12px;
       border-bottom: 1px solid #eef0f3;
       color: #424850;
-      background: #fff
+      background: #fff;
+      vertical-align: middle
     }
 
     .table tr:hover td {
@@ -884,6 +883,92 @@
       overflow: auto
     }
 
+    .attachment-preview-modal {
+      z-index: 110;
+    }
+
+    .attachment-preview-box {
+      width: min(980px, 96vw) !important;
+      height: min(88vh, 760px);
+      display: flex;
+      flex-direction: column;
+      padding: 20px !important;
+    }
+
+    .attachment-preview-head,
+    .attachment-preview-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .attachment-preview-head {
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e7e9ed;
+    }
+
+    .attachment-preview-head strong {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #252a30;
+      font-size: 14px;
+    }
+
+    .attachment-preview-body {
+      min-height: 0;
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 18px 0;
+      overflow: auto;
+      background: #f7f8fa;
+      border-radius: 10px;
+      margin: 16px 0;
+    }
+
+    .attachment-preview-body img,
+    .attachment-preview-body video {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .attachment-preview-body iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      border: 0;
+      background: #fff;
+    }
+
+    .attachment-preview-message {
+      max-width: 420px;
+      padding: 24px;
+      text-align: center;
+      color: #69717b;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .attachment-preview-actions {
+      justify-content: flex-end;
+    }
+
+    @media(max-width:650px) {
+      .attachment-preview-box {
+        height: min(90vh, 680px);
+        padding: 15px !important;
+      }
+
+      .attachment-preview-body iframe {
+        min-height: 360px;
+      }
+    }
+
     .panel {
       min-height: 100vh;
       background: radial-gradient(circle at 10% 15%, rgba(227, 38, 45, .06), transparent 25%), #f7f8fa;
@@ -965,7 +1050,7 @@
       }
 
       .table {
-        min-width: 650px
+        min-width: 750px
       }
 
       .top {
@@ -1031,6 +1116,126 @@
       cursor: wait
     }
 
+    .chat-attachments {
+      padding: 12px 14px;
+      border-top: 1px solid #e7e9ed;
+      background: #fff;
+    }
+
+    .chat-attachments-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .chat-attachments-head b {
+      font-size: 12px;
+      color: #333;
+    }
+
+    .chat-attachments-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chat-attachment-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      max-width: 260px;
+      padding: 6px 9px;
+      border: 1px solid #dfe2e7;
+      border-radius: 7px;
+      background: #fff;
+      color: #b9141b;
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .chat-attachment-link:hover {
+      background: #fff0f1;
+      border-color: #e5a4a8;
+    }
+
+    .chat-attachment-link span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chat-upload-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .chat-upload-input {
+      display: none;
+    }
+
+    .chat-upload-button {
+      border: 1px solid #dfe2e7;
+      background: #fff;
+      color: #b9141b;
+      border-radius: 8px;
+      padding: 8px 11px;
+      font-size: 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .chat-upload-button:hover {
+      background: #fff8f8;
+      border-color: #e5a4a8;
+    }
+
+    .chat-upload-selected {
+      color: #747b85;
+      font-size: 9px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chat-upload-help {
+      margin-top: 5px;
+      color: #8a9199;
+      font-size: 9px;
+    }
+
+    .msg.system {
+      justify-content: center;
+    }
+
+    .msg.system .msg-bubble {
+      max-width: 86%;
+      background: #f7f8fa;
+      border-color: #e1e4e8;
+      color: #626a73;
+    }
+
+    .msg-attachment-link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 5px;
+      color: #b9141b;
+      font-weight: 800;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .chat-upload-status {
+      margin-top: 8px;
+    }
+
+
     .type-tooltip::after {
       content: attr(data-tooltip);
       position: absolute;
@@ -1060,10 +1265,76 @@
       visibility: visible;
       transform: translateY(0);
     }
-  </style>
 
-  </style>
-  <style>
+    /* Anexos na tabela e visualização */
+    .table-attachments {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
+      max-width: 260px;
+    }
+
+    .attachment-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      max-width: 140px;
+      padding: 4px 8px;
+      border: 1px solid #dfe2e7;
+      border-radius: 6px;
+      background: #fff;
+      color: #b9141b;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      transition: .15s;
+    }
+
+    .attachment-btn:hover {
+      background: #fff0f1;
+      border-color: #e5a4a8;
+      transform: translateY(-1px);
+    }
+
+    .report-attachments {
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid #e7e9ed;
+      border-radius: 10px;
+      background: #f8f9fb;
+    }
+
+    .report-attachments b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .attachment-link {
+      display: inline-block;
+      margin: 3px 6px 3px 0;
+      padding: 6px 10px;
+      border: 1px solid #dfe2e7;
+      border-radius: 6px;
+      background: #fff;
+      color: #b9141b;
+      font-weight: 700;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .attachment-link:hover {
+      background: #fff0f1;
+      border-color: #e5a4a8;
+    }
+
     .chat {
       margin-top: 20px;
       border: 1px solid #e4e7eb;
@@ -1184,9 +1455,7 @@
       background: #fff;
       border-top: 1px solid #f0f1f3
     }
-  </style>
 
-  <style id="anonymous-fields-default">
     .personal-data-fields,
     .personalData,
     #personalData,
@@ -1194,68 +1463,7 @@
     #personalFields {
       display: block;
     }
-  </style>
-  <style id="protocol-security-key">
-    .security-key-box {
-      margin-top: 14px;
-      padding: 14px;
-      border: 1px solid #e6e8ec;
-      border-radius: 12px;
-      background: #fafbfc
-    }
 
-    .security-key-box label {
-      display: block;
-      font-weight: 800;
-      font-size: 12px;
-      color: #3f4650;
-      margin-bottom: 6px
-    }
-
-    .security-key-box input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 11px 12px;
-      border: 1px solid #dfe3e8;
-      border-radius: 9px;
-      background: #fff
-    }
-
-    .security-key-help {
-      margin: 6px 0 0;
-      color: #737b85;
-      font-size: 10px;
-      line-height: 1.45
-    }
-
-    .security-key-rules {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 8px
-    }
-
-    .security-key-rule {
-      font-size: 10px;
-      padding: 4px 7px;
-      border-radius: 999px;
-      background: #f0f2f4;
-      color: #69717b
-    }
-
-    .security-key-rule.ok {
-      background: #eaf8f0;
-      color: #16804b
-    }
-
-    .security-key-error {
-      margin-top: 8px;
-      color: #b9141b;
-      font-size: 11px;
-      font-weight: 700
-    }
-  </style>
-  <style id="security-key-polish">
     .security-key-box {
       margin-top: 18px;
       padding: 18px 20px;
@@ -1287,6 +1495,12 @@
     }
 
     .security-key-box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 11px 12px;
+      border: 1px solid #dfe3e8;
+      border-radius: 9px;
+      background: #fff;
       transition: border-color .18s, box-shadow .18s
     }
 
@@ -1309,73 +1523,46 @@
       margin-bottom: 12px
     }
 
-    .personal-data-box {
-      margin-top: 18px;
-      padding: 18px 20px;
-      border: 1px solid #e4e7eb;
-      border-radius: 14px;
-      background: #fff;
-      box-shadow: 0 5px 16px rgba(20, 20, 20, .05)
-    }
-
-    .personal-data-title {
+    .security-key-rules {
       display: flex;
-      align-items: center;
       gap: 8px;
-      font-size: 13px;
-      font-weight: 800;
-      color: #242a31;
-      margin-bottom: 5px
+      flex-wrap: wrap;
+      margin-top: 8px
     }
 
-    .personal-data-help {
+    .security-key-rule {
+      font-size: 10px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #f0f2f4;
+      color: #69717b;
+      border: 1px solid #e5e8eb;
+      transition: all .18s ease
+    }
+
+    .security-key-rule.ok {
+      background: #e8f7ee !important;
+      color: #137a45 !important;
+      border: 1px solid #bfe8ce
+    }
+
+    .security-key-box input.rule-ok {
+      border-color: #37a96b !important;
+      box-shadow: 0 0 0 3px rgba(55, 169, 107, .10) !important
+    }
+
+    .security-key-box input.rule-error {
+      border-color: #d71920 !important;
+      box-shadow: 0 0 0 3px rgba(215, 25, 32, .08) !important
+    }
+
+    .security-key-instruction {
       font-size: 11px;
-      line-height: 1.5;
-      color: #6b737d;
+      line-height: 1.55;
+      color: #4f5660;
       margin: 0 0 14px
     }
 
-    .personal-data-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px
-    }
-
-    .personal-data-field label {
-      display: block;
-      font-size: 11px;
-      font-weight: 800;
-      color: #3c434b;
-      margin: 0 0 6px
-    }
-
-    .personal-data-input {
-      transition: border-color .18s, box-shadow .18s
-    }
-
-    .personal-data-field input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 11px 12px;
-      border: 1px solid #dfe3e8;
-      border-radius: 9px;
-      background: #fbfcfd
-    }
-
-    .personal-data-field input:focus {
-      border-color: #d71920;
-      box-shadow: 0 0 0 3px rgba(215, 25, 32, .10);
-      outline: none
-    }
-
-    @media(max-width:640px) {
-      .personal-data-grid {
-        grid-template-columns: 1fr
-      }
-    }
-  </style>
-
-  <style id="identity-polish">
     .identity-fields {
       margin-top: 12px
     }
@@ -1507,141 +1694,7 @@
         grid-template-columns: 1fr
       }
     }
-  </style>
-  <style id="dashboard-graphs-style">
-    .chat {
-      margin-top: 20px;
-      border: 1px solid #e4e7eb;
-      border-radius: 14px;
-      background: #fff;
-      overflow: hidden
-    }
 
-    .chat-head {
-      padding: 14px 16px;
-      background: #f8f9fb;
-      border-bottom: 1px solid #e7e9ed;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px
-    }
-
-    .chat-head b {
-      font-size: 14px
-    }
-
-    .chat-head small {
-      display: block;
-      color: #7b838c;
-      font-size: 10px;
-      margin-top: 3px
-    }
-
-    .chat-body {
-      padding: 14px;
-      max-height: 330px;
-      overflow: auto;
-      background: #fbfcfd
-    }
-
-    .chat-empty {
-      text-align: center;
-      color: #858c95;
-      font-size: 11px;
-      padding: 22px
-    }
-
-    .msg {
-      display: flex;
-      margin: 8px 0
-    }
-
-    .msg.public {
-      justify-content: flex-end
-    }
-
-    .msg.admin {
-      justify-content: flex-start
-    }
-
-    .msg-bubble {
-      max-width: 78%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 12px;
-      line-height: 1.45;
-      border: 1px solid #e3e6ea;
-      background: #fff
-    }
-
-    .msg.public .msg-bubble {
-      background: #fff0f1;
-      border-color: #f0c9cc;
-      color: #5e2529
-    }
-
-    .msg.admin .msg-bubble {
-      background: #edf4ff;
-      border-color: #d4e2f7;
-      color: #23456f
-    }
-
-    .msg-meta {
-      font-size: 9px;
-      color: #8a9199;
-      margin-top: 4px
-    }
-
-    .chat-form {
-      display: flex;
-      gap: 8px;
-      padding: 12px;
-      border-top: 1px solid #e7e9ed;
-      background: #fff
-    }
-
-    .chat-form textarea {
-      flex: 1;
-      min-height: 44px;
-      max-height: 110px;
-      resize: vertical;
-      border: 1px solid #dfe2e7;
-      border-radius: 9px;
-      padding: 10px;
-      outline: none
-    }
-
-    .chat-form textarea:focus {
-      border-color: #d95d63;
-      box-shadow: 0 0 0 3px rgba(227, 38, 45, .08)
-    }
-
-    .chat-form .btn {
-      align-self: flex-end;
-      white-space: nowrap
-    }
-
-    .chat-note {
-      padding: 8px 14px;
-      color: #7b838c;
-      font-size: 9px;
-      background: #fff;
-      border-top: 1px solid #f0f1f3
-    }
-  </style>
-
-  <style id="anonymous-fields-default">
-    .personal-data-fields,
-    .personalData,
-    #personalData,
-    #dadosPessoais,
-    #personalFields {
-      display: block;
-    }
-  </style>
-
-  <style id="dashboard-modern-filters">
     .dashboard-filters {
       background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
       border: 1px solid #e7e9ed;
@@ -1888,9 +1941,7 @@
         padding: 16px
       }
     }
-  </style>
 
-  <style id="security-key-screen-v2">
     .protocol-highlight {
       margin: 16px auto 18px;
       padding: 15px 18px;
@@ -1924,40 +1975,6 @@
       margin-top: 6px
     }
 
-    .security-key-rule {
-      transition: all .18s ease
-    }
-
-    .security-key-rule.ok {
-      background: #e8f7ee !important;
-      color: #137a45 !important;
-      border: 1px solid #bfe8ce
-    }
-
-    .security-key-rule:not(.ok) {
-      border: 1px solid #e5e8eb
-    }
-
-    .security-key-box input.rule-ok {
-      border-color: #37a96b !important;
-      box-shadow: 0 0 0 3px rgba(55, 169, 107, .10) !important
-    }
-
-    .security-key-box input.rule-error {
-      border-color: #d71920 !important;
-      box-shadow: 0 0 0 3px rgba(215, 25, 32, .08) !important
-    }
-
-    .security-key-instruction {
-      font-size: 11px;
-      line-height: 1.55;
-      color: #4f5660;
-      margin: 0 0 14px
-    }
-  </style>
-
-
-  <style id="security-save-modal-style">
     .security-save-overlay {
       position: fixed;
       inset: 0;
@@ -2063,10 +2080,7 @@
         transform: translateY(0) scale(1)
       }
     }
-  </style>
 
-
-  <style id="full-date-input-style">
     .full-date-input {
       cursor: pointer
     }
@@ -2074,10 +2088,7 @@
     .full-date-input::-webkit-calendar-picker-indicator {
       cursor: pointer
     }
-  </style>
 
-
-  <style id="masked-security-key-style">
     .security-save-key {
       margin: 0 auto 18px;
       max-width: 360px;
@@ -2108,10 +2119,7 @@
     #newSecurityKeyConfirm {
       -webkit-text-security: disc;
     }
-  </style>
 
-
-  <style id="track-page-header-style">
     .track-page-header {
       width: 100%;
       box-sizing: border-box;
@@ -2158,10 +2166,7 @@
       box-sizing: border-box;
       padding: 28px 20px 44px
     }
-  </style>
 
-
-  <style id="legal-warning-modal-style">
     .legal-warning-overlay {
       position: fixed;
       inset: 0;
@@ -2291,114 +2296,260 @@
         width: 100%
       }
     }
+
+    .tipo-ocorrencia-custom {
+      position: relative;
+      width: 100%;
+    }
+
+    .tipo-ocorrencia-button {
+      width: 100%;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 13px;
+      border: 1px solid #d9dee5;
+      border-radius: 8px;
+      background: #fff;
+      color: #252a31;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .tipo-ocorrencia-button:hover,
+    .tipo-ocorrencia-custom.aberto .tipo-ocorrencia-button {
+      border-color: #b9141b;
+      box-shadow: 0 0 0 3px rgba(185, 20, 27, .10);
+    }
+
+    .tipo-ocorrencia-button b {
+      color: #b9141b;
+      font-size: 16px;
+    }
+
+    .tipo-ocorrencia-options {
+      position: absolute;
+      z-index: 99999;
+      top: calc(100% + 5px);
+      left: 0;
+      right: 0;
+      display: none;
+      max-height: 390px;
+      overflow-y: auto;
+      padding: 6px;
+      border: 1px solid #d9dee5;
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .16);
+    }
+
+    .tipo-ocorrencia-custom.aberto .tipo-ocorrencia-options {
+      display: block;
+    }
+
+    .tipo-ocorrencia-option {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .tipo-ocorrencia-option:hover,
+    .tipo-ocorrencia-option:focus {
+      background: #fff3f3;
+    }
+
+    .tipo-ocorrencia-option strong {
+      display: block;
+      color: #252a31;
+      font-size: 14px;
+    }
+
+    .tipo-ocorrencia-option small {
+      display: none;
+      margin-top: 5px;
+      color: #626b75;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .tipo-ocorrencia-option:hover small,
+    .tipo-ocorrencia-option:focus small {
+      display: block;
+    }
   </style>
+</head>
 
-  </head>
+<body>
+  <div id="root"></div>
 
-  <body>
-    <div id="root"></div>
-    <script>
-      const root = document.getElementById('root');
-      const state = { user: null };
-      const SECTORS = ["Açougue", "Administrativo", "Almoxarifado", "C.P.D.", "Compras", "CONT. Qualidade", "Contas a pagar", "Constas a receber", "Diretoria", "DPTO pessoal", "Financeiro", "Frente de loja", "Frios", "Gerente", "Hortifrut", "Marketing", "Padaria", "Prenvenção", "Reposição", "Recebimento", "Restaurante", "Tecnologia", "Tesouraria", "Vendas"];
-      const api = async (url, opt = {}) => { const headers = { ...(opt.headers || {}) }; if (!(opt.body instanceof FormData) && !headers['Content-Type']) headers['Content-Type'] = 'application/json'; const r = await fetch(url, { ...opt, headers }); let d = {}; try { d = await r.json() } catch { } if (!r.ok) throw new Error(d.error || 'Erro na operação'); return d };
-      const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-      function landing() { root.innerHTML = `<div class="start"><header class="start-head"><div class="start-brand"><span class="start-logo">✓</span><div><b>Canal de Denúncias- NR1</b><small>Seu ambiente de segurança e cuidado no trabalho</small></div></div></header><div class="start-body"><section class="start-copy"><span class="tag">AMBIENTE CORPORATIVO</span><h1>Um espaço para <span>cuidar, ouvir e agir.</span></h1><p>Esse ambiente facilita o registro de denúncias e o acompanhamento de situações relacionado ao trabalho, com segurança e simplicidade.</p><div class="start-benefits"><div class="start-benefit"><i>🔒</i><b>Seguro</b><small>Informações protegidas e acesso controlado.</small></div><div class="start-benefit"><i>💬</i><b>Fácil de usar</b><small>Orientação clara em cada etapa.</small></div><div class="start-benefit"><i>✓</i><b>Confidencial</b><small>Você pode realizar uma denúncia anônima.</small></div></div></section><section class="start-card"><h2>Como deseja continuar?</h2><p>Escolha uma das opções abaixo.</p><button class="start-option" type="button" onclick="adminLogin()"><i class="ico">👤</i><span><b>Acesso administrativo</b><small>Entrar para gerenciar o sistema e os usuários.</small></span><em>›</em></button><button class="start-option" type="button" onclick="reportForm()"><i class="ico">⚠</i><span><b>Fazer uma denúncia</b><small>Relate uma situação. Você pode permanecer anônimo.</small></span><em>›</em></button><button class="start-option" type="button" onclick="trackProtocol()"><i class="ico">🔎</i><span><b>Acompanhar protocolo</b><small>Veja o andamento de uma denúncia já registrada.</small></span><em>›</em></button><div class="start-anon">🛡️ <b>Importante:</b> A denúncia pode ser feita de forma anônima.</div></section></div><footer class="start-foot">Supermercado-Opção • Canal corporativo de segurança e cuidado</footer></div>` }
-      function adminLogin() { root.innerHTML = `<div class="login-page"><header class="login-head"><div class="start-brand"><span class="start-logo">✓</span><div><b>ProtegeNR1</b><small>Segurança e cuidado no ambiente de trabalho</small></div></div><button class="back" type="button" onclick="landing()">← Voltar</button></header><div class="login-body"><section class="login-copy"><span class="tag">🔐 ÁREA ADMINISTRATIVA</span><h1>Olá! <span>Bem-vindo.</span></h1><p>Faça seu acesso para acompanhar denúncias, consultar protocolos e administrar os usuários da empresa.</p><div class="login-help"><div><i>✓</i><span><b>Ambiente protegido</b><br>Somente usuários autorizados têm acesso.</span></div><div><i>✓</i><span><b>Informações organizadas</b><br>Tenha uma visão clara das ocorrências.</span></div><div><i>✓</i><span><b>Confidencialidade</b><br>Trate cada relato com responsabilidade.</span></div></div></section><section class="login-card"><div class="login-card-head"><div class="login-card-icon">👤</div><div><h2>Entrar no sistema</h2><p class="sub">Informe seus dados de acesso.</p></div></div><form onsubmit="login(event)"><label>CPF</label><div class="field"><span>▭</span><input class="personal-data-input" id="cpf" inputmode="numeric" autocomplete="username" placeholder="Digite seu CPF" required oninput="this.value=cpfFmt(this.value)"></div><div class="hint">Use o CPF cadastrado no sistema.</div><label>Senha</label><div class="field"><span>🔒</span><input id="password" type="password" autocomplete="current-password" placeholder="Digite a senha" required></div><div class="hint">Informe a senha do seu acesso.</div><div id="err"></div><button class="login-btn" type="submit">Entrar com segurança →</button></form></section></div></div>` }
-      async function login(e) { e.preventDefault(); try { const d = await api('/api/auth/login', { method: 'POST', body: JSON.stringify({ cpf: document.getElementById('cpf').value, password: document.getElementById('password').value }) }); state.user = d.user; dashboard() } catch (err) { document.getElementById('err').innerHTML = '<div class="error">' + esc(err.message) + '</div>' } }
-      async function reportForm() {
-        root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box" style="width:min(760px,100%)"><button class="link" type="button" onclick="landing()">← Voltar</button><h2>Nova denúncia</h2><p class="sub">Descreva a situação com o máximo de objetividade possível.</p><form id="reportForm" onsubmit="submitReport(event)"><div class="formgrid"><div class="type-tooltip" data-tooltip="Selecione o tipo de ocorrência para descrever melhor a situação."><label>Tipo de ocorrência</label><div class="tipo-ocorrencia-custom" id="tipoOcorrenciaCustom">
+  <script>
+    const root = document.getElementById('root');
+    const state = { user: null };
+    const SECTORS = ["Açougue", "Administrativo", "Almoxarifado", "C.P.D.", "Compras", "CONT. Qualidade", "Contas a pagar", "Constas a receber", "Diretoria", "DPTO pessoal", "Financeiro", "Frente de loja", "Frios", "Gerente", "Hortifrut", "Marketing", "Padaria", "Prenvenção", "Reposição", "Recebimento", "Restaurante", "Tecnologia", "Tesouraria", "Vendas"];
+
+    const api = async (url, opt = {}) => {
+      const headers = { ...(opt.headers || {}) };
+      if (!(opt.body instanceof FormData) && !headers['Content-Type']) headers['Content-Type'] = 'application/json';
+      const r = await fetch(url, { ...opt, headers });
+      let d = {};
+      try { d = await r.json() } catch { }
+      if (!r.ok) throw new Error(d.error || 'Erro na operação');
+      return d;
+    };
+
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    function landing() {
+      root.innerHTML = `<div class="start"><header class="start-head"><div class="start-brand"><span class="start-logo">✓</span><div><b>Canal de Denúncias- NR1</b><small>Seu ambiente de segurança e cuidado no trabalho</small></div></div></header><div class="start-body"><section class="start-copy"><span class="tag">AMBIENTE CORPORATIVO</span><h1>Um espaço para <span>cuidar, ouvir e agir.</span></h1><p>Esse ambiente facilita o registro de denúncias e o acompanhamento de situações relacionado ao trabalho, com segurança e simplicidade.</p><div class="start-benefits"><div class="start-benefit"><i>🔒</i><b>Seguro</b><small>Informações protegidas e acesso controlado.</small></div><div class="start-benefit"><i>💬</i><b>Fácil de usar</b><small>Orientação clara em cada etapa.</small></div><div class="start-benefit"><i>✓</i><b>Confidencial</b><small>Você pode realizar uma denúncia anônima.</small></div></div></section><section class="start-card"><h2>Como deseja continuar?</h2><p>Escolha uma das opções abaixo.</p><button class="start-option" type="button" onclick="adminLogin()"><i class="ico">👤</i><span><b>Acesso administrativo</b><small>Entrar para gerenciar o sistema e os usuários.</small></span><em>›</em></button><button class="start-option" type="button" onclick="reportForm()"><i class="ico">⚠</i><span><b>Fazer uma denúncia</b><small>Relate uma situação. Você pode permanecer anônimo.</small></span><em>›</em></button><button class="start-option" type="button" onclick="trackProtocol()"><i class="ico">🔎</i><span><b>Acompanhar protocolo</b><small>Veja o andamento de uma denúncia já registrada.</small></span><em>›</em></button><div class="start-anon">🛡️ <b>Importante:</b> A denúncia pode ser feita de forma anônima.</div></section></div><footer class="start-foot">Supermercado-Opção • Canal corporativo de segurança e cuidado</footer></div>`;
+    }
+
+    function adminLogin() {
+      root.innerHTML = `<div class="login-page"><header class="login-head"><div class="start-brand"><span class="start-logo">✓</span><div><b>ProtegeNR1</b><small>Segurança e cuidado no ambiente de trabalho</small></div></div><button class="back" type="button" onclick="landing()">← Voltar</button></header><div class="login-body"><section class="login-copy"><span class="tag">🔐 ÁREA ADMINISTRATIVA</span><h1>Olá! <span>Bem-vindo.</span></h1><p>Faça seu acesso para acompanhar denúncias, consultar protocolos e administrar os usuários da empresa.</p><div class="login-help"><div><i>✓</i><span><b>Ambiente protegido</b><br>Somente usuários autorizados têm acesso.</span></div><div><i>✓</i><span><b>Informações organizadas</b><br>Tenha uma visão clara das ocorrências.</span></div><div><i>✓</i><span><b>Confidencialidade</b><br>Trate cada relato com responsabilidade.</span></div></div></section><section class="login-card"><div class="login-card-head"><div class="login-card-icon">👤</div><div><h2>Entrar no sistema</h2><p class="sub">Informe seus dados de acesso.</p></div></div><form onsubmit="login(event)"><label>CPF</label><div class="field"><span>▭</span><input class="personal-data-input" id="cpf" inputmode="numeric" autocomplete="username" placeholder="Digite seu CPF" required oninput="this.value=cpfFmt(this.value)"></div><div class="hint">Use o CPF cadastrado no sistema.</div><label>Senha</label><div class="field"><span>🔒</span><input id="password" type="password" autocomplete="current-password" placeholder="Digite a senha" required></div><div class="hint">Informe a senha do seu acesso.</div><div id="err"></div><button class="login-btn" type="submit">Entrar com segurança →</button></form></section></div></div>`;
+    }
+
+    async function login(e) {
+      e.preventDefault();
+      try {
+        const d = await api('/api/auth/login', {
+          method: 'POST',
+          body: JSON.stringify({
+            cpf: document.getElementById('cpf').value,
+            password: document.getElementById('password').value
+          })
+        });
+        state.user = d.user;
+        dashboard();
+      } catch (err) {
+        document.getElementById('err').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+      }
+    }
+    //Formulário de denúncia
+    //Aba "Fazer Denúncia" do menu inicial, onde o usuário pode preencher os dados da denúncia e enviar para o sistema.
+    async function reportForm() {
+      root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box" style="width:min(760px,100%)"><button class="link" type="button" onclick="landing()">← Voltar</button><h2>Nova denúncia</h2><p class="sub">Descreva a situação com o máximo de objetividade possível.</p><form id="reportForm" onsubmit="submitReport(event)"><div class="formgrid"><div class="type-tooltip" data-tooltip="Selecione o tipo de ocorrência para descrever melhor a situação."><label>Tipo de ocorrência</label><div class="tipo-ocorrencia-custom" id="tipoOcorrenciaCustom">
   <input type="hidden" id="type" name="type" value="" required>
-
   <button type="button" id="typeSelectButton" class="tipo-ocorrencia-button">
     <span>Selecione</span>
     <b>▾</b>
   </button>
-
   <div id="typeOptions" class="tipo-ocorrencia-options">
     <div class="tipo-ocorrencia-option" data-value="Assédio moral">
       <strong>Assédio moral</strong>
       <small>Condutas repetitivas que humilham, constrangem, intimidam ou desrespeitam uma pessoa no ambiente de trabalho.</small>
     </div>
-
     <div class="tipo-ocorrencia-option" data-value="Assédio sexual">
       <strong>Assédio sexual</strong>
       <small>Comportamentos de natureza sexual indesejados, como propostas, insinuações, mensagens ou contatos físicos.</small>
     </div>
-
     <div class="tipo-ocorrencia-option" data-value="Discriminação">
       <strong>Discriminação</strong>
       <small>Tratamento desigual, ofensivo ou prejudicial baseado em características pessoais ou condições individuais.</small>
     </div>
-
     <div class="tipo-ocorrencia-option" data-value="Risco psicossocial">
       <strong>Risco psicossocial</strong>
       <small>Situação relacionada à organização ou às relações de trabalho que possa causar estresse, adoecimento ou prejuízo ao bem-estar do trabalhador.</small>
     </div>
-
     <div class="tipo-ocorrencia-option" data-value="Conflito no ambiente de trabalho">
       <strong>Conflito no ambiente de trabalho</strong>
       <small>Desentendimentos ou dificuldades de relacionamento entre pessoas que estejam prejudicando o ambiente ou as atividades de trabalho.</small>
     </div>
-
     <div class="tipo-ocorrencia-option" data-value="Condição insegura">
       <strong>Condição insegura</strong>
       <small>Situação, equipamento, ambiente ou prática que possa colocar em risco a saúde ou a segurança das pessoas.</small>
     </div>
-
     <div class="tipo-ocorrencia-option" data-value="Outro">
       <strong>Outro</strong>
       <small>Situações que não se enquadram nas categorias anteriores.</small>
     </div>
   </div>
-</div></div><div><label>Setor</label><select id="sector" required><option value="">Selecione</option><option value="nao_informar">prefiro não informar meu setor</option>${SECTORS.map(s => '<option>' + esc(s) + '</option>').join('')}</select></div></div><div><label>Data da ocorrência</label><input id="occurrenceDate" class="full-date-input" type="date" max="" onclick="openDatePicker(this)"></div><div><label>Frequência</label><select id="frequency"><option>Uma vez</option><option>Ocasionalmente</option><option>Frequente</option><option>Contínua</option></select></div><div class="full"><label>Descrição</label><textarea id="description" placeholder="O que aconteceu? Onde? Quando? Quem estava envolvido? Há testemunhas?" required></textarea></div><div class="full"><label>Como você espera que a situação seja resolvida?</label><textarea id="immediateMeasure" style="min-height:80px"></textarea></div><div id="identityNotice"></div><label class="anonymous-toggle"><input id="anonymous" type="checkbox" onchange="handleAnonymousChange()"><span class="anon-check"></span><span class="anon-copy"><strong>quero fazer esta denúncia de forma anônima</strong><small>se marcado, seus dados pessoais não serão enviados.</small></span></label><div class="identity-fields"><div id="extra" class="personal-data-box"><div class="personal-title">👤 seus dados pessoais</div><div class="personal-help">preencha estes dados se quiser se identificar na denúncia.</div><div class="personal-grid"><div><label>nome completo</label><input class="personal-data-input" id="name" placeholder="informe seu nome" required></div><div><label>e-mail <span class="optional">(opcional)</span></label><input class="personal-data-input" id="email" type="email" placeholder="informe seu e-mail"></div></div></div></div><div id="rmsg"></div><button class="btn" type="submit">enviar denúncia</button></form></div></div>`; const n = new Date(), iso = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0'); document.getElementById('occurrenceDate').max = iso
+</div></div><div><label>Setor</label><select id="sector" required><option value="">Selecione</option><option value="nao_informar">prefiro não informar meu setor</option>${SECTORS.map(s => '<option>' + esc(s) + '</option>').join('')}</select></div></div><div><label>Data da ocorrência</label><input id="occurrenceDate" class="full-date-input" type="date" max="" onclick="openDatePicker(this)"></div><div><label>Frequência</label><select id="frequency"><option>Uma vez</option><option>Ocasionalmente</option><option>Frequente</option><option>Contínua</option></select></div><div class="full"><label>Descrição</label><textarea id="description" placeholder="O que aconteceu? Onde? Quando? Quem estava envolvido? Há testemunhas?" required></textarea></div><div class="full"><label>Como você espera que a situação seja resolvida?</label><textarea id="immediateMeasure" style="min-height:80px"></textarea></div><div id="identityNotice"></div><label class="anonymous-toggle"><input id="anonymous" type="checkbox" onchange="handleAnonymousChange()"><span class="anon-check"></span><span class="anon-copy"><strong>quero fazer esta denúncia de forma anônima</strong><small>se marcado, seus dados pessoais não serão enviados.</small></span></label><div class="identity-fields"><div id="extra" class="personal-data-box"><div class="personal-title">👤 seus dados pessoais</div><div class="personal-help">preencha estes dados se quiser se identificar na denúncia.</div><div class="personal-grid"><div><label>nome completo</label><input class="personal-data-input" id="name" placeholder="informe seu nome" required></div><div><label>e-mail <span class="optional">(opcional)</span></label><input class="personal-data-input" id="email" type="email" placeholder="informe seu e-mail"></div></div></div></div><div id="rmsg"></div><button class="btn" type="submit">enviar denúncia</button></form></div></div>`;
+
+      const n = new Date(), iso = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0');
+      document.getElementById('occurrenceDate').max = iso;
+    }
+
+    function toggleExtra() {
+      const extra = document.getElementById('extra');
+      const btn = document.getElementById('toggleIdentity');
+      const anonymous = document.getElementById('anonymous');
+      if (anonymous.checked) return;
+      extra.classList.toggle('hidden');
+      const visible = !extra.classList.contains('hidden');
+      btn.textContent = visible ? ' ' : ' ';
+      const name = document.getElementById('name');
+      name.required = visible;
+    }
+
+    function handleAnonymousChange() {
+      const anonymous = document.getElementById('anonymous');
+      const extra = document.getElementById('extra');
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const notice = document.getElementById('identityNotice');
+      if (anonymous.checked) {
+        const hasData = (name.value || '').trim() || (email.value || '').trim();
+        if (hasData) {
+          anonymous.checked = false;
+          notice.innerHTML = '<div class="error">apague seus dados pessoais antes de marcar a denúncia como anônima.</div>';
+          return;
+        }
+        extra.classList.add('hidden');
+        name.required = false;
+        notice.innerHTML = '<div class="privacy-ok">✓ denúncia anônima ativada. seus dados pessoais foram ocultados.</div>';
+      } else {
+        extra.classList.remove('hidden');
+        name.required = true;
+        notice.innerHTML = '';
       }
-      function toggleExtra() { const extra = document.getElementById('extra'); const btn = document.getElementById('toggleIdentity'); const anonymous = document.getElementById('anonymous'); if (anonymous.checked) return; extra.classList.toggle('hidden'); const visible = !extra.classList.contains('hidden'); btn.textContent = visible ? ' ' : ' '; const name = document.getElementById('name'); name.required = visible }
-      function handleAnonymousChange() { const anonymous = document.getElementById('anonymous'); const extra = document.getElementById('extra'); const name = document.getElementById('name'); const email = document.getElementById('email'); const notice = document.getElementById('identityNotice'); if (anonymous.checked) { const hasData = (name.value || '').trim() || (email.value || '').trim(); if (hasData) { anonymous.checked = false; notice.innerHTML = '<div class="error">apague seus dados pessoais antes de marcar a denúncia como anônima.</div>'; return } extra.classList.add('hidden'); name.required = false; notice.innerHTML = '<div class="privacy-ok">✓ denúncia anônima ativada. seus dados pessoais foram ocultados.</div>' } else { extra.classList.remove('hidden'); name.required = true; notice.innerHTML = '' } }
-      async function submitReport(e) {
-        e.preventDefault();
-        const $ = id => document.getElementById(id), msg = $('rmsg'),
-          anonymous = !!$('anonymous')?.checked,
-          type = $('type')?.value || '',
-          sector = $('sector')?.value || '',
-          occurrenceDate = $('occurrenceDate')?.value || '',
-          frequency = $('frequency')?.value || '',
-          description = ($('description')?.value || '').trim(),
-          immediateMeasure = ($('immediateMeasure')?.value || '').trim(),
-          name = ($('name')?.value || '').trim(),
-          email = ($('email')?.value || '').trim(),
-          max = $('occurrenceDate')?.max;
+    }
 
-        if (!type || !sector || !description) {
-          msg.innerHTML = '<div class="error">preencha os campos obrigatórios antes de enviar.</div>';
-          return false;
-        }
-        if (occurrenceDate && max && occurrenceDate > max) {
-          msg.innerHTML = '<div class="error">a data da ocorrência não pode ser posterior a hoje.</div>';
-          return false;
-        }
-        if (anonymous && (name || email)) {
-          msg.innerHTML = '<div class="error">não é permitido enviar dados pessoais junto com uma denúncia anônima. apague os dados ou desmarque o anonimato.</div>';
-          return false;
-        }
-        if (!anonymous && !name) {
-          msg.innerHTML = '<div class="error">informe seu nome ou marque a opção de denúncia anônima.</div>';
-          $('name')?.focus();
-          return false;
-        }
+    async function submitReport(e) {
+      e.preventDefault();
+      const $ = id => document.getElementById(id), msg = $('rmsg'),
+        anonymous = !!$('anonymous')?.checked,
+        type = $('type')?.value || '',
+        sector = $('sector')?.value || '',
+        occurrenceDate = $('occurrenceDate')?.value || '',
+        frequency = $('frequency')?.value || '',
+        description = ($('description')?.value || '').trim(),
+        immediateMeasure = ($('immediateMeasure')?.value || '').trim(),
+        name = ($('name')?.value || '').trim(),
+        email = ($('email')?.value || '').trim(),
+        max = $('occurrenceDate')?.max;
 
-        showLegalWarning({
-          type, sector, occurrenceDate, frequency, description, immediateMeasure,
-          anonymous, name, email, attachments: Array.from($('reportAttachments')?.files || [])
-        });
+      if (!type || !sector || !description) {
+        msg.innerHTML = '<div class="error">preencha os campos obrigatórios antes de enviar.</div>';
+        return false;
+      }
+      if (occurrenceDate && max && occurrenceDate > max) {
+        msg.innerHTML = '<div class="error">a data da ocorrência não pode ser posterior a hoje.</div>';
+        return false;
+      }
+      if (anonymous && (name || email)) {
+        msg.innerHTML = '<div class="error">não é permitido enviar dados pessoais junto com uma denúncia anônima. apague os dados ou desmarque o anonimato.</div>';
+        return false;
+      }
+      if (!anonymous && !name) {
+        msg.innerHTML = '<div class="error">informe seu nome ou marque a opção de denúncia anônima.</div>';
+        $('name')?.focus();
         return false;
       }
 
-      function showLegalWarning(reportData) {
-        const existing = document.getElementById('legalWarningModal');
-        if (existing) existing.remove();
+      showLegalWarning({
+        type, sector, occurrenceDate, frequency, description, immediateMeasure,
+        anonymous, name, email, attachments: Array.from($('reportAttachments')?.files || [])
+      });
+      return false;
+    }
 
-        document.body.insertAdjacentHTML('beforeend', `
+    function showLegalWarning(reportData) {
+      const existing = document.getElementById('legalWarningModal');
+      if (existing) existing.remove();
+
+      document.body.insertAdjacentHTML('beforeend', `
    <div class="legal-warning-overlay" id="legalWarningModal" role="dialog" aria-modal="true" aria-labelledby="legalWarningTitle">
      <div class="legal-warning-modal">
        <div class="legal-warning-icon">!</div>
@@ -2420,100 +2571,102 @@
    </div>
  `);
 
-        const check = document.getElementById('legalWarningAcknowledgement');
-        const confirm = document.getElementById('legalWarningConfirm');
-        if (check && confirm) {
-          check.addEventListener('change', () => {
-            confirm.disabled = !check.checked;
-          });
-          check.focus();
-        }
-        window.__pendingReport = reportData;
+      const check = document.getElementById('legalWarningAcknowledgement');
+      const confirm = document.getElementById('legalWarningConfirm');
+      if (check && confirm) {
+        check.addEventListener('change', () => {
+          confirm.disabled = !check.checked;
+        });
+        check.focus();
       }
+      window.__pendingReport = reportData;
+    }
 
-      function closeLegalWarning() {
-        document.getElementById('legalWarningModal')?.remove();
+    function closeLegalWarning() {
+      document.getElementById('legalWarningModal')?.remove();
+      window.__pendingReport = null;
+    }
+
+    async function confirmLegalWarning() {
+      const check = document.getElementById('legalWarningAcknowledgement');
+      if (!check?.checked) return false;
+
+      const data = window.__pendingReport;
+      if (!data) return false;
+
+      const modal = document.getElementById('legalWarningModal');
+      const confirm = document.getElementById('legalWarningConfirm');
+      const cancel = document.querySelector('#legalWarningModal .legal-warning-cancel');
+      if (confirm) { confirm.disabled = true; confirm.textContent = 'enviando...' }
+      if (cancel) cancel.disabled = true;
+
+      const msg = document.getElementById('rmsg');
+      const form = document.getElementById('reportForm');
+
+      try {
+        const d = await api('/api/reports', {
+          method: 'POST',
+          body: (() => {
+            const body = new FormData();
+            body.append('type', data.type);
+            body.append('sector', data.sector);
+            body.append('occurrenceDate', data.occurrenceDate);
+            body.append('frequency', data.frequency);
+            body.append('description', data.description);
+            body.append('immediateMeasure', data.immediateMeasure);
+            body.append('anonymous', String(data.anonymous));
+            body.append('name', data.anonymous ? '' : data.name);
+            body.append('email', data.anonymous ? '' : data.email);
+            (data.attachments || []).forEach(file => body.append('attachments', file));
+            return body;
+          })()
+        });
+
+        window.__securitySetup = { protocol: d.protocol, setupToken: d.setupToken };
+        modal?.remove();
         window.__pendingReport = null;
+
+        root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box" style="max-width:620px"><div class="success" style="padding:20px;text-align:center"><div style="font-size:44px">✓</div><h2>denúncia enviada com sucesso!</h2><p>seu relato foi registrado no sistema.</p><p class="sub">sua denúncia foi registrada com sucesso. agora, defina a chave de segurança que será usada junto com o protocolo para consultar o andamento da denúncia.</p><div class="protocol-highlight"><div class="protocol-highlight-label">seu protocolo de acompanhamento</div><div class="protocol-highlight-number">${esc(d.protocol)}</div><div class="protocol-highlight-help">guarde este número. para consultar sua denúncia, você precisará informar este protocolo e a chave de segurança.</div></div><div class="security-key-box" style="text-align:left;margin-top:18px"><div class="security-key-title">🔐 defina sua chave de segurança</div><div class="security-key-badge">🔑 etapa obrigatória para consultar sua denúncia</div><p class="security-key-instruction">crie uma chave com <strong>no mínimo 6 caracteres</strong> e <strong>pelo menos 1 número</strong>. depois, para consultar sua denúncia e acessar o chat, você deverá informar <strong>o protocolo e esta chave</strong>.</p><label for="newSecurityKey">crie sua chave de segurança</label><input id="newSecurityKey" type="password" minlength="6" autocomplete="new-password" placeholder="mínimo de 6 caracteres e 1 número" oninput="updateSecurityKeyRules()" required><label for="newSecurityKeyConfirm" style="display:block;margin-top:10px">confirme sua chave de segurança</label><input id="newSecurityKeyConfirm" type="password" minlength="6" autocomplete="new-password" placeholder="digite a mesma chave novamente" oninput="updateSecurityKeyRules()" required><div class="security-key-rules"><span id="newKeyRuleLength" class="security-key-rule">✓ mínimo de 6 caracteres</span><span id="newKeyRuleNumber" class="security-key-rule">✓ pelo menos 1 número</span><span id="newKeyRuleMatch" class="security-key-rule">✓ as chaves coincidem</span></div><div id="newSecurityKeyMsg"></div><button id="saveSecurityKeyButton" class="btn" type="button" style="margin-top:14px" data-protocol="${esc(d.protocol)}" data-setup-token="${esc(d.setupToken)}">salvar chave de segurança</button></div><p class="sub" style="margin-top:14px">guarde o protocolo e a chave de segurança em um local seguro. por segurança, a chave não poderá ser recuperada.</p></div></div></div>`;
+      } catch (err) {
+        if (modal) modal.remove();
+        window.__pendingReport = null;
+        if (msg) msg.innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+        if (form) form.querySelector('button[type="submit"]')?.focus();
       }
+      return false;
+    }
 
-      async function confirmLegalWarning() {
-        const check = document.getElementById('legalWarningAcknowledgement');
-        if (!check?.checked) return false;
+    function updateSecurityKeyRules() {
+      const k = document.getElementById('newSecurityKey'), c = document.getElementById('newSecurityKeyConfirm');
+      if (!k || !c) return;
+      const v = k.value || '', cv = c.value || '';
+      const lengthOk = v.length >= 6, numberOk = /\d/.test(v), matchOk = cv.length > 0 && v === cv;
+      const setRule = (id, ok) => { const el = document.getElementById(id); if (el) el.classList.toggle('ok', ok) };
+      setRule('newKeyRuleLength', lengthOk); setRule('newKeyRuleNumber', numberOk); setRule('newKeyRuleMatch', matchOk);
+      k.classList.toggle('rule-ok', lengthOk && numberOk); k.classList.toggle('rule-error', v.length > 0 && !lengthOk && !numberOk);
+      c.classList.toggle('rule-ok', matchOk); c.classList.toggle('rule-error', cv.length > 0 && !matchOk);
+    }
 
-        const data = window.__pendingReport;
-        if (!data) return false;
+    function openDatePicker(el) {
+      if (!el) return;
+      try {
+        if (typeof el.showPicker === 'function') { el.showPicker(); return; }
+      } catch (e) { }
+      el.focus();
+    }
 
-        const modal = document.getElementById('legalWarningModal');
-        const confirm = document.getElementById('legalWarningConfirm');
-        const cancel = document.querySelector('#legalWarningModal .legal-warning-cancel');
-        if (confirm) { confirm.disabled = true; confirm.textContent = 'enviando...' }
-        if (cancel) cancel.disabled = true;
+    function securitySaveHome() {
+      window.location.reload();
+    }
 
-        const msg = document.getElementById('rmsg');
-        const form = document.getElementById('reportForm');
-
-        try {
-          const d = await api('/api/reports', {
-            method: 'POST',
-            body: (() => {
-              const body = new FormData();
-              body.append('type', data.type);
-              body.append('sector', data.sector);
-              body.append('occurrenceDate', data.occurrenceDate);
-              body.append('frequency', data.frequency);
-              body.append('description', data.description);
-              body.append('immediateMeasure', data.immediateMeasure);
-              body.append('anonymous', String(data.anonymous));
-              body.append('name', data.anonymous ? '' : data.name);
-              body.append('email', data.anonymous ? '' : data.email);
-              (data.attachments || []).forEach(file => body.append('attachments', file));
-              return body;
-            })()
-          });
-
-          window.__securitySetup = { protocol: d.protocol, setupToken: d.setupToken };
-          modal?.remove();
-          window.__pendingReport = null;
-
-          root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box" style="max-width:620px"><div class="success" style="padding:20px;text-align:center"><div style="font-size:44px">✓</div><h2>denúncia enviada com sucesso!</h2><p>seu relato foi registrado no sistema.</p><p class="sub">sua denúncia foi registrada com sucesso. agora, defina a chave de segurança que será usada junto com o protocolo para consultar o andamento da denúncia.</p><div class="protocol-highlight"><div class="protocol-highlight-label">seu protocolo de acompanhamento</div><div class="protocol-highlight-number">${esc(d.protocol)}</div><div class="protocol-highlight-help">guarde este número. para consultar sua denúncia, você precisará informar este protocolo e a chave de segurança.</div></div><div class="security-key-box" style="text-align:left;margin-top:18px"><div class="security-key-title">🔐 defina sua chave de segurança</div><div class="security-key-badge">🔑 etapa obrigatória para consultar sua denúncia</div><p class="security-key-instruction">crie uma chave com <strong>no mínimo 6 caracteres</strong> e <strong>pelo menos 1 número</strong>. depois, para consultar sua denúncia e acessar o chat, você deverá informar <strong>o protocolo e esta chave</strong>.</p><label for="newSecurityKey">crie sua chave de segurança</label><input id="newSecurityKey" type="password" minlength="6" autocomplete="new-password" placeholder="mínimo de 6 caracteres e 1 número" oninput="updateSecurityKeyRules()" required><label for="newSecurityKeyConfirm" style="display:block;margin-top:10px">confirme sua chave de segurança</label><input id="newSecurityKeyConfirm" type="password" minlength="6" autocomplete="new-password" placeholder="digite a mesma chave novamente" oninput="updateSecurityKeyRules()" required><div class="security-key-rules"><span id="newKeyRuleLength" class="security-key-rule">✓ mínimo de 6 caracteres</span><span id="newKeyRuleNumber" class="security-key-rule">✓ pelo menos 1 número</span><span id="newKeyRuleMatch" class="security-key-rule">✓ as chaves coincidem</span></div><div id="newSecurityKeyMsg"></div><button id="saveSecurityKeyButton" class="btn" type="button" style="margin-top:14px" data-protocol="${esc(d.protocol)}" data-setup-token="${esc(d.setupToken)}">salvar chave de segurança</button></div><p class="sub" style="margin-top:14px">guarde o protocolo e a chave de segurança em um local seguro. por segurança, a chave não poderá ser recuperada.</p></div></div></div>`;
-        } catch (err) {
-          if (modal) modal.remove();
-          window.__pendingReport = null;
-          if (msg) msg.innerHTML = '<div class="error">' + esc(err.message) + '</div>';
-          if (form) form.querySelector('button[type="submit"]')?.focus();
-        }
-        return false;
-      }
-
-      function updateSecurityKeyRules() {
-        const k = document.getElementById('newSecurityKey'), c = document.getElementById('newSecurityKeyConfirm');
-        if (!k || !c) return;
-        const v = k.value || '', cv = c.value || '';
-        const lengthOk = v.length >= 6, numberOk = /\d/.test(v), matchOk = cv.length > 0 && v === cv;
-        const setRule = (id, ok) => { const el = document.getElementById(id); if (el) el.classList.toggle('ok', ok) };
-        setRule('newKeyRuleLength', lengthOk); setRule('newKeyRuleNumber', numberOk); setRule('newKeyRuleMatch', matchOk);
-        k.classList.toggle('rule-ok', lengthOk && numberOk); k.classList.toggle('rule-error', v.length > 0 && !lengthOk && !numberOk);
-        c.classList.toggle('rule-ok', matchOk); c.classList.toggle('rule-error', cv.length > 0 && !matchOk);
-      }
-
-      function openDatePicker(el) {
-        if (!el) return;
-        try {
-          if (typeof el.showPicker === 'function') { el.showPicker(); return; }
-        } catch (e) { }
-        el.focus();
-      }
-      function securitySaveHome() {
-        window.location.reload();
-      }
-      async function defineSecurityKey(protocol, setupToken) {
-        const k = document.getElementById('newSecurityKey'), c = document.getElementById('newSecurityKeyConfirm'), msg = document.getElementById('newSecurityKeyMsg');
-        const v = (k?.value || ''), cv = (c?.value || '');
-        if (v.length < 6 || !/\d/.test(v)) { if (msg) msg.innerHTML = '<div class="error">a chave deve ter, no mínimo, 6 caracteres e conter pelo menos 1 número.</div>'; k?.focus(); return false }
-        if (v !== cv) { if (msg) msg.innerHTML = '<div class="error">as chaves não coincidem. confira a chave informada.</div>'; c?.focus(); return false }
-        try {
-          await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/security-key', { method: 'POST', body: JSON.stringify({ setupToken, securityKey: v }) });
-          if (msg) msg.innerHTML = `<div class="security-save-overlay" role="dialog" aria-modal="true" aria-labelledby="securitySaveTitle">
+    async function defineSecurityKey(protocol, setupToken) {
+      const k = document.getElementById('newSecurityKey'), c = document.getElementById('newSecurityKeyConfirm'), msg = document.getElementById('newSecurityKeyMsg');
+      const v = (k?.value || ''), cv = (c?.value || '');
+      if (v.length < 6 || !/\d/.test(v)) { if (msg) msg.innerHTML = '<div class="error">a chave deve ter, no mínimo, 6 caracteres e conter pelo menos 1 número.</div>'; k?.focus(); return false }
+      if (v !== cv) { if (msg) msg.innerHTML = '<div class="error">as chaves não coincidem. confira a chave informada.</div>'; c?.focus(); return false }
+      try {
+        await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/security-key', { method: 'POST', body: JSON.stringify({ setupToken, securityKey: v }) });
+        if (msg) msg.innerHTML = `<div class="security-save-overlay" role="dialog" aria-modal="true" aria-labelledby="securitySaveTitle">
     <div class="security-save-modal">
       <div class="security-save-icon">✓</div>
       <h3 id="securitySaveTitle">chave de segurança salva com sucesso!</h3>
@@ -2523,21 +2676,36 @@
       <button class="security-save-home" type="button" data-security-home-button="true" onclick="window.location.reload(); return false;">voltar para a tela inicial</button>
     </div>
   </div>`;
-          k.disabled = true; c.disabled = true; const btn = k.closest('.security-key-box')?.querySelector('button'); if (btn) btn.disabled = true;
-        } catch (err) { if (msg) msg.innerHTML = '<div class="error">' + esc(err.message) + '</div>' }
-        return false;
+        k.disabled = true; c.disabled = true; const btn = k.closest('.security-key-box')?.querySelector('button'); if (btn) btn.disabled = true;
+      } catch (err) { if (msg) msg.innerHTML = '<div class="error">' + esc(err.message) + '</div>' }
+      return false;
+    }
+
+    function trackProtocol() {
+      root.innerHTML = `<div class="track-page"><header class="track-page-header"><div class="track-page-logo">✓</div><div><h1 class="track-page-title">Acompanhe sua denúncia</h1><p class="track-page-subtitle">Consulte o andamento da sua denúncia com seu protocolo e sua chave de segurança.</p></div></header><main class="track-page-content"><div class="auth"><div class="panel"><div class="box"><button class="link" onclick="landing()">← Voltar</button><h2>Consultar protocolo</h2><p class="sub">Informe o número do protocolo e a chave de segurança definidos após o envio da denúncia.</p><form onsubmit="doTrack(event)"><label>Protocolo</label><input id="protocol" placeholder="Informe o número do protocolo" autocomplete="off" required><label>Chave de segurança</label><input id="protocolKey" type="password" placeholder="Informe a chave de segurança" autocomplete="off" required><div id="tmsg"></div><button class="btn">Consultar andamento</button></form></div></div></div></main></div>`;
+    }
+
+    async function doTrack(e) {
+      e.preventDefault();
+      try {
+        const p = protocol.value.trim().toUpperCase();
+        const key = protocolKey.value.trim();
+        const r = await api('/api/public/protocol/' + encodeURIComponent(p), { headers: { 'X-Protocol-Key': key } });
+        root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box"><button class="link" onclick="landing()">← Voltar</button><h2>Andamento da denúncia</h2><div class="section" style="margin-top:16px"><p><b>Protocolo:</b> ${esc(r.protocol)}</p><p><b>Tipo:</b> ${esc(r.type)}</p><p><b>Setor:</b> ${esc(r.sector)}</p><p><b>Status:</b> <span class="tag">${esc(r.status)}</span></p><p><b>Prioridade:</b> ${esc(r.priority)}</p><p><b>Recebida em:</b> ${new Date(r.createdAt).toLocaleString('pt-BR')}</p></div><div class="chat"><div class="chat-head"><div><b>💬 Conversa sobre o protocolo</b><small>Envie mensagens para complementar o acompanhamento. Os anexos pertencem à denúncia e não podem ser apagados.</small></div><span class="tag">${esc(r.protocol)}</span></div><div id="publicChatBody" class="chat-body"><div class="chat-empty">Carregando conversa...</div></div><div id="publicChatAttachments" class="chat-attachments"><div class="chat-attachments-head"><b>📎 Anexos da denúncia</b></div><div class="chat-attachments-list"><span class="muted">Carregando anexos...</span></div><div class="chat-upload-row"><label class="chat-upload-button" for="publicChatAttachmentInput">+ Adicionar novos anexos</label><input id="publicChatAttachmentInput" class="chat-upload-input" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,application/pdf,.jpg,.jpeg,.png,.webp,.mp4,.mov" onchange="handlePublicAttachmentSelection(this)"><span id="publicChatSelectedFiles" class="chat-upload-selected">Nenhum arquivo selecionado.</span></div><div class="chat-upload-help">Fotos, vídeos ou PDFs • até 100 MB por arquivo.</div><div id="publicChatUploadStatus" class="chat-upload-status"></div></div><div id="publicChatMsg"></div><form class="chat-form" data-public-chat="1" data-protocol="${esc(p)}" data-protocol-key="${esc(key)}"><textarea id="publicChatInput" placeholder="Digite sua mensagem..." maxlength="2000" required></textarea><button class="btn" type="submit">Enviar</button></form><div class="chat-note">Sua chave de segurança protege o acesso a esta conversa.</div></div><button class="btn" onclick="trackProtocol()">Consultar outro protocolo</button></div></div>`;
+        loadPublicChat(p, key);
+      } catch (err) {
+        document.getElementById('tmsg').innerHTML = '<div class="error">Protocolo ou chave de segurança inválidos.</div>';
       }
+    }
 
-      function trackProtocol() { root.innerHTML = `<div class="track-page"><header class="track-page-header"><div class="track-page-logo">✓</div><div><h1 class="track-page-title">Acompanhe sua denúncia</h1><p class="track-page-subtitle">Consulte o andamento da sua denúncia com seu protocolo e sua chave de segurança.</p></div></header><main class="track-page-content"><div class="auth"><div class="panel"><div class="box"><button class="link" onclick="landing()">← Voltar</button><h2>Consultar protocolo</h2><p class="sub">Informe o número do protocolo e a chave de segurança definidos após o envio da denúncia.</p><form onsubmit="doTrack(event)"><label>Protocolo</label><input id="protocol" placeholder="Informe o número do protocolo" autocomplete="off" required><label>Chave de segurança</label><input id="protocolKey" type="password" placeholder="Informe a chave de segurança" autocomplete="off" required><div id="tmsg"></div><button class="btn">Consultar andamento</button></form></div></div></div></main></div>` }
-      async function doTrack(e) { e.preventDefault(); try { const p = protocol.value.trim().toUpperCase(); const key = protocolKey.value.trim(); const r = await api('/api/public/protocol/' + encodeURIComponent(p), { headers: { 'X-Protocol-Key': key } }); root.innerHTML = `<div class="panel" style="min-height:100vh"><div class="box"><button class="link" onclick="landing()">← Voltar</button><h2>Andamento da denúncia</h2><div class="section" style="margin-top:16px"><p><b>Protocolo:</b> ${esc(r.protocol)}</p><p><b>Tipo:</b> ${esc(r.type)}</p><p><b>Setor:</b> ${esc(r.sector)}</p><p><b>Status:</b> <span class="tag">${esc(r.status)}</span></p><p><b>Prioridade:</b> ${esc(r.priority)}</p><p><b>Recebida em:</b> ${new Date(r.createdAt).toLocaleString('pt-BR')}</p></div><div class="chat"><div class="chat-head"><div><b>💬 Conversa sobre o protocolo</b><small>Envie uma mensagem para complementar o acompanhamento. A administração poderá responder por aqui.</small></div><span class="tag">${esc(r.protocol)}</span></div><div id="publicChatBody" class="chat-body"><div class="chat-empty">Carregando conversa...</div></div><div id="publicChatMsg"></div><form class="chat-form" data-public-chat="1" data-protocol="${esc(p)}" data-protocol-key="${esc(key)}"><textarea id="publicChatInput" placeholder="Digite sua mensagem..." maxlength="2000" required></textarea><button class="btn" type="submit">Enviar</button></form><div class="chat-note">Sua chave de segurança protege o acesso a esta conversa.</div></div><button class="btn" onclick="trackProtocol()">Consultar outro protocolo</button></div></div>`; loadPublicChat(p, key) } catch (err) { document.getElementById('tmsg').innerHTML = '<div class="error">Protocolo ou chave de segurança inválidos.</div>' } }
-      async function dashboard() {
-        const d = await api('/api/admin/dashboard');
-        const all = await api('/api/admin/reports');
-        const types = [...new Set(all.map(r => r.type).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
-        const sectors = [...new Set(all.map(r => r.sector).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
-        const statuses = [...new Set(all.map(r => r.status).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+    async function dashboard() {
+      const d = await api('/api/admin/dashboard');
+      const all = await api('/api/admin/reports');
+      const types = [...new Set(all.map(r => r.type).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+      const sectors = [...new Set(all.map(r => r.sector).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+      const statuses = [...new Set(all.map(r => r.status).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
 
-        root.innerHTML = `<div class="app"><aside class="side"><div class="logo">ProtegeNR1</div><div class="nav"><button class="active">▦ Dashboard</button><button onclick="reports()">🚨 Denúncias</button><button onclick="users()">👥 Usuários</button><button onclick="audit()">◷ Auditoria</button></div><div style="position:absolute;bottom:64px;left:14px;right:14px;border-top:1px solid #33363c;padding:12px 10px;font-size:12px;color:#cfd2d7"><b style="display:block;color:#fff">${esc(state.user?.name || "Usuário")}</b><span>${esc(state.user?.sector || "Setor não informado")}</span></div><button class="nav logout danger" onclick="logout()">Sair</button></aside>
+      root.innerHTML = `<div class="app"><aside class="side"><div class="logo">ProtegeNR1</div><div class="nav"><button class="active">▦ Dashboard</button><button onclick="reports()">🚨 Denúncias</button><button onclick="users()">👥 Usuários</button><button onclick="audit()">◷ Auditoria</button></div><div style="position:absolute;bottom:64px;left:14px;right:14px;border-top:1px solid #33363c;padding:12px 10px;font-size:12px;color:#cfd2d7"><b style="display:block;color:#fff">${esc(state.user?.name || "Usuário")}</b><span>${esc(state.user?.sector || "Setor não informado")}</span></div><button class="nav logout danger" onclick="logout()">Sair</button></aside>
   <main class="main">
     <div class="top"><div><h1>Dashboard</h1><div class="user">Administrador • ambiente corporativo</div></div></div>
     <div class="cards">
@@ -2563,131 +2731,465 @@
     <div class="section"><h3>Visão geral</h3><p class="muted">Use o menu para investigar denúncias, registrar riscos e acompanhar planos de ação.</p></div>
   </main></div>`;
 
-        const renderGraphs = () => {
-          const sector = document.getElementById('dashSector').value;
-          const status = document.getElementById('dashStatus').value;
-          const filtered = all.filter(r => (!sector || r.sector === sector) && (!status || r.status === status));
+      const renderGraphs = () => {
+        const sector = document.getElementById('dashSector').value;
+        const status = document.getElementById('dashStatus').value;
+        const filtered = all.filter(r => (!sector || r.sector === sector) && (!status || r.status === status));
 
-          const typeCounts = {};
-          const sectorCounts = {};
-          const statusCounts = {};
-          filtered.forEach(r => {
-            if (r.type) typeCounts[r.type] = (typeCounts[r.type] || 0) + 1;
-            if (r.sector) sectorCounts[r.sector] = (sectorCounts[r.sector] || 0) + 1;
-            if (r.status) statusCounts[r.status] = (statusCounts[r.status] || 0) + 1;
-          });
+        const typeCounts = {};
+        const sectorCounts = {};
+        const statusCounts = {};
+        filtered.forEach(r => {
+          if (r.type) typeCounts[r.type] = (typeCounts[r.type] || 0) + 1;
+          if (r.sector) sectorCounts[r.sector] = (sectorCounts[r.sector] || 0) + 1;
+          if (r.status) statusCounts[r.status] = (statusCounts[r.status] || 0) + 1;
+        });
 
-          const typeData = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
-          const sectorData = Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]);
-          const statusData = Object.entries(statusCounts).sort((a, b) => b[1] - a[1]);
-          const maxType = Math.max(1, ...typeData.map(x => x[1]));
-          const maxSector = Math.max(1, ...sectorData.map(x => x[1]));
-          const maxStatus = Math.max(1, ...statusData.map(x => x[1]));
+        const typeData = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
+        const sectorData = Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]);
+        const statusData = Object.entries(statusCounts).sort((a, b) => b[1] - a[1]);
+        const maxType = Math.max(1, ...typeData.map(x => x[1]));
+        const maxSector = Math.max(1, ...sectorData.map(x => x[1]));
+        const maxStatus = Math.max(1, ...statusData.map(x => x[1]));
 
-          const vertical = (data, max) => data.length ? `<div class="dash-vchart">${data.map(([name, value]) => `
-      <div class="dash-vitem">
-        <div class="dash-vvalue">${value}</div>
-        <div class="dash-vbar-wrap"><div class="dash-vbar" style="height:${Math.max(5, (value / max) * 100)}%"></div></div>
-        <div class="dash-vlabel" title="${esc(name)}">${esc(name)}</div>
-      </div>`).join('')}</div>` : '<div class="dash-empty">Nenhuma denúncia encontrada com os filtros selecionados.</div>';
+        const vertical = (data, max) => data.length ? `<div class="dash-vchart">${data.map(([name, value]) => `
+    <div class="dash-vitem">
+      <div class="dash-vvalue">${value}</div>
+      <div class="dash-vbar-wrap"><div class="dash-vbar" style="height:${Math.max(5, (value / max) * 100)}%"></div></div>
+      <div class="dash-vlabel" title="${esc(name)}">${esc(name)}</div>
+    </div>`).join('')}</div>` : '<div class="dash-empty">Nenhuma denúncia encontrada com os filtros selecionados.</div>';
 
-          const horizontal = (data, max) => data.length ? `<div class="dash-hchart">${data.map(([name, value]) => `
-      <div class="dash-hrow">
-        <div class="dash-hlabel" title="${esc(name)}">${esc(name)}</div>
-        <div class="dash-htrack"><div class="dash-hfill" style="width:${Math.max(2, (value / max) * 100)}%"></div></div>
-        <div class="dash-hvalue">${value}</div>
-      </div>`).join('')}</div>` : '<div class="dash-empty">Nenhuma denúncia encontrada com os filtros selecionados.</div>';
+        const horizontal = (data, max) => data.length ? `<div class="dash-hchart">${data.map(([name, value]) => `
+    <div class="dash-hrow">
+      <div class="dash-hlabel" title="${esc(name)}">${esc(name)}</div>
+      <div class="dash-htrack"><div class="dash-hfill" style="width:${Math.max(2, (value / max) * 100)}%"></div></div>
+      <div class="dash-hvalue">${value}</div>
+    </div>`).join('')}</div>` : '<div class="dash-empty">Nenhuma denúncia encontrada com os filtros selecionados.</div>';
 
-          document.getElementById('dashboardGraphs').innerHTML = `
-      <div class="dashboard-graph-card full">
-        <div class="dashboard-graph-title"><b>Tipos de denúncia</b><span>${filtered.length} registro${filtered.length === 1 ? '' : 's'}</span></div>
-        ${vertical(typeData, maxType)}
-      </div>
-      <div class="dashboard-graph-card">
-        <div class="dashboard-graph-title"><b>Denúncias por setor</b><span>${sectorData.length} setor${sectorData.length === 1 ? '' : 'es'}</span></div>
-        ${horizontal(sectorData, maxSector)}
-      </div>
-      <div class="dashboard-graph-card">
-        <div class="dashboard-graph-title"><b>Denúncias por status</b><span>${statusData.length} status</span></div>
-        ${horizontal(statusData, maxStatus)}
-      </div>`;
-        };
+        document.getElementById('dashboardGraphs').innerHTML = `
+    <div class="dashboard-graph-card full">
+      <div class="dashboard-graph-title"><b>Tipos de denúncia</b><span>${filtered.length} registro${filtered.length === 1 ? '' : 's'}</span></div>
+      ${vertical(typeData, maxType)}
+    </div>
+    <div class="dashboard-graph-card">
+      <div class="dashboard-graph-title"><b>Denúncias por setor</b><span>${sectorData.length} setor${sectorData.length === 1 ? '' : 'es'}</span></div>
+      ${horizontal(sectorData, maxSector)}
+    </div>
+    <div class="dashboard-graph-card">
+      <div class="dashboard-graph-title"><b>Denúncias por status</b><span>${statusData.length} status</span></div>
+      ${horizontal(statusData, maxStatus)}
+    </div>`;
+      };
 
-        document.getElementById('dashSector').addEventListener('change', renderGraphs);
-        document.getElementById('dashStatus').addEventListener('change', renderGraphs);
-        renderGraphs();
+      document.getElementById('dashSector').addEventListener('change', renderGraphs);
+      document.getElementById('dashStatus').addEventListener('change', renderGraphs);
+      renderGraphs();
+    }
+
+    function clearDashboardFilters() {
+      const a = document.getElementById("dashSector"), b = document.getElementById("dashStatus");
+      if (a) a.value = "";
+      if (b) b.value = "";
+      a?.dispatchEvent(new Event("change"));
+    }
+
+    //Campo de consulta de denúncias
+    //Aba "Denúncias" do painel administrativo
+    async function reports() {
+      const list = await api('/api/admin/reports');
+
+      const renderAttachmentsCell = (report) => {
+        const files = report.attachments || [];
+        if (!files.length) {
+          return '<span style="color:#8a9098;font-size:11px;">Sem anexos</span>';
+        }
+        return `<div class="table-attachments">${files.map(file => {
+          const url = `/api/admin/reports/${report.id}/attachments/${file.id}`;
+          const name = file.originalName || file.name || 'Arquivo';
+          return `<button type="button" class="attachment-btn" title="${esc(name)}" data-attachment-url="${esc(url)}" data-attachment-key="" data-attachment-name="${esc(name)}" data-attachment-type="${esc(file.mimeType || '')}" onclick="previewAttachment(this)">📎 ${esc(name)}</button>`;
+        }).join('')}</div>`;
+      };
+
+      root.innerHTML = appShell('Denúncias', 'reports') + `
+        <main class="main">
+          <div class="top">
+            <div>
+              <h1>Denúncias</h1>
+              <div class="user">Registros recebidos pelo canal corporativo</div>
+            </div>
+          </div>
+          <div class="section">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Protocolo</th>
+                  <th>Tipo</th>
+                  <th>Setor</th>
+                  <th>Status</th>
+                  <th>Prioridade</th>
+                  <th>Anexos</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${list.map(r => `
+                  <tr>
+                    <td><button class="link" style="padding:0" onclick="reportDetail(${r.id})"><b>${esc(r.protocol)}</b></button></td>
+                    <td>${esc(r.type)}</td>
+                    <td>${esc(r.sector)}</td>
+                    <td><span class="tag">${esc(r.status)}</span></td>
+                    <td>${esc(r.priority)}</td>
+                    <td>${renderAttachmentsCell(r)}</td>
+                  </tr>
+                `).join('') || '<tr><td colspan="6">Nenhuma denúncia registrada.</td></tr>'}
+              </tbody>
+            </table>
+          </div>
+        </main></div>`;
+    }
+
+    function appShell(title, active) {
+      return `<div class="app"><aside class="side"><div class="logo">Canal de Denúncia</div><div class="nav"><button onclick="dashboard()">▦ Dashboard</button><button class="${active === 'reports' ? 'active' : ''}" onclick="reports()">🚨 Denúncias</button><button class="${active === 'users' ? 'active' : ''}" onclick="users()">👥 Usuários</button><button class="${active === 'audit' ? 'active' : ''}" onclick="audit()">◷ Auditoria</button></div><div style="position:absolute;bottom:64px;left:14px;right:14px;border-top:1px solid #33363c;padding:12px 10px;font-size:12px;color:#cfd2d7"><b style="display:block;color:#fff">${esc(state.user?.name || "Usuário")}</b><span>${esc(state.user?.sector || "Setor não informado")}</span></div><button class="nav logout danger" onclick="logout()">Sair</button></aside>`;
+    }
+
+    function fmtChatDate(v) {
+      try { return new Date(v).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) } catch { return '' }
+    }
+
+    function chatMessagesHtml(messages, emptyText = 'Nenhuma mensagem ainda.') {
+      if (!messages || !messages.length) return `<div class="chat-empty">${esc(emptyText)}</div>`;
+      return messages.map(m => {
+        const isSystem = m.senderType === 'system';
+        const cls = isSystem ? 'system' : (m.senderType === 'admin' ? 'admin' : 'public');
+        const sender = isSystem ? 'Sistema' : (m.senderType === 'admin' ? 'Administrador' : 'Você');
+        const raw = String(m.message || '');
+        const notice = raw.match(/^\[ATTACHMENTS\]\s*([\s\S]*)$/);
+        let body;
+        if (notice) {
+          const names = notice[1].split('\n').map(x => x.trim()).filter(Boolean);
+          body = '<b>📎 Novos anexos adicionados à denúncia:</b>' + names.map(name => {
+            const parts = name.split('|');
+            const id = parts.shift() || '';
+            const fileName = parts.join('|') || 'Anexo';
+            return `<br><button type="button" class="msg-attachment-link" data-attachment-id="${esc(id)}" data-attachment-name="${esc(fileName)}" onclick="openPublicAttachmentFromChat(this)">📎 ${esc(fileName)}</button>`;
+          }).join('');
+        } else {
+          body = esc(raw).replace(/\n/g, '<br>');
+        }
+        return `<div class="msg ${cls}"><div><div class="msg-bubble">${body}</div><div class="msg-meta">${sender} • ${fmtChatDate(m.createdAt)}</div></div></div>`;
+      }).join('');
+    }
+
+    function attachmentsHtml(files, urlBuilder, key = '') {
+      if (!files || !files.length) return '<p class="muted">Nenhum anexo enviado.</p>';
+      return '<div class="report-attachments"><b>Anexos</b>' + files.map(file => {
+        const name = file.originalName || file.name || 'Arquivo';
+        return `<button type="button" class="attachment-link" data-attachment-url="${esc(urlBuilder(file.id))}" data-attachment-key="${esc(key)}" data-attachment-name="${esc(name)}" data-attachment-type="${esc(file.mimeType || '')}" onclick="previewAttachment(this)">📎 ${esc(name)}</button>`;
+      }).join('') + '</div>';
+    }
+
+    async function previewAttachment(button) {
+      const url = button?.dataset.attachmentUrl;
+      const key = button?.dataset.attachmentKey || '';
+      const name = button?.dataset.attachmentName || 'Anexo';
+      const declaredType = button?.dataset.attachmentType || '';
+      if (!url) return;
+
+      closeAttachmentPreview();
+      document.body.insertAdjacentHTML('beforeend', `<div class="modal attachment-preview-modal" id="attachmentPreviewModal" role="dialog" aria-modal="true" aria-labelledby="attachmentPreviewTitle"><div class="box attachment-preview-box"><div class="attachment-preview-head"><strong id="attachmentPreviewTitle">${esc(name)}</strong><button class="mini" type="button" onclick="closeAttachmentPreview()">Fechar</button></div><div id="attachmentPreviewBody" class="attachment-preview-body"><div class="attachment-preview-message">Carregando anexo...</div></div><div class="attachment-preview-actions"><button id="attachmentPreviewDownload" class="btn" type="button" disabled>Baixar arquivo</button></div></div></div>`);
+
+      const modal = document.getElementById('attachmentPreviewModal');
+      const body = document.getElementById('attachmentPreviewBody');
+      try {
+        const headers = key ? { 'X-Protocol-Key': key } : {};
+        const response = await fetch(url, { headers });
+        if (!response.ok) throw new Error('Não foi possível abrir o anexo.');
+        const blob = await response.blob();
+        const type = blob.type || declaredType;
+        const blobUrl = URL.createObjectURL(blob);
+        if (modal) {
+          modal.dataset.blobUrl = blobUrl;
+          modal.dataset.fileName = name;
+          modal.dataset.fileUrl = url;
+        }
+        const safeUrl = esc(blobUrl);
+        if (type.startsWith('image/')) {
+          body.innerHTML = `<img src="${safeUrl}" alt="${esc(name)}">`;
+        } else if (type.startsWith('video/')) {
+          body.innerHTML = `<video src="${safeUrl}" controls autoplay>Seu navegador não consegue reproduzir este vídeo.</video>`;
+        } else if (type === 'application/pdf' || type.endsWith('/pdf')) {
+          body.innerHTML = `<iframe src="${safeUrl}" title="${esc(name)}"></iframe>`;
+        } else {
+          body.innerHTML = `<div class="attachment-preview-message">Este tipo de arquivo não possui visualização interna. Use o botão abaixo para fazer o download.</div>`;
+        }
+        const downloadButton = document.getElementById('attachmentPreviewDownload');
+        if (downloadButton) {
+          downloadButton.disabled = false;
+          downloadButton.onclick = downloadPreviewAttachment;
+        }
+      } catch (err) {
+        if (body) body.innerHTML = `<div class="error">${esc(err.message)}</div>`;
       }
-      function clearDashboardFilters() { const a = document.getElementById("dashSector"), b = document.getElementById("dashStatus"); if (a) a.value = ""; if (b) b.value = ""; a?.dispatchEvent(new Event("change")); }
+    }
 
-      async function reports() { const list = await api('/api/admin/reports'); root.innerHTML = appShell('Denúncias', 'reports') + `<main class="main"><div class="top"><div><h1>Denúncias</h1><div class="user">Registros recebidos pelo canal corporativo</div></div></div><div class="section"><table class="table"><thead><tr><th>Protocolo</th><th>Tipo</th><th>Setor</th><th>Status</th><th>Prioridade</th></tr></thead><tbody>${list.map(r => `<tr><td><button class="link" style="padding:0" onclick="reportDetail(${r.id})"><b>${esc(r.protocol)}</b></button></td><td>${esc(r.type)}</td><td>${esc(r.sector)}</td><td><span class="tag">${esc(r.status)}</span></td><td>${esc(r.priority)}</td></tr>`).join('') || '<tr><td colspan="5">Nenhuma denúncia registrada.</td></tr>'}</tbody></table></div></main></div>` }
-      function appShell(title, active) { return `<div class="app"><aside class="side"><div class="logo">Canal de Denúncia</div><div class="nav"><button onclick="dashboard()">▦ Dashboard</button><button class="${active === 'reports' ? 'active' : ''}" onclick="reports()">🚨 Denúncias</button><button class="${active === 'users' ? 'active' : ''}" onclick="users()">👥 Usuários</button><button class="${active === 'audit' ? 'active' : ''}" onclick="audit()">◷ Auditoria</button></div><div style="position:absolute;bottom:64px;left:14px;right:14px;border-top:1px solid #33363c;padding:12px 10px;font-size:12px;color:#cfd2d7"><b style="display:block;color:#fff">${esc(state.user?.name || "Usuário")}</b><span>${esc(state.user?.sector || "Setor não informado")}</span></div><button class="nav logout danger" onclick="logout()">Sair</button></aside>` }
-      function fmtChatDate(v) { try { return new Date(v).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) } catch { return '' } }
-      function chatMessagesHtml(messages, emptyText = 'Nenhuma mensagem ainda.') { if (!messages || !messages.length) return `<div class="chat-empty">${esc(emptyText)}</div>`; return messages.map(m => `<div class="msg ${m.senderType === 'admin' ? 'admin' : 'public'}"><div><div class="msg-bubble">${esc(m.message).replace(/\n/g, '<br>')}</div><div class="msg-meta">${m.senderType === 'admin' ? 'Administrador' : 'Você'} • ${fmtChatDate(m.createdAt)}</div></div></div>`).join('') }
-      function attachmentsHtml(files, urlBuilder, key = '') { if (!files || !files.length) return '<p class="muted">Nenhum anexo enviado.</p>'; return '<div class="report-attachments"><b>Anexos</b>' + files.map(file => `<button type="button" class="attachment-link" onclick="downloadAttachment('${urlBuilder(file.id)}','${esc(key)}')">📎 ${esc(file.originalName)}</button>`).join('') + '</div>' }
-      async function downloadAttachment(url, key) { try { const headers = key ? { 'X-Protocol-Key': key } : {}; const response = await fetch(url, { headers }); if (!response.ok) throw new Error('Não foi possível baixar o arquivo.'); const blob = await response.blob(); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = url.split('/').pop() || 'anexo'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000); } catch (err) { alert(err.message); } }
-      async function loadPublicChat(protocol, key) { try { const msgs = await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/messages', { headers: { 'X-Protocol-Key': key } }); const el = document.getElementById('publicChatBody'); if (el) { el.innerHTML = chatMessagesHtml(msgs, 'Nenhuma mensagem. Você pode enviar a primeira mensagem abaixo.'); el.scrollTop = el.scrollHeight } } catch (err) { const el = document.getElementById('publicChatBody'); if (el) el.innerHTML = '<div class="error">Não foi possível carregar as mensagens.</div>' } }
-      document.addEventListener('submit', function (e) {
-        const form = e.target;
-        if (!form || !form.classList || !form.classList.contains('chat-form')) return;
+    function downloadPreviewAttachment() {
+      const modal = document.getElementById('attachmentPreviewModal');
+      if (!modal?.dataset.blobUrl) return;
+      const link = document.createElement('a');
+      link.href = modal.dataset.blobUrl;
+      link.download = modal.dataset.fileName || 'anexo';
+      link.click();
+    }
 
-        if (form.dataset.publicChat === '1') {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          sendPublicMessage(e, form.dataset.protocol, form.dataset.protocolKey);
-          return false;
-        }
+    function closeAttachmentPreview() {
+      const modal = document.getElementById('attachmentPreviewModal');
+      if (!modal) return;
+      if (modal.dataset.blobUrl) URL.revokeObjectURL(modal.dataset.blobUrl);
+      modal.remove();
+    }
 
-        if (form.dataset.adminChat === '1') {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          sendAdminMessage(e, Number(form.dataset.reportId));
-          return false;
-        }
-      }, true);
+    async function downloadAttachment(url, key) {
+      try {
+        const headers = key ? { 'X-Protocol-Key': key } : {};
+        const response = await fetch(url, { headers });
+        if (!response.ok) throw new Error('Não foi possível baixar o arquivo.');
+        const blob = await response.blob();
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = url.split('/').pop() || 'anexo';
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+      } catch (err) {
+        alert(err.message);
+      }
+    }
 
-      async function sendPublicMessage(e, protocol, protocolKey) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        const input = document.getElementById('publicChatInput');
-        const form = input?.closest('form');
-        protocolKey = protocolKey || form?.dataset.protocolKey || '';
-        const button = form?.querySelector('button[type="submit"]');
-        const status = document.getElementById('publicChatMsg');
-        const msg = (input?.value || '').trim();
-        if (!msg) { if (status) status.innerHTML = '<div class="error">Digite uma mensagem antes de enviar.</div>'; input?.focus(); return false; }
-        const original = button ? button.innerHTML : 'Enviar';
-        if (button) { button.disabled = true; button.innerHTML = 'Enviando...'; }
-        if (status) status.innerHTML = '';
-        try {
-          const result = await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/messages', { method: 'POST', headers: { 'X-Protocol-Key': protocolKey }, body: JSON.stringify({ message: msg }) });
-          input.value = '';
-          if (status) status.innerHTML = '<div class="success">✓ Mensagem enviada com sucesso!</div>';
-          await loadPublicChat(protocol, protocolKey);
-          if (status) status.innerHTML = '<div class="success">✓ Mensagem enviada com sucesso!</div>';
-          input.focus();
-        } catch (err) {
-          console.error('Erro ao enviar mensagem:', err);
-          if (status) status.innerHTML = '<div class="error">' + esc(err.message || 'Não foi possível enviar a mensagem. Tente novamente.') + '</div>';
-        } finally {
-          if (button) { button.disabled = false; button.innerHTML = original; }
-        }
+    let publicPendingAttachments = [];
+
+    function handlePublicAttachmentSelection(input) {
+      publicPendingAttachments = Array.from(input?.files || []);
+      const el = document.getElementById('publicChatSelectedFiles');
+      if (el) el.textContent = publicPendingAttachments.length
+        ? publicPendingAttachments.map(file => file.name).join(', ')
+        : 'Nenhum arquivo selecionado.';
+      const button = document.querySelector('.chat-upload-button');
+      if (button) button.textContent = publicPendingAttachments.length ? 'Enviar novos anexos' : '+ Adicionar novos anexos';
+    }
+
+    function publicAttachmentUrl(protocol, id) {
+      return '/api/public/protocol/' + encodeURIComponent(protocol) + '/attachments/' + encodeURIComponent(id);
+    }
+
+    function renderPublicAttachments(protocol, key, files) {
+      const list = document.querySelector('#publicChatAttachments .chat-attachments-list');
+      if (!list) return;
+      if (!files || !files.length) {
+        list.innerHTML = '<span class="muted">Nenhum anexo enviado.</span>';
+        return;
+      }
+      list.innerHTML = files.map(file => {
+        const name = file.originalName || file.name || 'Arquivo';
+        const url = publicAttachmentUrl(protocol, file.id);
+        return `<button type="button" class="chat-attachment-link" data-attachment-url="${esc(url)}" data-attachment-key="${esc(key)}" data-attachment-name="${esc(name)}" data-attachment-type="${esc(file.mimeType || '')}" onclick="previewAttachment(this)">📎 <span>${esc(name)}</span></button>`;
+      }).join('');
+    }
+
+    async function loadPublicAttachments(protocol, key) {
+      try {
+        const report = await api('/api/public/protocol/' + encodeURIComponent(protocol), { headers: { 'X-Protocol-Key': key } });
+        renderPublicAttachments(protocol, key, report.attachments || []);
+        return report.attachments || [];
+      } catch (err) {
+        const list = document.querySelector('#publicChatAttachments .chat-attachments-list');
+        if (list) list.innerHTML = '<span class="error">Não foi possível carregar os anexos.</span>';
+        return [];
+      }
+    }
+
+    async function uploadPublicAttachments(protocol, key) {
+      if (!publicPendingAttachments.length) return [];
+
+      const invalid = publicPendingAttachments.filter(file => file.size > 100 * 1024 * 1024);
+      if (invalid.length) throw new Error('Cada arquivo deve ter no máximo 100 MB.');
+
+      const form = new FormData();
+      publicPendingAttachments.forEach(file => form.append('attachments', file));
+
+      // Endpoint esperado: acrescenta os arquivos à denúncia existente, sem apagar/substituir anexos anteriores.
+      const result = await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/attachments', {
+        method: 'POST',
+        headers: { 'X-Protocol-Key': key },
+        body: form
+      });
+
+      return Array.isArray(result?.attachments) ? result.attachments : [];
+    }
+
+    async function registerPublicAttachmentMessage(protocol, key, files) {
+      if (!files.length) return;
+      const lines = files.map(file => `${file.id}|${file.originalName || file.name || 'Anexo'}`);
+      await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/messages', {
+        method: 'POST',
+        headers: { 'X-Protocol-Key': key },
+        body: JSON.stringify({ message: '[ATTACHMENTS]\n' + lines.join('\n') })
+      });
+    }
+
+    async function addPublicAttachments() {
+      const form = document.querySelector('.chat-form[data-public-chat="1"]');
+      const protocol = form?.dataset.protocol || '';
+      const key = form?.dataset.protocolKey || '';
+      const status = document.getElementById('publicChatUploadStatus');
+      if (!protocol || !key || !publicPendingAttachments.length) return;
+
+      const button = document.querySelector('.chat-upload-button');
+      if (button) { button.style.pointerEvents = 'none'; button.style.opacity = '.65'; }
+      if (status) status.innerHTML = '';
+
+      try {
+        const added = await uploadPublicAttachments(protocol, key);
+        if (!added.length) throw new Error('Os arquivos foram enviados, mas a API não retornou os anexos adicionados.');
+        await registerPublicAttachmentMessage(protocol, key, added);
+        publicPendingAttachments = [];
+        const input = document.getElementById('publicChatAttachmentInput');
+        if (input) input.value = '';
+        const selected = document.getElementById('publicChatSelectedFiles');
+        if (selected) selected.textContent = 'Nenhum arquivo selecionado.';
+        await loadPublicAttachments(protocol, key);
+        await loadPublicChat(protocol, key);
+        if (status) status.innerHTML = '<div class="success">✓ Novos anexos adicionados à denúncia e registrados no chat.</div>';
+      } catch (err) {
+        if (status) status.innerHTML = '<div class="error">' + esc(err.message || 'Não foi possível adicionar os anexos.') + '</div>';
+      } finally {
+        if (button) { button.style.pointerEvents = ''; button.style.opacity = ''; }
+      }
+    }
+
+    async function openPublicAttachmentFromChat(button) {
+      const form = document.querySelector('.chat-form[data-public-chat="1"]');
+      const protocol = form?.dataset.protocol || '';
+      const key = form?.dataset.protocolKey || '';
+      const id = button?.dataset.attachmentId || '';
+      const name = button?.dataset.attachmentName || 'Anexo';
+      if (!protocol || !key || !id) return;
+      const proxy = document.createElement('button');
+      proxy.dataset.attachmentUrl = publicAttachmentUrl(protocol, id);
+      proxy.dataset.attachmentKey = key;
+      proxy.dataset.attachmentName = name;
+      proxy.dataset.attachmentType = '';
+      await previewAttachment(proxy);
+    }
+
+    async function loadPublicChat(protocol, key) {
+      try {
+        const msgs = await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/messages', { headers: { 'X-Protocol-Key': key } });
+        const el = document.getElementById('publicChatBody');
+        if (el) { el.innerHTML = chatMessagesHtml(msgs, 'Nenhuma mensagem. Você pode enviar a primeira mensagem abaixo.'); el.scrollTop = el.scrollHeight; }
+        await loadPublicAttachments(protocol, key);
+      } catch (err) {
+        const el = document.getElementById('publicChatBody');
+        if (el) el.innerHTML = '<div class="error">Não foi possível carregar as mensagens.</div>';
+      }
+    }
+
+    document.addEventListener('submit', function (e) {
+      const form = e.target;
+      if (!form || !form.classList || !form.classList.contains('chat-form')) return;
+
+      if (form.dataset.publicChat === '1') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        sendPublicMessage(e, form.dataset.protocol, form.dataset.protocolKey);
         return false;
       }
 
-      async function loadAdminChat(id) { try { const msgs = await api('/api/admin/reports/' + id + '/messages'); const el = document.getElementById('adminChatBody'); if (el) { el.innerHTML = chatMessagesHtml(msgs, 'Nenhuma mensagem no protocolo.'); el.scrollTop = el.scrollHeight } } catch (err) { const el = document.getElementById('adminChatBody'); if (el) el.innerHTML = '<div class="error">Não foi possível carregar o chat.</div>' } }
-      async function sendAdminMessage(e, id) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        const input = document.getElementById('adminChatInput'); const button = input?.form?.querySelector('button[type="submit"]'); const status = document.getElementById('adminChatMsg'); const msg = (input?.value || '').trim();
-        if (!msg) { if (status) status.innerHTML = '<div class="error">Digite uma mensagem antes de enviar.</div>'; input?.focus(); return false; }
-        const original = button ? button.innerHTML : 'Responder'; if (button) { button.disabled = true; button.innerHTML = 'Enviando...'; } if (status) status.innerHTML = '';
-        try { await api('/api/admin/reports/' + id + '/messages', { method: 'POST', body: JSON.stringify({ message: msg }) }); input.value = ''; if (status) status.innerHTML = '<div class="success">✓ Resposta enviada com sucesso.</div>'; await loadAdminChat(id); }
-        catch (err) { console.error(err); if (status) status.innerHTML = '<div class="error">Não foi possível enviar a resposta.</div>'; }
-        finally { if (button) { button.disabled = false; button.innerHTML = original; } } return false;
+      if (form.dataset.adminChat === '1') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        sendAdminMessage(e, Number(form.dataset.reportId));
+        return false;
       }
-      async function reportDetail(id) {
-        const detail = await api('/api/admin/reports/' + id);
-        const r = detail;
-        window.__lastReportDetail = r;
-        root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box">
+    }, true);
+
+    document.addEventListener('click', function (e) {
+      const button = e.target.closest('.chat-upload-button');
+      if (!button) return;
+      if (publicPendingAttachments.length) {
+        e.preventDefault();
+        addPublicAttachments();
+      }
+    });
+
+    async function sendPublicMessage(e, protocol, protocolKey) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      const input = document.getElementById('publicChatInput');
+      const form = input?.closest('form');
+      protocolKey = protocolKey || form?.dataset.protocolKey || '';
+      const button = form?.querySelector('button[type="submit"]');
+      const status = document.getElementById('publicChatMsg');
+      const msg = (input?.value || '').trim();
+      if (publicPendingAttachments.length) {
+        if (status) status.innerHTML = '<div class="error">Clique em “+ Adicionar novos anexos” para enviar os arquivos selecionados.</div>';
+        return false;
+      }
+      if (!msg) { if (status) status.innerHTML = '<div class="error">Digite uma mensagem antes de enviar.</div>'; input?.focus(); return false; }
+      const original = button ? button.innerHTML : 'Enviar';
+      if (button) { button.disabled = true; button.innerHTML = 'Enviando...'; }
+      if (status) status.innerHTML = '';
+      try {
+        await api('/api/public/protocol/' + encodeURIComponent(protocol) + '/messages', { method: 'POST', headers: { 'X-Protocol-Key': protocolKey }, body: JSON.stringify({ message: msg }) });
+        input.value = '';
+        await loadPublicChat(protocol, protocolKey);
+        if (status) status.innerHTML = '<div class="success">✓ Mensagem enviada com sucesso!</div>';
+        input.focus();
+      } catch (err) {
+        console.error('Erro ao enviar mensagem:', err);
+        if (status) status.innerHTML = '<div class="error">' + esc(err.message || 'Não foi possível enviar a mensagem. Tente novamente.') + '</div>';
+      } finally {
+        if (button) { button.disabled = false; button.innerHTML = original; }
+      }
+      return false;
+    }
+
+    async function loadAdminChat(id) {
+      try {
+        const msgs = await api('/api/admin/reports/' + id + '/messages');
+        const el = document.getElementById('adminChatBody');
+        if (el) { el.innerHTML = chatMessagesHtml(msgs, 'Nenhuma mensagem no protocolo.'); el.scrollTop = el.scrollHeight; }
+      } catch (err) {
+        const el = document.getElementById('adminChatBody');
+        if (el) el.innerHTML = '<div class="error">Não foi possível carregar o chat.</div>';
+      }
+    }
+
+    async function sendAdminMessage(e, id) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      const input = document.getElementById('adminChatInput');
+      const button = input?.form?.querySelector('button[type="submit"]');
+      const status = document.getElementById('adminChatMsg');
+      const msg = (input?.value || '').trim();
+      if (!msg) { if (status) status.innerHTML = '<div class="error">Digite uma mensagem antes de enviar.</div>'; input?.focus(); return false; }
+      const original = button ? button.innerHTML : 'Responder';
+      if (button) { button.disabled = true; button.innerHTML = 'Enviando...'; }
+      if (status) status.innerHTML = '';
+      try {
+        await api('/api/admin/reports/' + id + '/messages', { method: 'POST', body: JSON.stringify({ message: msg }) });
+        input.value = '';
+        if (status) status.innerHTML = '<div class="success">✓ Resposta enviada com sucesso.</div>';
+        await loadAdminChat(id);
+      } catch (err) {
+        console.error(err);
+        if (status) status.innerHTML = '<div class="error">Não foi possível enviar a resposta.</div>';
+      } finally {
+        if (button) { button.disabled = false; button.innerHTML = original; }
+      }
+      return false;
+    }
+
+    async function reportDetail(id) {
+      const detail = await api('/api/admin/reports/' + id);
+      const r = detail;
+      window.__lastReportDetail = r;
+      root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box">
   <div class="top"><div><h2>Denúncia ${esc(r.protocol)}</h2><div class="user">${esc(r.type)} • ${esc(r.sector)}</div></div><button class="mini" onclick="closeModal()">Fechar</button></div>
   <div class="section" style="margin-top:0"><p><b>Descrição</b></p><p>${esc(detail.description || '').replace(/\n/g, '<br>')}</p>
   <p><b>Como você espera que a situação seja resolvida?</b></p><p>${esc(detail.immediate_measure || 'Não informada').replace(/\n/g, '<br>')}</p>
@@ -2697,230 +3199,235 @@
   </select></div><div><label>Prioridade</label><select id="dpriority">${['Baixa', 'Média', 'Alta', 'Crítica'].map(x => `<option ${r.priority === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
   <div class="full"><label>Responsável</label><input id="dresponsible" value="${esc(r.responsible || '')}"></div></div>
   <button class="btn" onclick="updateReport(${r.id})">Salvar alterações</button><div id="dmsg"></div><div class="chat"><div class="chat-head"><div><b>💬 Chat do protocolo</b><small>Converse com quem registrou a denúncia e mantenha todo o histórico no protocolo.</small></div><span class="tag">${esc(r.protocol)}</span></div><div id="adminChatBody" class="chat-body"><div class="chat-empty">Carregando conversa...</div></div><div id="adminChatMsg"></div><form class="chat-form" data-admin-chat="1" data-report-id="${r.id}"><textarea id="adminChatInput" placeholder="Digite uma resposta..." maxlength="2000" required></textarea><button class="btn" type="submit">Responder</button></form></div></div></div>`);
-        loadAdminChat(r.id);
-      }
-      async function updateReport(id) {
-        try {
-          await api('/api/admin/reports/' + id, { method: 'PATCH', body: JSON.stringify({ status: document.getElementById('dstatus').value, priority: document.getElementById('dpriority').value, responsible: document.getElementById('dresponsible').value }) });
-          document.getElementById('dmsg').innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Alterações salvas com sucesso.</div>';
-          setTimeout(() => { closeModal(); reportDetail(id) }, 600);
-        } catch (err) { document.getElementById('dmsg').innerHTML = '<div class="error">' + esc(err.message) + '</div>' }
-      }
-      function closeModal() { document.getElementById('modal')?.remove() }
-      function cpfFmt(v) { let x = String(v || '').replace(/\D/g, '').slice(0, 11); return x.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2') }
-      async function users() {
-        const list = await api('/api/admin/users');
-        root.innerHTML = appShell('Usuários', 'users') + `<main class="main"><div class="top"><div><h1>Usuários</h1><div class="user">Cadastre e consulte os acessos da empresa.</div></div><button class="mini red" onclick="newUser()">+ Novo usuário</button></div>
- <div class="section"><table class="table"><thead><tr><th>Nome</th><th>CPF</th><th>Setor</th><th>E-mail</th><th>Status</th><th>Ações</th></tr></thead><tbody>
- ${list.map(u => `<tr><td><b>${esc(u.name)}</b></td><td>${esc(cpfFmt(u.cpf))}</td><td>${esc(u.sector || 'Não informado')}</td><td>${esc(u.email || '-')}</td><td><span class="tag ${u.active ? 'ok' : 'mutedtag'}">${u.active ? 'Ativo' : 'Inativo'}</span></td><td><button class="mini" type="button" onclick="editUser(${Number(u.id)})">✏ Editar</button></td></tr>`).join('')}</tbody></table></div></main></div>`;
-      }
-      function newUser() { root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box"><div class="top"><div><h2>Novo usuário</h2></div><button class="mini" onclick="closeModal()">Fechar</button></div><form onsubmit="createUser(event)"><label>nome completo *</label><input id="uname" required><label>CPF *</label><input id="ucpf" inputmode="numeric" placeholder="000.000.000-00" required oninput="this.value=cpfFmt(this.value)"><label>Setor *</label><input id="usector" required placeholder="Digite o setor"><label>E-mail</label><input id="uemail" type="email"><label>Senha inicial *</label><input id="upassword" type="password" minlength="6" required><div id="umsg"></div><button class="btn">Criar usuário</button></form></div></div>`) }
-      async function createUser(e) { e.preventDefault(); try { await api('/api/admin/users', { method: 'POST', body: JSON.stringify({ name: uname.value, cpf: ucpf.value, sector: usector.value, email: uemail.value, password: upassword.value }) }); umsg.innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Usuário criado com sucesso.</div>'; setTimeout(() => { closeModal(); users() }, 600) } catch (x) { umsg.innerHTML = '<div class="error">' + esc(x.message) + '</div>' } }
+      loadAdminChat(r.id);
+    }
 
-      async function editUser(id) { const list = await api('/api/admin/users'); const u = list.find(x => Number(x.id) === Number(id)); if (!u) return; root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box"><div class="top"><div><h2>Editar usuário</h2></div><button class="mini" onclick="closeModal()">Fechar</button></div><form onsubmit="updateUser(event,${id})"><label>Nome completo *</label><input id="ename" value="${esc(u.name)}" required><label>CPF *</label><input id="ecpf" value="${esc(cpfFmt(u.cpf))}" inputmode="numeric" required oninput="this.value=cpfFmt(this.value)"><label>Setor *</label><input id="esector" value="${esc(u.sector || '')}" required><label>E-mail</label><input id="eemail" type="email" value="${esc(u.email || '')}"><label>Nova senha <span class="small">(deixe vazio para manter)</span></label><input id="epassword" type="password" minlength="6"><label style="display:flex;gap:8px;align-items:center"><input id="eactive" type="checkbox" style="width:auto" ${u.active ? 'checked' : ''}> Usuário ativo</label><div id="emsg"></div><button class="btn">Salvar alterações</button></form></div></div>`) }
-      async function updateUser(e, id) { e.preventDefault(); try { await api('/api/admin/users/' + id, { method: 'PATCH', body: JSON.stringify({ name: ename.value, cpf: ecpf.value, sector: esector.value, email: eemail.value, password: epassword.value || undefined, active: eactive.checked }) }); emsg.innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Usuário atualizado com sucesso.</div>'; setTimeout(() => { closeModal(); users() }, 600) } catch (x) { emsg.innerHTML = '<div class="error">' + esc(x.message) + '</div>' } }
-      async function risks() { const list = await api('/api/admin/risks'); root.innerHTML = appShell('Riscos', 'risks') + `<main class="main"><div class="top"><div><h1>Riscos NR-1</h1><div class="user">Registro de fatores de risco</div></div></div><div class="section"><table class="table"><thead><tr><th>Setor</th><th>Fator</th><th>Categoria</th><th>Prioridade</th><th>Status</th></tr></thead><tbody>${list.map(r => `<tr><td>${esc(r.sector)}</td><td>${esc(r.factor)}</td><td>${esc(r.category)}</td><td><span class="tag">${esc(r.priority)}</span></td><td>${esc(r.status)}</td></tr>`).join('') || '<tr><td colspan="5">Nenhum risco registrado.</td></tr>'}</tbody></table></div></main></div>` }
-      async function actions() { const list = await api('/api/admin/actions'); root.innerHTML = appShell('Ações', 'actions') + `<main class="main"><div class="top"><div><h1>Planos de ação</h1><div class="user">Acompanhamento de medidas</div></div></div><div class="section"><table class="table"><thead><tr><th>Ação</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr></thead><tbody>${list.map(r => `<tr><td>${esc(r.title)}</td><td>${esc(r.responsible)}</td><td>${esc(r.dueDate)}</td><td><span class="tag">${esc(r.status)}</span></td></tr>`).join('') || '<tr><td colspan="4">Nenhum plano de ação registrado.</td></tr>'}</tbody></table></div></main></div>` }
-      async function audit() { const list = await api('/api/admin/audit'); root.innerHTML = appShell('Auditoria', 'audit') + `<main class="main"><div class="top"><div><h1>Auditoria</h1><div class="user">Histórico de eventos administrativos</div></div></div><div class="section"><table class="table"><thead><tr><th>Data</th><th>Ação</th><th>Denúncia</th></tr></thead><tbody>${list.map(r => `<tr><td>${new Date(r.createdAt).toLocaleString('pt-BR')}</td><td>${esc(r.action)}</td><td>${esc(r.reportId || '-')}</td></tr>`).join('') || '<tr><td colspan="3">Nenhum evento.</td></tr>'}</tbody></table></div></main></div>` }
-      async function logout() { await api('/api/auth/logout', { method: 'POST' }).catch(() => { }); state.user = null; landing() }
+    async function updateReport(id) {
+      try {
+        await api('/api/admin/reports/' + id, { method: 'PATCH', body: JSON.stringify({ status: document.getElementById('dstatus').value, priority: document.getElementById('dpriority').value, responsible: document.getElementById('dresponsible').value }) });
+        document.getElementById('dmsg').innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Alterações salvas com sucesso.</div>';
+        setTimeout(() => { closeModal(); reportDetail(id) }, 600);
+      } catch (err) {
+        document.getElementById('dmsg').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('modal')?.remove();
+    }
+
+    function cpfFmt(v) {
+      let x = String(v || '').replace(/\D/g, '').slice(0, 11);
+      return x.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    }
+
+    //Campo de Cadastro de Usuários
+    //Aba "Usuários" do painel administrativo
+    async function users() {
+      const list = await api('/api/admin/users');
+      root.innerHTML = appShell('Usuários', 'users') + `<main class="main"><div class="top"><div><h1>Usuários</h1><div class="user">Cadastre e consulte os acessos da empresa.</div></div><button class="mini red" onclick="newUser()">+ Novo usuário</button></div>
+<div class="section"><table class="table"><thead><tr><th>Nome</th><th>CPF</th><th>Setor</th><th>E-mail</th><th>Status</th><th>Ações</th></tr></thead><tbody>
+${list.map(u => `<tr><td><b>${esc(u.name)}</b></td><td>${esc(cpfFmt(u.cpf))}</td><td>${esc(u.sector || 'Não informado')}</td><td>${esc(u.email || '-')}</td><td><span class="tag ${u.active ? 'ok' : 'mutedtag'}">${u.active ? 'Ativo' : 'Inativo'}</span></td><td><button class="mini" type="button" onclick="editUser(${Number(u.id)})">✏ Editar</button></td></tr>`).join('')}</tbody></table></div></main></div>`;
+    }
+
+    function newUser() {
+      root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box"><div class="top"><div><h2>Novo usuário</h2></div><button class="mini" onclick="closeModal()">Fechar</button></div><form onsubmit="createUser(event)"><label>nome completo *</label><input id="uname" required><label>CPF *</label><input id="ucpf" inputmode="numeric" placeholder="000.000.000-00" required oninput="this.value=cpfFmt(this.value)"><label>Setor *</label><input id="usector" required placeholder="Digite o setor"><label>E-mail</label><input id="uemail" type="email"><label>Senha inicial *</label><input id="upassword" type="password" minlength="6" required><div id="umsg"></div><button class="btn">Criar usuário</button></form></div></div>`);
+    }
+
+    async function createUser(e) {
+      e.preventDefault();
+      try {
+        await api('/api/admin/users', { method: 'POST', body: JSON.stringify({ name: uname.value, cpf: ucpf.value, sector: usector.value, email: uemail.value, password: upassword.value }) });
+        umsg.innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Usuário criado com sucesso.</div>';
+        setTimeout(() => { closeModal(); users() }, 600);
+      } catch (x) {
+        umsg.innerHTML = '<div class="error">' + esc(x.message) + '</div>';
+      }
+    }
+
+    async function editUser(id) {
+      const list = await api('/api/admin/users');
+      const u = list.find(x => Number(x.id) === Number(id));
+      if (!u) return;
+      root.insertAdjacentHTML('beforeend', `<div class="modal" id="modal"><div class="box"><div class="top"><div><h2>Editar usuário</h2></div><button class="mini" onclick="closeModal()">Fechar</button></div><form onsubmit="updateUser(event,${id})"><label>Nome completo *</label><input id="ename" value="${esc(u.name)}" required><label>CPF *</label><input id="ecpf" value="${esc(cpfFmt(u.cpf))}" inputmode="numeric" required oninput="this.value=cpfFmt(this.value)"><label>Setor *</label><input id="esector" value="${esc(u.sector || '')}" required><label>E-mail</label><input id="eemail" type="email" value="${esc(u.email || '')}"><label>Nova senha <span class="small">(deixe vazio para manter)</span></label><input id="epassword" type="password" minlength="6"><label style="display:flex;gap:8px;align-items:center"><input id="eactive" type="checkbox" style="width:auto" ${u.active ? 'checked' : ''}> Usuário ativo</label><div id="emsg"></div><button class="btn">Salvar alterações</button></form></div></div>`);
+    }
+
+    async function updateUser(e, id) {
+      e.preventDefault();
+      try {
+        await api('/api/admin/users/' + id, { method: 'PATCH', body: JSON.stringify({ name: ename.value, cpf: ecpf.value, sector: esector.value, email: eemail.value, password: epassword.value || undefined, active: eactive.checked }) });
+        emsg.innerHTML = '<div class="success" style="padding:10px;margin-top:10px">Usuário atualizado com sucesso.</div>';
+        setTimeout(() => { closeModal(); users() }, 600);
+      } catch (x) {
+        emsg.innerHTML = '<div class="error">' + esc(x.message) + '</div>';
+      }
+    }
+
+    async function risks() {
+      const list = await api('/api/admin/risks');
+      root.innerHTML = appShell('Riscos', 'risks') + `<main class="main"><div class="top"><div><h1>Riscos NR-1</h1><div class="user">Registro de fatores de risco</div></div></div><div class="section"><table class="table"><thead><tr><th>Setor</th><th>Fator</th><th>Categoria</th><th>Prioridade</th><th>Status</th></tr></thead><tbody>${list.map(r => `<tr><td>${esc(r.sector)}</td><td>${esc(r.factor)}</td><td>${esc(r.category)}</td><td><span class="tag">${esc(r.priority)}</span></td><td>${esc(r.status)}</td></tr>`).join('') || '<tr><td colspan="5">Nenhum risco registrado.</td></tr>'}</tbody></table></div></main></div>`;
+    }
+
+    async function actions() {
+      const list = await api('/api/admin/actions');
+      root.innerHTML = appShell('Ações', 'actions') + `<main class="main"><div class="top"><div><h1>Planos de ação</h1><div class="user">Acompanhamento de medidas</div></div></div><div class="section"><table class="table"><thead><tr><th>Ação</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr></thead><tbody>${list.map(r => `<tr><td>${esc(r.title)}</td><td>${esc(r.responsible)}</td><td>${esc(r.dueDate)}</td><td><span class="tag">${esc(r.status)}</span></td></tr>`).join('') || '<tr><td colspan="4">Nenhum plano de ação registrado.</td></tr>'}</tbody></table></div></main></div>`;
+    }
+
+    async function audit() {
+      const list = await api('/api/admin/audit');
+      root.innerHTML = appShell('Auditoria', 'audit') + `<main class="main"><div class="top"><div><h1>Auditoria</h1><div class="user">Histórico de eventos administrativos</div></div></div><div class="section"><table class="table"><thead><tr><th>Data</th><th>Ação</th><th>Denúncia</th></tr></thead><tbody>${list.map(r => `<tr><td>${new Date(r.createdAt).toLocaleString('pt-BR')}</td><td>${esc(r.action)}</td><td>${esc(r.reportId || '-')}</td></tr>`).join('') || '<tr><td colspan="3">Nenhum evento.</td></tr>'}</tbody></table></div></main></div>`;
+    }
+
+    async function logout() {
+      await api('/api/auth/logout', { method: 'POST' }).catch(() => { });
+      state.user = null;
       landing();
-    </script>
-    <script id="security-key-validation">
-      (function () {
-        function validKey(v) { return v.length >= 6 && /\d/.test(v) }
-        function wire() {
-          const k = document.getElementById('securityKey'), c = document.getElementById('securityKeyConfirm'); if (!k || !c || k.dataset.wired) return;
-          k.dataset.wired = c.dataset.wired = '1';
-          const sync = () => { const a = k.value, b = c.value; document.getElementById('keyRuleLength')?.classList.toggle('ok', a.length >= 6); document.getElementById('keyRuleNumber')?.classList.toggle('ok', /\d/.test(a)); document.getElementById('keyRuleMatch')?.classList.toggle('ok', a.length > 0 && a === b); const e = document.getElementById('securityKeyError'); if (e) e.textContent = a && !validKey(a) ? 'A chave precisa ter pelo menos 6 caracteres e conter pelo menos 1 número.' : b && a !== b ? 'As chaves não coincidem.' : '' };
-          k.addEventListener('input', sync); c.addEventListener('input', sync);
-          const f = k.closest('form'); if (f && !f.dataset.keyValidation) { f.dataset.keyValidation = '1'; f.addEventListener('submit', e => { if (!validKey(k.value) || k.value !== c.value) { e.preventDefault(); e.stopImmediatePropagation(); sync(); k.focus(); return false } }, true) }
-        }
-        new MutationObserver(wire).observe(document.documentElement, { subtree: true, childList: true }); wire();
-      })();
-    </script>
-    <script id="security-save-key-delegation">
-      document.addEventListener("click", async function (e) {
-        const b = e.target.closest && e.target.closest("#saveSecurityKeyButton");
-        if (!b) return;
-        e.preventDefault(); e.stopPropagation();
-        const k = document.getElementById("newSecurityKey"), c = document.getElementById("newSecurityKeyConfirm"), m = document.getElementById("newSecurityKeyMsg");
-        if (!k || !c || !m) return;
-        const v = (k.value || "").trim(), cv = (c.value || "").trim();
-        if (v.length < 6 || !/\d/.test(v)) { m.innerHTML = '<div class="error">A chave deve ter, no mínimo, 6 caracteres e conter pelo menos 1 número.</div>'; k.focus(); return; }
-        if (v !== cv) { m.innerHTML = '<div class="error">As chaves não coincidem. Confira a chave informada.</div>'; c.focus(); return; }
-        const p = b.dataset.protocol || (window.__securitySetup && window.__securitySetup.protocol) || "";
-        const t = b.dataset.setupToken || (window.__securitySetup && window.__securitySetup.setupToken) || "";
-        if (!p || !t) { m.innerHTML = '<div class="error">Não foi possível identificar a sessão de configuração da chave. Gere uma nova denúncia para continuar.</div>'; return; }
-        const old = b.textContent; b.disabled = true; b.textContent = "salvando chave...";
-        try {
-          await api("/api/public/protocol/" + encodeURIComponent(p) + "/security-key", { method: "POST", body: JSON.stringify({ setupToken: t, securityKey: v }) });
-          m.innerHTML = '<div class="security-save-overlay" role="dialog" aria-modal="true"><div class="security-save-modal"><div class="security-save-icon">✓</div><h3>chave de segurança salva com sucesso!</h3><p>sua chave foi definida e está vinculada ao protocolo abaixo. por segurança, ela não será exibida. para consultar sua denúncia e acessar o chat, você deverá informar <strong>o protocolo e a chave de segurança</strong>.</p><div class="security-save-protocol">' + esc(p) + '</div><p>guarde essas duas informações em um local seguro. por segurança, a chave não poderá ser recuperada.</p><button class="security-save-home" type="button" onclick="window.location.reload();return false;">voltar para a tela inicial</button></div></div>';
-          k.disabled = true; c.disabled = true;
-        } catch (err) { m.innerHTML = '<div class="error">' + esc(err.message || "Não foi possível salvar a chave de segurança.") + '</div>'; b.disabled = false; b.textContent = old; }
-      }, true);
-    </script>
+    }
 
-    <style id="tipos-ocorrencia-hover-20260916">
-      .tipo-ocorrencia-custom {
-        position: relative;
-        width: 100%;
-      }
+    landing();
+  </script>
 
-      .tipo-ocorrencia-button {
-        width: 100%;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 11px 13px;
-        border: 1px solid #d9dee5;
-        border-radius: 8px;
-        background: #fff;
-        color: #252a31;
-        font: inherit;
-        text-align: left;
-        cursor: pointer;
-      }
-
-      .tipo-ocorrencia-button:hover,
-      .tipo-ocorrencia-custom.aberto .tipo-ocorrencia-button {
-        border-color: #b9141b;
-        box-shadow: 0 0 0 3px rgba(185, 20, 27, .10);
-      }
-
-      .tipo-ocorrencia-button b {
-        color: #b9141b;
-        font-size: 16px;
-      }
-
-      .tipo-ocorrencia-options {
-        position: absolute;
-        z-index: 99999;
-        top: calc(100% + 5px);
-        left: 0;
-        right: 0;
-        display: none;
-        max-height: 390px;
-        overflow-y: auto;
-        padding: 6px;
-        border: 1px solid #d9dee5;
-        border-radius: 9px;
-        background: #fff;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, .16);
-      }
-
-      .tipo-ocorrencia-custom.aberto .tipo-ocorrencia-options {
-        display: block;
-      }
-
-      .tipo-ocorrencia-option {
-        display: block;
-        padding: 10px 12px;
-        border-radius: 7px;
-        cursor: pointer;
-      }
-
-      .tipo-ocorrencia-option:hover,
-      .tipo-ocorrencia-option:focus {
-        background: #fff3f3;
-      }
-
-      .tipo-ocorrencia-option strong {
-        display: block;
-        color: #252a31;
-        font-size: 14px;
-      }
-
-      .tipo-ocorrencia-option small {
-        display: none;
-        margin-top: 5px;
-        color: #626b75;
-        font-size: 12px;
-        line-height: 1.45;
-      }
-
-      .tipo-ocorrencia-option:hover small,
-      .tipo-ocorrencia-option:focus small {
-        display: block;
-      }
-    </style>
-
-    <script id="tipos-ocorrencia-hover-script-20260916">
-      (function () {
-        function iniciarTiposOcorrencia() {
-          var caixa = document.getElementById("tipoOcorrenciaCustom");
-          if (!caixa || caixa.getAttribute("data-iniciado") === "sim") return;
-
-          caixa.setAttribute("data-iniciado", "sim");
-
-          var botao = document.getElementById("typeSelectButton");
-          var campo = document.getElementById("type");
-          var opcoes = caixa.querySelectorAll(".tipo-ocorrencia-option");
-
-          botao.addEventListener("click", function () {
-            caixa.classList.toggle("aberto");
-          });
-
-          opcoes.forEach(function (opcao) {
-            opcao.addEventListener("click", function () {
-              campo.value = opcao.getAttribute("data-value");
-              botao.querySelector("span").textContent = opcao.querySelector("strong").textContent;
-              caixa.classList.remove("aberto");
-            });
-          });
-
-          document.addEventListener("click", function (evento) {
-            if (!caixa.contains(evento.target)) {
-              caixa.classList.remove("aberto");
+  <script id="security-key-validation">
+    (function () {
+      function validKey(v) { return v.length >= 6 && /\d/.test(v) }
+      function wire() {
+        const k = document.getElementById('securityKey'), c = document.getElementById('securityKeyConfirm');
+        if (!k || !c || k.dataset.wired) return;
+        k.dataset.wired = c.dataset.wired = '1';
+        const sync = () => {
+          const a = k.value, b = c.value;
+          document.getElementById('keyRuleLength')?.classList.toggle('ok', a.length >= 6);
+          document.getElementById('keyRuleNumber')?.classList.toggle('ok', /\d/.test(a));
+          document.getElementById('keyRuleMatch')?.classList.toggle('ok', a.length > 0 && a === b);
+          const e = document.getElementById('securityKeyError');
+          if (e) e.textContent = a && !validKey(a) ? 'A chave precisa ter pelo menos 6 caracteres e conter pelo menos 1 número.' : b && a !== b ? 'As chaves não coincidem.' : '';
+        };
+        k.addEventListener('input', sync);
+        c.addEventListener('input', sync);
+        const f = k.closest('form');
+        if (f && !f.dataset.keyValidation) {
+          f.dataset.keyValidation = '1';
+          f.addEventListener('submit', e => {
+            if (!validKey(k.value) || k.value !== c.value) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              sync();
+              k.focus();
+              return false;
             }
-          });
+          }, true);
         }
+      }
+      new MutationObserver(wire).observe(document.documentElement, { subtree: true, childList: true });
+      wire();
+    })();
+  </script>
 
-        var observador = new MutationObserver(iniciarTiposOcorrencia);
-        observador.observe(document.body, {
-          childList: true,
-          subtree: true
+  <script id="security-save-key-delegation">
+    document.addEventListener("click", async function (e) {
+      const b = e.target.closest && e.target.closest("#saveSecurityKeyButton");
+      if (!b) return;
+      e.preventDefault(); e.stopPropagation();
+      const k = document.getElementById("newSecurityKey"), c = document.getElementById("newSecurityKeyConfirm"), m = document.getElementById("newSecurityKeyMsg");
+      if (!k || !c || !m) return;
+      const v = (k.value || "").trim(), cv = (c.value || "").trim();
+      if (v.length < 6 || !/\d/.test(v)) { m.innerHTML = '<div class="error">A chave deve ter, no mínimo, 6 caracteres e conter pelo menos 1 número.</div>'; k.focus(); return; }
+      if (v !== cv) { m.innerHTML = '<div class="error">As chaves não coincidem. Confira a chave informada.</div>'; c.focus(); return; }
+      const p = b.dataset.protocol || (window.__securitySetup && window.__securitySetup.protocol) || "";
+      const t = b.dataset.setupToken || (window.__securitySetup && window.__securitySetup.setupToken) || "";
+      if (!p || !t) { m.innerHTML = '<div class="error">Não foi possível identificar a sessão de configuração da chave. Gere uma nova denúncia para continuar.</div>'; return; }
+      const old = b.textContent; b.disabled = true; b.textContent = "salvando chave...";
+      try {
+        await api("/api/public/protocol/" + encodeURIComponent(p) + "/security-key", { method: "POST", body: JSON.stringify({ setupToken: t, securityKey: v }) });
+        m.innerHTML = '<div class="security-save-overlay" role="dialog" aria-modal="true"><div class="security-save-modal"><div class="security-save-icon">✓</div><h3>chave de segurança salva com sucesso!</h3><p>sua chave foi definida e está vinculada ao protocolo abaixo. por segurança, ela não será exibida. para consultar sua denúncia e acessar o chat, você deverá informar <strong>o protocolo e a chave de segurança</strong>.</p><div class="security-save-protocol">' + esc(p) + '</div><p>guarde essas duas informações em um local seguro. por segurança, a chave não poderá ser recuperada.</p><button class="security-save-home" type="button" onclick="window.location.reload();return false;">voltar para a tela inicial</button></div></div>';
+        k.disabled = true; c.disabled = true;
+      } catch (err) {
+        m.innerHTML = '<div class="error">' + esc(err.message || "Não foi possível salvar a chave de segurança.") + '</div>';
+        b.disabled = false;
+        b.textContent = old;
+      }
+    }, true);
+  </script>
+
+  <script id="tipos-ocorrencia-hover-script-20260916">
+    (function () {
+      function iniciarTiposOcorrencia() {
+        var caixa = document.getElementById("tipoOcorrenciaCustom");
+        if (!caixa || caixa.getAttribute("data-iniciado") === "sim") return;
+        caixa.setAttribute("data-iniciado", "sim");
+
+        var botao = document.getElementById("typeSelectButton");
+        var campo = document.getElementById("type");
+        var opcoes = caixa.querySelectorAll(".tipo-ocorrencia-option");
+
+        botao.addEventListener("click", function () {
+          caixa.classList.toggle("aberto");
         });
 
-        iniciarTiposOcorrencia();
-      })();
-    </script>
+        opcoes.forEach(function (opcao) {
+          opcao.addEventListener("click", function () {
+            campo.value = opcao.getAttribute("data-value");
+            botao.querySelector("span").textContent = opcao.querySelector("strong").textContent;
+            caixa.classList.remove("aberto");
+          });
+        });
 
-    <script id="report-attachments-script">
-      (function () {
-        var descriptor = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
-        var field = '<div class="full"><label for="reportAttachments">Anexos (opcional)</label><input id="reportAttachments" name="attachments" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,application/pdf,.jpg,.jpeg,.png,.webp,.mp4,.mov"><small style="display:block;color:#747b85;font-size:10px;margin-top:5px">Selecione fotos, vídeos ou PDFs (até 100 MB por arquivo).</small></div>';
-        Object.defineProperty(Element.prototype, 'innerHTML', {
-          configurable: descriptor.configurable,
-          enumerable: descriptor.enumerable,
-          get: descriptor.get,
-          set: function (value) {
-            if (this.id === 'root' && value.indexOf('<form id="reportForm"') !== -1 && value.indexOf('id="reportAttachments"') === -1) {
-              value = value.replace('</textarea></div><div class="full">', '</textarea></div>' + field + '<div class="full">');
-            }
-            descriptor.set.call(this, value);
+        document.addEventListener("click", function (evento) {
+          if (!caixa.contains(evento.target)) {
+            caixa.classList.remove("aberto");
           }
         });
-        function showLoadedAttachments() {
-          var modal = document.getElementById('modal'), detail = window.__lastReportDetail;
-          if (modal && detail && detail.attachments && !modal.querySelector('.report-attachments')) {
-            var section = modal.querySelector('.section');
-            if (section) section.insertAdjacentHTML('beforeend', attachmentsHtml(detail.attachments, function (id) { return '/api/admin/reports/' + detail.id + '/attachments/' + id; }));
-          }
-          var publicForm = document.querySelector('.chat-form[data-public-chat="1"]'), publicBox = document.querySelector('.track-page .section');
-          if (publicForm && publicBox && !publicBox.querySelector('.report-attachments')) {
-            var protocol = publicForm.dataset.protocol, key = publicForm.dataset.protocolKey;
-            fetch('/api/public/protocol/' + encodeURIComponent(protocol), { headers: { 'X-Protocol-Key': key } }).then(function (response) { return response.json(); }).then(function (data) {
-              if (!publicBox.querySelector('.report-attachments')) publicBox.insertAdjacentHTML('beforeend', attachmentsHtml(data.attachments, function (id) { return '/api/public/protocol/' + encodeURIComponent(protocol) + '/attachments/' + id; }, key));
-            }).catch(function () {});
-          }
-        }
-        var attachmentObserver = new MutationObserver(showLoadedAttachments);
-        attachmentObserver.observe(document.body, { childList: true, subtree: true });
-        showLoadedAttachments();
-      })();
-    </script>
+      }
 
-  </body>
+      var observador = new MutationObserver(iniciarTiposOcorrencia);
+      observador.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+
+      iniciarTiposOcorrencia();
+    })();
+  </script>
+
+  //Script para adicionar campo de anexos no formulário de denúncia
+  //Formulário de denúncia
+  //Página de Denúncias
+  <script id="report-attachments-script">
+    (function () {
+      var descriptor = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
+      var field = '<div class="full"><label for="reportAttachments">Anexos (opcional)</label><input id="reportAttachments" name="attachments" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,application/pdf,.jpg,.jpeg,.png,.webp,.mp4,.mov"><small style="display:block;color:#747b85;font-size:10px;margin-top:5px">Selecione fotos, vídeos ou PDFs (até 100 MB por arquivo).</small></div>';
+      Object.defineProperty(Element.prototype, 'innerHTML', {
+        configurable: descriptor.configurable,
+        enumerable: descriptor.enumerable,
+        get: descriptor.get,
+        set: function (value) {
+          if (this.id === 'root' && value.indexOf('<form id="reportForm"') !== -1 && value.indexOf('id="reportAttachments"') === -1) {
+            value = value.replace('</textarea></div><div class="full">', '</textarea></div>' + field + '<div class="full">');
+          }
+          descriptor.set.call(this, value);
+        }
+      });
+
+      function showLoadedAttachments() {
+        var modal = document.getElementById('modal'), detail = window.__lastReportDetail;
+        if (modal && detail && detail.attachments && !modal.querySelector('.report-attachments')) {
+          var section = modal.querySelector('.section');
+          if (section) section.insertAdjacentHTML('beforeend', attachmentsHtml(detail.attachments, function (id) { return '/api/admin/reports/' + detail.id + '/attachments/' + id; }));
+        }
+        var publicForm = document.querySelector('.chat-form[data-public-chat="1"]'), publicBox = document.querySelector('.track-page .section');
+        if (publicForm && publicBox && !publicBox.querySelector('.report-attachments')) {
+          var protocol = publicForm.dataset.protocol, key = publicForm.dataset.protocolKey;
+          fetch('/api/public/protocol/' + encodeURIComponent(protocol), { headers: { 'X-Protocol-Key': key } }).then(function (response) { return response.json(); }).then(function (data) {
+            if (!publicBox.querySelector('.report-attachments')) publicBox.insertAdjacentHTML('beforeend', attachmentsHtml(data.attachments, function (id) { return '/api/public/protocol/' + encodeURIComponent(protocol) + '/attachments/' + id; }, key));
+          }).catch(function () { });
+        }
+      }
+
+      var attachmentObserver = new MutationObserver(showLoadedAttachments);
+      attachmentObserver.observe(document.body, { childList: true, subtree: true });
+      showLoadedAttachments();
+    })();
+  </script>
+</body>
 
 </html>

@@ -277,7 +277,9 @@ res.status(201).json({protocol:p,setupToken,status:"Recebida"});
     const key=String(req.headers["x-protocol-key"]||"").trim();
     if(!checkPublicAccess(req,p,key)) return res.status(401).json({error:"Protocolo ou chave de segurança inválidos."});
     const r=rows(`SELECT id,protocol,type,sector,occurrence_date AS occurrenceDate,frequency,status,priority,created_at AS createdAt,updated_at AS updatedAt FROM reports WHERE protocol=?`,[p])[0];
-    if(!r)return res.status(401).json({error:"Protocolo ou chave de segurança inválidos."}); res.json(r);
+    if(!r)return res.status(401).json({error:"Protocolo ou chave de segurança inválidos."});
+    r.attachments=attachments.reportFiles(r.id);
+    res.json(r);
   });
 
   app.get("/api/public/protocol/:protocol/messages",(req,res)=>{
@@ -348,12 +350,13 @@ res.status(201).json({protocol:p,setupToken,status:"Recebida"});
   app.get("/api/admin/reports",auth,adminOnly,(req,res)=>{
     let sql=`SELECT id,protocol,type,sector,status,priority,responsible,anonymous,created_at AS createdAt FROM reports WHERE company_id=?`,p=[req.user.companyId];
     if(req.query.status){sql+=" AND status=?";p.push(req.query.status)} if(req.query.type){sql+=" AND type=?";p.push(req.query.type)} if(req.query.sector){sql+=" AND sector=?";p.push(req.query.sector)}
-    sql+=" ORDER BY id DESC";res.json(rows(sql,p));
+    sql+=" ORDER BY id DESC";
+    res.json(rows(sql,p).map(report=>({...report,attachments:attachments.reportFiles(report.id)})));
   });
   app.get("/api/admin/reports/:id",auth,adminOnly,(req,res)=>{
     const r=rows("SELECT * FROM reports WHERE id=? AND company_id=?",[req.params.id,req.user.companyId])[0];
     if(!r)return res.status(404).json({error:"Denúncia não encontrada."});
-    r.description=decrypted(r,"description_enc","description"); r.immediate_measure=decrypted(r,"immediate_measure_enc","immediate_measure"); r.name=decrypted(r,"name_enc","name"); r.email=decrypted(r,"email_enc","email"); r.responsible=decrypted(r,"responsible_enc","responsible");
+    r.description=decrypted(r,"description_enc","description"); r.immediate_measure=decrypted(r,"immediate_measure_enc","immediate_measure"); r.name=decrypted(r,"name_enc","name"); r.email=decrypted(r,"email_enc","email"); r.responsible=decrypted(r,"responsible_enc","responsible"); r.attachments=attachments.reportFiles(r.id);
     res.json(r);
   });
   app.patch("/api/admin/reports/:id",auth,adminOnly,(req,res)=>{

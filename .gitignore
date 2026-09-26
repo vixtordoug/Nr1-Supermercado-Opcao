@@ -1,31 +1,37 @@
-# Dependências
+# Dependências do Node.js
 node_modules/
 
-# Variáveis de ambiente e chaves
+# Credenciais, Chaves e Variáveis de Ambiente
 .env
-.env.*
-!.env.example
-*.data_key
+.data_key
+backend/.data_key
 
-# Banco de dados local
+# Banco de Dados SQLite e cópias de segurança locais
 *.sqlite
-*.sqlite3
-*.sqlite-wal
-*.sqlite-shm
+*.sqlite.*
+backend/database/*.sqlite
+backend/database/*.bak
+backend/database/*.backup-*
 
-# Backups e arquivos temporários
-*.backup*
+# Pastas de Uploads, Mídias e Anexos (Arquivos dinâmicos)
+storage/
+frontend/storage/
+midia/
+
+# Arquivos Temporários, Downloads e Logs
+download
+REPORTS_ATTACHMENTS_INTEGRATION.txt
+
+# Arquivos de Backup locais de Editores e Scripts
+*.backup-*
+*.bak-*
+*.bak
 *.save
 *.save.*
-*.copia-seguranca
 
-# Armazenamento local
-storage/
-*.zip
+# Arquivos de Teste ou rascunhos locais
+teste.html
 
-# Logs
-*.log
-
-# Arquivos do sistema
+# Arquivos de sistema operacional
 .DS_Store
 Thumbs.db
